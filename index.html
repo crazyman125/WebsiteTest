@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0b0b" />
+  <meta name="description" content="ROCA’S in Hamburg – Pizza & Croque, Take-away und Lieferung. Dehnhaide 6, 22081 Hamburg." />
+  <title>ROCA’S Hamburg | Pizza & Croque</title>
+  <style>
+    :root{
+      --bg:#090909;
+      --panel:#121212;
+      --panel-2:#191919;
+      --text:#f8f5ef;
+      --muted:#b6b1a8;
+      --lime:#d5ff4f;
+      --lime-2:#b8ef22;
+      --orange:#ff6b35;
+      --line:rgba(255,255,255,.11);
+      --shadow:0 30px 80px rgba(0,0,0,.45);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--bg)}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 85% 10%,rgba(213,255,79,.12),transparent 28rem),
+        radial-gradient(circle at 10% 45%,rgba(255,107,53,.08),transparent 26rem),
+        var(--bg);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    ::selection{background:var(--lime);color:#111}
+
+    .noise{
+      position:fixed;inset:0;pointer-events:none;opacity:.045;z-index:99;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+    }
+
+    .nav{
+      position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:50;
+      width:min(1180px,calc(100% - 28px));
+      display:flex;align-items:center;justify-content:space-between;
+      padding:10px 12px 10px 18px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(12,12,12,.68);
+      backdrop-filter:blur(18px) saturate(140%);
+      box-shadow:0 12px 50px rgba(0,0,0,.24);
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-.04em;font-size:1.2rem}
+    .brand-mark{width:34px;height:34px;border-radius:50%;background:conic-gradient(from 10deg,var(--lime),var(--orange),var(--lime));box-shadow:inset 0 0 0 6px #101010,0 0 28px rgba(213,255,79,.18)}
+    .nav-links{display:flex;gap:24px;color:var(--muted);font-size:.92rem}
+    .nav-links a:hover{color:var(--text)}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      border:1px solid transparent;border-radius:999px;
+      padding:13px 18px;font-weight:800;transition:.28s ease;
+      cursor:pointer;white-space:nowrap;
+    }
+    .btn-primary{background:var(--lime);color:#101010;box-shadow:0 12px 32px rgba(213,255,79,.16)}
+    .btn-primary:hover{transform:translateY(-2px) scale(1.015);background:#e2ff78}
+    .btn-ghost{background:rgba(255,255,255,.04);border-color:var(--line)}
+    .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+    .btn-dark{background:#111;color:#fff;border-color:rgba(255,255,255,.14)}
+
+    .hero{
+      position:relative;min-height:100svh;display:grid;place-items:center;
+      padding:140px 24px 70px;overflow:hidden;perspective:1200px;
+    }
+    #fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.55}
+    .hero-inner{position:relative;z-index:2;width:min(1180px,100%);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:50px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:#d9d5cc;background:rgba(255,255,255,.035);font-size:.82rem;font-weight:700}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 16px var(--lime)}
+    h1{font-size:clamp(4.4rem,12vw,10rem);line-height:.78;letter-spacing:-.095em;margin:28px 0 24px;font-weight:950}
+    h1 .outline{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.6)}
+    .lead{max-width:650px;color:var(--muted);font-size:clamp(1.05rem,1.8vw,1.35rem);line-height:1.65;margin:0 0 28px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:22px;color:#d9d5cc;font-size:.92rem}
+    .hero-meta strong{color:#fff}
+
+    .visual-wrap{position:relative;height:min(650px,72vh);display:grid;place-items:center;transform-style:preserve-3d}
+    .halo{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(213,255,79,.19),rgba(213,255,79,0) 67%);filter:blur(10px);animation:pulse 4s ease-in-out infinite}
+    @keyframes pulse{50%{transform:scale(1.12);opacity:.7}}
+
+    .pizza-scene{position:relative;width:min(470px,90vw);aspect-ratio:1;transform-style:preserve-3d;animation:float 5.5s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0) rotateX(58deg) rotateZ(-18deg)}50%{transform:translateY(-18px) rotateX(62deg) rotateZ(-10deg)}}
+    .pizza{
+      position:absolute;inset:10%;border-radius:50%;transform-style:preserve-3d;
+      background:
+        radial-gradient(circle at 32% 32%,#5c130d 0 4.5%,transparent 5%),
+        radial-gradient(circle at 64% 23%,#682016 0 5%,transparent 5.5%),
+        radial-gradient(circle at 72% 60%,#5e160d 0 5%,transparent 5.5%),
+        radial-gradient(circle at 39% 73%,#66190f 0 5%,transparent 5.5%),
+        radial-gradient(circle at 50% 48%,#f5d368 0 59%,#d59f41 60% 66%,#9d5425 67% 73%,#6f3518 74% 100%);
+      box-shadow:0 55px 80px rgba(0,0,0,.6),inset -20px -24px 42px rgba(0,0,0,.26),inset 14px 14px 30px rgba(255,255,255,.1);
+    }
+    .pizza::before{content:"";position:absolute;inset:9%;border-radius:50%;background:repeating-conic-gradient(from 5deg,transparent 0 18deg,rgba(255,255,255,.04) 19deg 20deg);mix-blend-mode:screen;opacity:.6}
+    .pizza::after{content:"ROCA’S";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(7deg);font-size:clamp(2rem,5vw,4.4rem);font-weight:950;letter-spacing:-.09em;color:#111;background:var(--lime);padding:.12em .25em;border-radius:.16em;box-shadow:0 14px 30px rgba(0,0,0,.28)}
+    .orbit-card{position:absolute;z-index:4;padding:14px 16px;border-radius:18px;background:rgba(18,18,18,.78);border:1px solid var(--line);backdrop-filter:blur(14px);box-shadow:var(--shadow);font-size:.9rem;animation:cardFloat 4s ease-in-out infinite}
+    .orbit-card b{display:block;font-size:1.22rem;margin-top:3px}
+    .card-a{left:-3%;top:18%;transform:translateZ(70px) rotate(-7deg)}
+    .card-b{right:-3%;bottom:19%;transform:translateZ(100px) rotate(6deg);animation-delay:-2s}
+    @keyframes cardFloat{50%{margin-top:-14px}}
+
+    .scroll-cue{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:4;color:#8f8b84;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;display:grid;place-items:center;gap:10px}
+    .scroll-cue i{display:block;width:1px;height:50px;background:linear-gradient(var(--lime),transparent);animation:scrollLine 1.8s infinite}
+    @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+    section{position:relative;padding:110px 24px}
+    .container{width:min(1180px,100%);margin:auto}
+    .section-kicker{color:var(--lime);text-transform:uppercase;letter-spacing:.2em;font-size:.75rem;font-weight:850}
+    .section-title{font-size:clamp(2.7rem,7vw,6.4rem);line-height:.92;letter-spacing:-.075em;margin:14px 0 28px;max-width:920px}
+    .section-copy{color:var(--muted);font-size:1.08rem;line-height:1.75;max-width:680px}
+
+    .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:#0d0d0d}
+    .marquee-track{display:flex;width:max-content;gap:40px;padding:20px 0;animation:marquee 20s linear infinite;font-size:1rem;font-weight:850;letter-spacing:.05em;text-transform:uppercase}
+    .marquee-track span::after{content:"✦";color:var(--lime);margin-left:40px}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+
+    .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch;margin-top:55px}
+    .story-panel{min-height:500px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,#161616,#0e0e0e);overflow:hidden;position:relative;box-shadow:var(--shadow)}
+    .story-art{display:grid;place-items:center;padding:40px;perspective:1000px}
+    .croque-stack{position:relative;width:72%;aspect-ratio:1;transform-style:preserve-3d;transform:rotateX(56deg) rotateZ(-18deg);transition:transform .2s ease-out}
+    .slice{position:absolute;inset:18%;border-radius:36px;background:linear-gradient(145deg,#f3c65a,#bd742b);box-shadow:0 20px 35px rgba(0,0,0,.35),inset 0 0 0 4px rgba(100,45,10,.35);border:8px solid #8f4c20}
+    .slice:nth-child(1){transform:translateZ(0)}
+    .slice:nth-child(2){transform:translate3d(10px,-10px,44px) rotate(4deg);background:linear-gradient(145deg,#f6d56d,#ca7a2c)}
+    .slice:nth-child(3){transform:translate3d(-4px,10px,88px) rotate(-4deg);background:linear-gradient(145deg,#f4ce62,#c57c31)}
+    .slice:nth-child(3)::after{content:"ROCA’S";position:absolute;inset:auto 14% 35% 14%;text-align:center;background:#111;color:var(--lime);font-weight:950;font-size:clamp(1.5rem,3vw,2.5rem);padding:.25em;border-radius:10px}
+    .story-info{padding:44px;display:flex;flex-direction:column;justify-content:space-between}
+    .fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:34px}
+    .fact{padding:20px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025)}
+    .fact span{display:block;color:var(--muted);font-size:.82rem;margin-bottom:7px}
+    .fact strong{font-size:1.1rem}
+
+    .signature{overflow:hidden}
+    .dish-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:50px}
+    .dish-card{position:relative;min-height:460px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#111;transform-style:preserve-3d;transition:transform .25s ease, border-color .25s ease}
+    .dish-card:hover{border-color:rgba(213,255,79,.45)}
+    .dish-card::before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 50% 42%,rgba(213,255,79,.18),transparent 40%);transform:translateZ(-20px)}
+    .dish-copy{position:absolute;left:30px;right:30px;bottom:26px;z-index:4}
+    .dish-copy h3{font-size:clamp(2rem,4vw,3.6rem);letter-spacing:-.06em;margin:0 0 8px}
+    .dish-copy p{color:var(--muted);margin:0;max-width:430px;line-height:1.6}
+    .dish-art{position:absolute;inset:0;display:grid;place-items:center;transform-style:preserve-3d}
+    .mini-pizza{width:52%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 33%,#6d1a0f 0 5%,transparent 5.5%),radial-gradient(circle at 67% 62%,#5e170f 0 5%,transparent 5.5%),radial-gradient(circle,#f6d977 0 58%,#c77b2f 59% 72%,#713717 73%);box-shadow:0 55px 70px rgba(0,0,0,.55);transform:rotateX(58deg) rotateZ(-17deg) translateZ(25px)}
+    .mini-croque{width:56%;aspect-ratio:1.2;border-radius:34px;background:linear-gradient(145deg,#f5ce64,#a95520);border:12px solid #804018;box-shadow:0 55px 70px rgba(0,0,0,.55),inset 0 0 40px rgba(95,40,10,.25);transform:rotateX(58deg) rotateZ(15deg) translateZ(25px)}
+
+    .reviews{background:linear-gradient(180deg,#0b0b0b,#101010)}
+    .rating-strip{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:36px}
+    .big-rating{font-size:clamp(5rem,11vw,10rem);font-weight:950;letter-spacing:-.1em;line-height:.75}
+    .stars{color:var(--lime);letter-spacing:.2em;font-size:1.1rem;margin-top:18px}
+    .review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .review-card{display:flex;flex-direction:column;justify-content:space-between;min-height:315px;padding:26px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(150deg,rgba(255,255,255,.055),rgba(255,255,255,.02));transition:transform .25s ease,border-color .25s ease}
+    .review-card:hover{transform:translateY(-7px);border-color:rgba(213,255,79,.35)}
+    .review-card blockquote{font-size:1.08rem;line-height:1.7;margin:18px 0;color:#e8e5df}
+    .review-author{color:var(--muted);font-size:.9rem}
+    .google-badge{display:inline-flex;align-items:center;gap:8px;color:#d7d3ca;font-size:.84rem}
+    .g-dot{width:22px;height:22px;border-radius:50%;background:conic-gradient(#4285F4 0 25%,#34A853 0 50%,#FBBC05 0 75%,#EA4335 0);display:inline-block}
+
+    .visit-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:36px;padding:55px;background:linear-gradient(135deg,#d5ff4f 0%,#b9ef23 55%,#ff6b35 150%);color:#111;box-shadow:0 30px 90px rgba(157,213,31,.18)}
+    .visit-card::after{content:"ROCA’S";position:absolute;right:-2%;bottom:-24%;font-size:clamp(7rem,20vw,18rem);font-weight:950;letter-spacing:-.1em;color:rgba(17,17,17,.08)}
+    .visit-card h2{position:relative;z-index:2;font-size:clamp(3rem,8vw,7.5rem);line-height:.84;letter-spacing:-.08em;margin:0 0 30px;max-width:950px}
+    .visit-actions{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:12px}
+    .visit-meta{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:38px}
+    .visit-meta div{padding-top:16px;border-top:1px solid rgba(17,17,17,.25)}
+    .visit-meta span{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:7px;opacity:.68}
+    .visit-meta strong{font-size:1.05rem}
+
+    footer{padding:36px 24px 50px;color:#858078;font-size:.88rem}
+    .footer-inner{width:min(1180px,100%);margin:auto;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:24px}
+
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.75,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+
+    @media (max-width:900px){
+      .nav-links{display:none}
+      .hero{padding-top:120px}
+      .hero-inner,.story-grid{grid-template-columns:1fr}
+      .visual-wrap{height:500px;margin-top:-20px}
+      .dish-grid,.review-grid{grid-template-columns:1fr}
+      .visit-meta{grid-template-columns:1fr}
+      h1{font-size:clamp(4.2rem,22vw,7.2rem)}
+    }
+    @media (max-width:560px){
+      .nav{top:10px;width:calc(100% - 18px)}
+      .nav .btn{padding:10px 13px;font-size:.85rem}
+      .hero{padding:110px 18px 60px}
+      .hero-actions .btn{width:100%}
+      .visual-wrap{height:390px}
+      .orbit-card{font-size:.78rem;padding:11px 13px}
+      section{padding:80px 18px}
+      .story-info,.visit-card{padding:30px 22px}
+      .fact-grid{grid-template-columns:1fr}
+      .rating-strip{align-items:flex-start;flex-direction:column}
+      .footer-inner{flex-direction:column}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <nav class="nav" aria-label="Hauptnavigation">
+    <a class="brand" href="#top" aria-label="ROCA'S Startseite"><span class="brand-mark"></span>ROCA’S</a>
+    <div class="nav-links">
+      <a href="#about">Über uns</a>
+      <a href="#signature">Pizza & Croque</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Besuch uns</a>
+    </div>
+    <a class="btn btn-primary" href="tel:+494028542179">Jetzt anrufen ↗</a>
+  </nav>
+
+  <main id="top">
+    <section class="hero" id="hero">
+      <canvas id="fx" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="dot"></span> Geöffnet · bis 00:00 Uhr</span>
+          <h1><span>ROCA’S</span><span class="outline">HAMBURG</span></h1>
+          <p class="lead">Knusprige Pizza, heißer Croque und ehrlicher Geschmack mitten in Hamburg-Nord. Für Take-away, Lieferung oder den nächsten spontanen Food-Stopp.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="tel:+494028542179">Bestellen per Telefon ↗</a>
+            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dehnhaide%206%2C%2022081%20Hamburg">Route starten</a>
+          </div>
+          <div class="hero-meta">
+            <span><strong>4,9/5</strong> Google</span>
+            <span><strong>10–20 €</strong> pro Person</span>
+            <span><strong>Dehnhaide 6</strong> · Hamburg</span>
+          </div>
+        </div>
+
+        <div class="visual-wrap" aria-hidden="true">
+          <div class="halo"></div>
+          <div class="pizza-scene" id="pizzaScene">
+            <div class="pizza"></div>
+            <div class="orbit-card card-a">Google Rating<b>4,9 ★</b></div>
+            <div class="orbit-card card-b">Open now<b>bis 00:00</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue">Scroll to taste<i></i></div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Pizza</span><span>Croque</span><span>Take-away</span><span>Lieferung</span><span>Hamburg-Nord</span>
+        <span>Pizza</span><span>Croque</span><span>Take-away</span><span>Lieferung</span><span>Hamburg-Nord</span>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-kicker">ROCA’S EXPERIENCE</span>
+          <h2 class="section-title">Streetfood-Vibes. Hamburg-Feeling. Geschmack, der hängen bleibt.</h2>
+          <p class="section-copy">ROCA’S steht für Pizza und Croque in entspannter Atmosphäre. Schnell bestellt, frisch serviert und genau richtig für den kleinen Hunger oder den späten Abend.</p>
+        </div>
+
+        <div class="story-grid">
+          <div class="story-panel story-art reveal" id="tiltPanel">
+            <div class="croque-stack" id="croqueStack">
+              <div class="slice"></div><div class="slice"></div><div class="slice"></div>
+            </div>
+          </div>
+          <div class="story-panel story-info reveal">
+            <div>
+              <span class="section-kicker">GOOD TO KNOW</span>
+              <h3 style="font-size:clamp(2.3rem,5vw,4.6rem);letter-spacing:-.065em;line-height:.95;margin:14px 0 0">Dein Food-Spot an der Dehnhaide.</h3>
+              <div class="fact-grid">
+                <div class="fact"><span>Adresse</span><strong>Dehnhaide 6, 22081 Hamburg</strong></div>
+                <div class="fact"><span>Telefon</span><strong>040 28542179</strong></div>
+                <div class="fact"><span>Preisniveau</span><strong>10–20 € pro Person</strong></div>
+                <div class="fact"><span>Services</span><strong>Take-away & Lieferung</strong></div>
+              </div>
+            </div>
+            <a class="btn btn-primary" style="align-self:flex-start;margin-top:28px" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dehnhaide%206%2C%2022081%20Hamburg">ROCA’S auf der Karte ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="signature" id="signature">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-kicker">SIGNATURE DUO</span>
+          <h2 class="section-title">Pizza oder Croque? Die richtige Antwort: beides.</h2>
+        </div>
+        <div class="dish-grid">
+          <article class="dish-card reveal tilt-card">
+            <div class="dish-art"><div class="mini-pizza"></div></div>
+            <div class="dish-copy"><h3>Pizza.</h3><p>Dünn, knusprig und gemacht für alle, die keinen schweren Schnickschnack brauchen, sondern guten Geschmack.</p></div>
+          </article>
+          <article class="dish-card reveal tilt-card">
+            <div class="dish-art"><div class="mini-croque"></div></div>
+            <div class="dish-copy"><h3>Croque.</h3><p>Heiß, crunchy und genau das Richtige, wenn es schnell, herzhaft und richtig satisfying sein soll.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="rating-strip reveal">
+          <div>
+            <span class="section-kicker">GÄSTESTIMMEN</span>
+            <div class="big-rating">4,9</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <p class="section-copy">37 Google-Rezensionen · Stimmen von Gästen, die ROCA’S bereits probiert haben.</p>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-card reveal">
+            <div><span class="google-badge"><i class="g-dot"></i> Google Rezension · 5/5</span><blockquote>„Ein echter Geheimtipp für alle Pizza-Liebhaber und Croque.“</blockquote></div>
+            <div class="review-author">hasbihal ilahi grubu</div>
+          </article>
+          <article class="review-card reveal">
+            <div><span class="google-badge"><i class="g-dot"></i> Google Rezension · 5/5</span><blockquote>„Bester Croque, den ich bis jetzt gegessen habe. Sehr guter Service und sehr nette, sympathische Mitarbeiter.“</blockquote></div>
+            <div class="review-author">Oguzhan Topcu</div>
+          </article>
+          <article class="review-card reveal">
+            <div><span class="google-badge"><i class="g-dot"></i> Google Rezension · 5/5</span><blockquote>„Wir hatten Pizza und Croque. Die Pizza war schön dünn, knusprig – auch der Boden.“</blockquote></div>
+            <div class="review-author">Anja Baude</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="container">
+        <div class="visit-card reveal">
+          <span class="section-kicker" style="color:#111">HUNGRY YET?</span>
+          <h2>Heute noch bei ROCA’S vorbeischauen.</h2>
+          <div class="visit-actions">
+            <a class="btn btn-dark" href="tel:+494028542179">040 28542179 anrufen ↗</a>
+            <a class="btn" style="background:#fff;color:#111" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dehnhaide%206%2C%2022081%20Hamburg">Route starten</a>
+          </div>
+          <div class="visit-meta">
+            <div><span>Adresse</span><strong>Dehnhaide 6, 22081 Hamburg-Nord</strong></div>
+            <div><span>Öffnungsstatus</span><strong>Geöffnet · schließt um 00:00 Uhr</strong></div>
+            <div><span>Preis pro Person</span><strong>10–20 €</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> ROCA’S Hamburg</span>
+      <span>Pizza · Croque · Take-away · Lieferung</span>
+    </div>
+  </footer>
+
+  <script>
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hero = document.getElementById('hero');
+    const scene = document.getElementById('pizzaScene');
+    const croque = document.getElementById('croqueStack');
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll-driven hero motion
+    if (!reduced) {
+      addEventListener('scroll', () => {
+        const y = scrollY;
+        const p = Math.min(1, y / innerHeight);
+        scene.style.transform = `translateY(${y * .12}px) scale(${1 - p * .12}) rotateZ(${p * 10}deg)`;
+        hero.style.setProperty('--hero-fade', 1 - p);
+      }, { passive:true });
+    }
+
+    // Reveal on scroll
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold:.14 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Mouse-driven 3D tilt
+    function addTilt(el, strength = 9) {
+      if (reduced) return;
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        el.style.transform = `perspective(900px) rotateX(${-y * strength}deg) rotateY(${x * strength}deg) translateY(-3px)`;
+      });
+      el.addEventListener('pointerleave', () => el.style.transform = '');
+    }
+    document.querySelectorAll('.tilt-card').forEach(el => addTilt(el, 8));
+
+    const tiltPanel = document.getElementById('tiltPanel');
+    if (!reduced) {
+      tiltPanel.addEventListener('pointermove', e => {
+        const r = tiltPanel.getBoundingClientRect();
+        const x = (e.clientX-r.left)/r.width-.5;
+        const y = (e.clientY-r.top)/r.height-.5;
+        croque.style.transform = `rotateX(${56-y*10}deg) rotateZ(${-18+x*12}deg) rotateY(${x*10}deg)`;
+      });
+      tiltPanel.addEventListener('pointerleave', () => croque.style.transform = 'rotateX(56deg) rotateZ(-18deg)');
+    }
+
+    // Lightweight ambient particle field
+    const canvas = document.getElementById('fx');
+    const ctx = canvas.getContext('2d');
+    let dpr = Math.min(devicePixelRatio || 1, 2), dots = [];
+    function resize() {
+      canvas.width = innerWidth*dpr; canvas.height = innerHeight*dpr;
+      canvas.style.width = innerWidth+'px'; canvas.style.height = innerHeight+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      dots = Array.from({length:Math.min(75,Math.floor(innerWidth/15))},()=>({
+        x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.6+.4,
+        vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,a:Math.random()*.5+.1
+      }));
+    }
+    function draw(){
+      ctx.clearRect(0,0,innerWidth,innerHeight);
+      dots.forEach(d=>{
+        d.x+=d.vx;d.y+=d.vy;
+        if(d.x<0||d.x>innerWidth)d.vx*=-1;if(d.y<0||d.y>innerHeight)d.vy*=-1;
+        ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(213,255,79,${d.a})`;ctx.fill();
+      });
+      if(!reduced) requestAnimationFrame(draw);
+    }
+    resize(); draw(); addEventListener('resize', resize);
+  </script>
+</body>
+</html>
