@@ -1,565 +1,738 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#080705" />
-  <meta name="description" content="ROCA’S Hamburg — Paris meets Napoli. Pizza, Croques, Bowls, Wraps und mehr an der Dehnhaide 6 in Hamburg." />
-  <meta property="og:title" content="ROCA’S Hamburg — Paris meets Napoli" />
-  <meta property="og:description" content="Pizza, Croques, Bowls, Wraps und mehr. Dehnhaide 6, Hamburg." />
-  <title>ROCA’S Hamburg — Paris meets Napoli</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4eadb">
+  <meta name="description" content="ROCA'S Hamburg – Pizza, Croques, Bowls, Wraps und mehr. Paris meets Napoli an der Dehnhaide 6 in Hamburg.">
+  <title>ROCA'S Hamburg · Paris meets Napoli</title>
   <style>
     :root{
-      --bg:#080705;
-      --bg-soft:#0f0d0a;
-      --card:#15120e;
-      --card-2:#1b1712;
-      --paper:#f4efe4;
-      --cream:#efe5d2;
-      --text:#fff9ef;
-      --muted:#b9ae9b;
-      --red:#e8452f;
-      --orange:#ff7a32;
-      --gold:#f2bd54;
-      --green:#b8dd72;
-      --line:rgba(255,255,255,.12);
-      --line-dark:rgba(16,13,9,.16);
-      --shadow:0 32px 90px rgba(0,0,0,.42);
-      --radius:30px;
+      --cream:#f4eadb;
+      --cream-2:#fbf6ee;
+      --paper:#fffdf9;
+      --ink:#30241f;
+      --muted:#796b62;
+      --red:#c74a38;
+      --red-dark:#9d362b;
+      --gold:#e4aa49;
+      --green:#74805c;
+      --line:#dccfbd;
+      --shadow:0 18px 55px rgba(92,62,39,.12);
+      --radius:28px;
       --max:1240px;
     }
-
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;background:var(--bg)}
-    body{
-      margin:0;
-      background:
-        radial-gradient(circle at 88% 8%,rgba(232,69,47,.15),transparent 30rem),
-        radial-gradient(circle at 8% 42%,rgba(242,189,84,.08),transparent 28rem),
-        var(--bg);
-      color:var(--text);
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow-x:hidden;
-    }
-    body::before{
-      content:"";position:fixed;inset:0;z-index:100;pointer-events:none;opacity:.035;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
+    html{scroll-behavior:smooth;background:var(--cream)}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
+    img{display:block;width:100%;height:auto}
     a{color:inherit;text-decoration:none}
     button{font:inherit}
-    img{max-width:100%;display:block}
-    ::selection{background:var(--red);color:white}
-
     .shell{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
-    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .serif{font-family:Georgia,"Times New Roman",serif}
 
-    /* Navigation */
-    .nav-wrap{position:fixed;top:16px;left:0;right:0;z-index:80;padding-inline:14px}
-    .nav{
-      width:min(1180px,100%);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px;
-      padding:9px 10px 9px 16px;border:1px solid var(--line);border-radius:999px;
-      background:rgba(10,8,6,.72);backdrop-filter:blur(20px) saturate(130%);
-      box-shadow:0 15px 50px rgba(0,0,0,.25);
-    }
-    .brand{display:flex;align-items:center;gap:11px;font-weight:950;letter-spacing:-.055em;font-size:1.15rem}
-    .brand-mark{position:relative;width:36px;height:36px;border-radius:50%;background:conic-gradient(from 30deg,var(--red),var(--gold),var(--red));box-shadow:inset 0 0 0 7px #0f0c09}
-    .brand-mark::after{content:"R";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:.72rem;font-weight:950}
-    .nav-links{display:flex;align-items:center;gap:25px;color:#cfc5b5;font-size:.9rem}
-    .nav-links a{transition:.2s ease}
-    .nav-links a:hover{color:white}
+    .topbar{background:var(--red);color:#fff;padding:9px 16px;text-align:center;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .nav-wrap{position:sticky;top:0;z-index:60;background:rgba(244,234,219,.93);backdrop-filter:blur(18px);border-bottom:1px solid rgba(89,62,45,.12)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:950;letter-spacing:-.065em;font-size:1.35rem}
+    .brand-mark{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--red);color:white;font-size:.82rem;letter-spacing:-.05em;box-shadow:inset 0 0 0 4px rgba(255,255,255,.28)}
+    .nav-links{display:flex;gap:28px;align-items:center;color:#63544a;font-size:.91rem;font-weight:760}
+    .nav-links a:hover{color:var(--red)}
+    .nav-actions{display:flex;gap:8px;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 18px;border-radius:999px;border:1px solid transparent;font-weight:850;transition:transform .2s ease,background .2s ease,border-color .2s ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--red);color:white;box-shadow:0 12px 28px rgba(199,74,56,.22)}
+    .btn-primary:hover{background:var(--red-dark)}
+    .btn-outline{border-color:#cdbba5;background:rgba(255,255,255,.48)}
+    .btn-outline:hover{background:white;border-color:#bca78e}
 
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      min-height:48px;padding:0 18px;border-radius:999px;border:1px solid transparent;
-      font-weight:850;letter-spacing:-.01em;transition:.25s ease;cursor:pointer;white-space:nowrap;
-    }
-    .btn-primary{background:var(--red);color:#fff;box-shadow:0 14px 35px rgba(232,69,47,.22)}
-    .btn-primary:hover{transform:translateY(-2px);background:#f15039}
-    .btn-ghost{border-color:var(--line);background:rgba(255,255,255,.045)}
-    .btn-ghost:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
-    .btn-paper{background:#11100e;color:#fff;border-color:#11100e}
-    .btn-light{background:#fff;color:#15110d}
+    .hero{position:relative;padding:82px 0 72px;overflow:hidden}
+    .hero::before{content:"";position:absolute;right:-12vw;top:-20vw;width:55vw;height:55vw;border-radius:50%;background:#ead8bd;opacity:.52}
+    .hero-grid{position:relative;display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--red);font-size:.76rem;font-weight:950;text-transform:uppercase;letter-spacing:.18em}
+    .eyebrow::before{content:"";width:28px;height:2px;background:var(--red)}
+    h1{margin:18px 0 24px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(4rem,8vw,8.2rem);line-height:.83;letter-spacing:-.075em;font-weight:700}
+    h1 em{display:block;color:var(--red);font-style:italic;font-weight:400}
+    .hero-copy p{max-width:650px;margin:0;color:var(--muted);font-size:clamp(1.05rem,1.5vw,1.22rem);line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px;padding-top:24px;border-top:1px solid #d6c8b5;color:#6c5d53;font-size:.9rem}
+    .hero-meta span{display:flex;gap:8px;align-items:center}
+    .hero-meta b{color:var(--ink)}
 
-    /* Hero */
-    .hero{position:relative;min-height:100svh;padding:140px 0 70px;display:grid;align-items:center;overflow:hidden;perspective:1200px}
-    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,var(--bg));pointer-events:none;z-index:1}
-    .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:54px}
-    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);font-size:.8rem;font-weight:800;color:#ded5c8}
-    .eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 18px rgba(184,221,114,.9)}
-    .hero h1{margin:24px 0 26px;font-size:clamp(4.6rem,10.6vw,9.6rem);line-height:.79;letter-spacing:-.095em;font-weight:950}
-    .hero h1 .line{display:block}
-    .hero h1 .accent{color:var(--red)}
-    .hero h1 .outline{color:transparent;-webkit-text-stroke:1px rgba(255,249,239,.62)}
-    .lead{max-width:650px;margin:0 0 30px;color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.28rem);line-height:1.68}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:32px}
-    .hero-proof{display:flex;flex-wrap:wrap;gap:12px}
-    .proof-pill{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.03);font-size:.87rem;color:#cfc5b5}
-    .proof-pill strong{color:#fff}
-    .stars{color:var(--gold);letter-spacing:.08em}
+    .food-collage{position:relative;min-height:650px}
+    .food-card{position:absolute;overflow:hidden;background:#ece4dd;border:8px solid rgba(255,255,255,.82);box-shadow:var(--shadow)}
+    .food-card img{width:100%;height:100%;object-fit:cover}
+    .food-main{width:74%;height:64%;right:0;top:0;border-radius:42px}
+    .food-left{width:52%;height:42%;left:0;bottom:0;border-radius:34px}
+    .food-small{width:36%;height:34%;right:6%;bottom:3%;border-radius:30px}
+    .food-badge{position:absolute;left:3%;top:11%;z-index:2;background:var(--red);color:#fff;border-radius:50%;width:124px;height:124px;display:grid;place-items:center;text-align:center;padding:14px;font-family:Georgia,serif;font-style:italic;font-size:1.15rem;line-height:1.05;transform:rotate(-9deg);box-shadow:0 16px 38px rgba(128,55,39,.22)}
 
-    .hero-visual{position:relative;min-height:680px;display:grid;place-items:center;transform-style:preserve-3d}
-    .hero-glow{position:absolute;width:82%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(232,69,47,.22),rgba(232,69,47,0) 67%);filter:blur(15px);animation:glowPulse 5s ease-in-out infinite}
-    @keyframes glowPulse{50%{transform:scale(1.14);opacity:.72}}
+    .intro{padding:92px 0;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+    .kicker{color:var(--red);font-size:.76rem;font-weight:950;letter-spacing:.18em;text-transform:uppercase}
+    .display-title{margin:12px 0 20px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.8rem,5.7vw,6rem);line-height:.92;letter-spacing:-.065em}
+    .intro-copy{color:var(--muted);font-size:1.08rem;line-height:1.8;max-width:760px}
+    .quality-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px}
+    .quality-card{padding:22px;border:1px solid var(--line);border-radius:22px;background:var(--cream-2)}
+    .quality-card span{display:block;color:var(--red);font-weight:950;font-size:1.55rem;margin-bottom:22px}
+    .quality-card strong{display:block;margin-bottom:6px}
+    .quality-card p{margin:0;color:var(--muted);line-height:1.55;font-size:.91rem}
 
-    .phone-card{
-      position:relative;width:min(430px,86vw);aspect-ratio:.74;border-radius:44px;padding:12px;
-      background:linear-gradient(150deg,#2b241c,#0d0b09);border:1px solid rgba(255,255,255,.18);
-      box-shadow:0 70px 120px rgba(0,0,0,.58);transform:rotateY(-10deg) rotateX(4deg) rotateZ(3deg);transform-style:preserve-3d;
-      transition:transform .18s ease-out;
-    }
-    .phone-screen{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:linear-gradient(160deg,#2a1712,#111);border:1px solid rgba(255,255,255,.08)}
-    .phone-screen img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:saturate(.92) contrast(1.03)}
-    .phone-screen::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 48%,rgba(7,5,4,.78));pointer-events:none}
-    .phone-label{position:absolute;left:24px;right:24px;bottom:24px;z-index:3}
-    .phone-label span{font-size:.72rem;text-transform:uppercase;letter-spacing:.18em;color:#f2cfc4;font-weight:800}
-    .phone-label strong{display:block;font-size:2rem;line-height:.95;letter-spacing:-.055em;margin-top:8px}
-    .phone-notch{position:absolute;top:20px;left:50%;transform:translateX(-50%);z-index:4;width:118px;height:25px;border-radius:999px;background:#080705}
+    .gallery{padding:100px 0;background:var(--cream)}
+    .gallery-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:36px}
+    .gallery-head p{max-width:510px;margin:0;color:var(--muted);line-height:1.65}
+    .gallery-grid{display:grid;grid-template-columns:1.35fr .65fr;grid-template-rows:360px 360px;gap:16px}
+    .gallery-card{position:relative;overflow:hidden;border-radius:30px;background:#ebe4de;box-shadow:var(--shadow)}
+    .gallery-card:first-child{grid-row:1 / span 2}
+    .gallery-card img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+    .gallery-card:hover img{transform:scale(1.025)}
+    .gallery-label{position:absolute;left:18px;bottom:18px;background:rgba(255,253,249,.93);padding:11px 14px;border-radius:999px;font-size:.8rem;font-weight:900}
 
-    .float-card{position:absolute;z-index:5;padding:15px 17px;border-radius:20px;background:rgba(17,14,11,.82);backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:var(--shadow);animation:floatCard 4.4s ease-in-out infinite}
-    .float-card small{display:block;color:#bfb4a2;font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
-    .float-card strong{font-size:1.15rem}
-    .float-one{left:-1%;top:18%;transform:translateZ(80px) rotate(-7deg)}
-    .float-two{right:-4%;bottom:18%;transform:translateZ(120px) rotate(7deg);animation-delay:-2s}
-    @keyframes floatCard{50%{margin-top:-15px}}
+    .menu-wrap{background:var(--paper);padding:110px 0}
+    .menu-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:38px}
+    .menu-intro p{margin:0;color:var(--muted);line-height:1.75;max-width:620px}
+    .menu-nav-wrap{position:sticky;top:76px;z-index:40;padding:12px 0;background:rgba(255,253,249,.95);backdrop-filter:blur(18px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .menu-nav{display:flex;gap:8px;overflow:auto;padding-bottom:2px;scrollbar-width:none}
+    .menu-nav::-webkit-scrollbar{display:none}
+    .menu-nav a{flex:0 0 auto;padding:10px 14px;border:1px solid #d8cab8;border-radius:999px;font-size:.8rem;font-weight:850;background:#fffaf2;transition:.2s ease}
+    .menu-nav a:hover{background:var(--red);border-color:var(--red);color:white}
+    .menu-category{scroll-margin-top:150px;padding:74px 0 12px;border-bottom:1px solid var(--line)}
+    .menu-category:last-child{border-bottom:0}
+    .category-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:end;margin-bottom:26px}
+    .category-head>div{display:flex;align-items:baseline;gap:12px}
+    .category-index{color:var(--red);font-size:.72rem;font-weight:950;letter-spacing:.12em}
+    .category-head h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,5vw,5rem);line-height:.9;letter-spacing:-.055em}
+    .category-head p{margin:0;color:var(--muted);line-height:1.65;max-width:660px}
+    .menu-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
+    .menu-item{min-height:118px;padding:22px 0;display:flex;gap:18px;align-items:flex-start;justify-content:space-between;border-top:1px solid #e1d6c7}
+    .menu-item-copy{min-width:0}
+    .menu-item h3{margin:0 0 7px;font-size:1.08rem;letter-spacing:-.02em}
+    .menu-item p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.55}
+    .price{flex:0 0 auto;color:var(--red);font-size:1rem;white-space:nowrap}
 
-    .scroll-note{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;display:grid;place-items:center;gap:8px;color:#776e63;text-transform:uppercase;letter-spacing:.18em;font-size:.67rem}
-    .scroll-note i{display:block;width:1px;height:45px;background:linear-gradient(var(--red),transparent);animation:scrollLine 1.8s infinite}
-    @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+    .visit{padding:100px 0;background:var(--cream)}
+    .visit-card{display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden;border-radius:36px;background:var(--red);color:white;box-shadow:0 30px 80px rgba(129,60,43,.18)}
+    .visit-copy{padding:54px}
+    .visit-copy .kicker{color:#ffe8dc}
+    .visit-copy h2{margin:13px 0 20px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,5vw,5.6rem);line-height:.9;letter-spacing:-.06em}
+    .visit-copy p{margin:0;color:#fbe7df;line-height:1.7;max-width:620px}
+    .visit-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .visit .btn-primary{background:white;color:var(--red)}
+    .visit .btn-outline{border-color:rgba(255,255,255,.45);color:white;background:transparent}
+    .hours{padding:42px;background:#f6ead8;color:var(--ink);display:flex;flex-direction:column;justify-content:center}
+    .hours h3{margin:0 0 18px;font-family:Georgia,serif;font-size:2rem}
+    .hours-list{display:grid;gap:11px}
+    .hours-row{display:flex;justify-content:space-between;gap:22px;padding-bottom:10px;border-bottom:1px solid #d8c7b2;color:#6e5c50}
+    .hours-row strong{color:var(--ink)}
 
-    /* Marquee */
-    .marquee{position:relative;z-index:3;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0d0b08;overflow:hidden}
-    .marquee-track{display:flex;width:max-content;gap:38px;padding:19px 0;font-size:.9rem;font-weight:900;text-transform:uppercase;letter-spacing:.11em;animation:marquee 23s linear infinite}
-    .marquee-track span::after{content:"✦";margin-left:38px;color:var(--red)}
-    @keyframes marquee{to{transform:translateX(-50%)}}
+    footer{background:#efe0cb;border-top:1px solid var(--line)}
+    .footer-main{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:40px;padding:62px 0 44px}
+    .footer-brand strong{display:block;font-size:2rem;letter-spacing:-.06em;margin-bottom:12px}
+    .footer-brand p,.footer-col p{color:#716154;line-height:1.65;margin:0}
+    .footer-col h3{margin:0 0 14px;font-size:.82rem;text-transform:uppercase;letter-spacing:.14em;color:var(--red)}
+    .footer-links{display:grid;gap:9px;color:#5d4e44}
+    .footer-links a:hover{color:var(--red)}
+    .legal{border-top:1px solid #d7c6b2;padding:18px 0 28px;color:#806f62;font-size:.82rem;line-height:1.6}
+    details.legal-details{margin-top:14px;border-top:1px solid #d7c6b2;padding-top:14px}
+    details.legal-details summary{cursor:pointer;font-weight:850;color:#5e4f45}
+    details.legal-details div{padding-top:12px;max-width:850px}
 
-    section{position:relative;padding:112px 0}
-    .kicker{display:inline-block;color:var(--red);font-size:.75rem;font-weight:900;letter-spacing:.19em;text-transform:uppercase}
-    .section-title{max-width:980px;margin:14px 0 25px;font-size:clamp(2.8rem,6.7vw,6.6rem);line-height:.9;letter-spacing:-.075em;font-weight:950}
-    .section-copy{max-width:700px;color:var(--muted);font-size:1.07rem;line-height:1.75}
-
-    /* Concept */
-    .concept-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:22px;margin-top:52px}
-    .panel{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,var(--card-2),#0d0b08);box-shadow:var(--shadow)}
-    .concept-art{min-height:620px;display:grid;place-items:center;padding:34px;perspective:1100px}
-    .pizza-orbit{position:relative;width:min(460px,85%);aspect-ratio:1;transform-style:preserve-3d;transform:rotateX(60deg) rotateZ(-20deg)}
-    .pizza-disc{position:absolute;inset:8%;border-radius:50%;background:
-      radial-gradient(circle at 34% 29%,#6c1e14 0 5%,transparent 5.6%),
-      radial-gradient(circle at 69% 61%,#5d160f 0 5%,transparent 5.6%),
-      radial-gradient(circle at 58% 25%,#4f7a32 0 2.6%,transparent 3%),
-      radial-gradient(circle at 42% 68%,#537f35 0 2.4%,transparent 2.8%),
-      radial-gradient(circle,#f1c765 0 56%,#ce883a 57% 68%,#7e421f 69% 77%,#4f2d1c 78%);
-      box-shadow:0 60px 90px rgba(0,0,0,.58),inset -20px -20px 40px rgba(0,0,0,.18),inset 10px 10px 30px rgba(255,255,255,.08);
-    }
-    .pizza-disc::after{content:"NAPOLI";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(8deg);background:var(--red);color:white;padding:.18em .3em;border-radius:8px;font-size:clamp(2rem,5vw,4.6rem);font-weight:950;letter-spacing:-.08em}
-    .croque-layer{position:absolute;inset:23%;border-radius:34px;background:linear-gradient(145deg,#f2c45f,#af6227);border:8px solid #733a1a;box-shadow:0 35px 55px rgba(0,0,0,.45);transform:translate3d(8px,-9px,96px) rotate(20deg)}
-    .croque-layer::after{content:"PARIS";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#111;color:var(--cream);padding:.25em .35em;border-radius:8px;font-size:clamp(1.4rem,3vw,2.8rem);font-weight:950;letter-spacing:-.07em}
-    .concept-copy{padding:46px;display:flex;flex-direction:column;justify-content:space-between;min-height:620px}
-    .concept-copy h3{margin:14px 0 20px;font-size:clamp(2.6rem,5vw,5rem);line-height:.93;letter-spacing:-.065em}
-    .fact-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:34px}
-    .fact{padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
-    .fact span{display:block;color:#a89c8b;font-size:.76rem;text-transform:uppercase;letter-spacing:.09em;margin-bottom:7px}
-    .fact strong{font-size:1.02rem;line-height:1.45}
-
-    /* Menu */
-    .menu-section{background:var(--paper);color:#17130f}
-    .menu-section .kicker{color:var(--red)}
-    .menu-section .section-copy{color:#6e6457}
-    .menu-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:42px 0 28px}
-    .tab{border:1px solid rgba(20,16,12,.18);background:rgba(255,255,255,.42);color:#2a241d;padding:10px 14px;border-radius:999px;font-weight:800;cursor:pointer;transition:.2s ease}
-    .tab.active,.tab:hover{background:#16120e;color:#fff;border-color:#16120e}
-    .menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .menu-card{position:relative;min-height:270px;padding:24px;border:1px solid rgba(20,16,12,.13);border-radius:24px;background:rgba(255,255,255,.46);overflow:hidden;transition:.25s ease}
-    .menu-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(80,55,28,.12)}
-    .menu-card::after{content:"";position:absolute;right:-55px;top:-55px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(232,69,47,.16),transparent 67%)}
-    .menu-card .cat{display:inline-flex;padding:7px 10px;border-radius:999px;background:#eee3d1;color:#6f5e4c;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:900}
-    .menu-card h3{margin:34px 0 10px;font-size:2rem;letter-spacing:-.055em}
-    .menu-card p{margin:0;color:#6d6255;line-height:1.6}
-    .menu-card .price{position:absolute;left:24px;bottom:22px;font-weight:950;font-size:1.3rem;color:#1d1711}
-    .menu-card .mini-art{position:absolute;right:14px;bottom:12px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,#f3cf7a 0 55%,#bd702a 56% 70%,#6a3518 71%);transform:rotateX(58deg) rotateZ(-18deg);box-shadow:0 25px 35px rgba(80,48,20,.2);opacity:.86}
-    .menu-card[data-category]:not(.show){display:none}
-    .menu-cta{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:30px;padding:24px 0 0;border-top:1px solid rgba(20,16,12,.14)}
-    .menu-cta p{margin:0;color:#75695b;max-width:680px;line-height:1.6}
-
-    /* Original visuals */
-    .visuals-header{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:42px}
-    .visuals-header .section-copy{max-width:520px}
-    .site-gallery{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:390px 390px;gap:16px}
-    .site-shot{position:relative;overflow:hidden;border-radius:28px;border:1px solid var(--line);background:linear-gradient(145deg,#1d1510,#0c0a08);box-shadow:var(--shadow)}
-    .site-shot.large{grid-row:1 / span 2}
-    .site-shot img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .8s cubic-bezier(.2,.75,.2,1),filter .3s ease;filter:saturate(.88) contrast(1.02)}
-    .site-shot:hover img{transform:scale(1.035)}
-    .site-shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,5,4,.78));pointer-events:none}
-    .site-shot-copy{position:absolute;left:24px;right:24px;bottom:22px;z-index:2}
-    .site-shot-copy span{display:block;color:#d9cdbd;font-size:.72rem;text-transform:uppercase;letter-spacing:.15em;font-weight:800;margin-bottom:7px}
-    .site-shot-copy strong{font-size:1.5rem;letter-spacing:-.04em}
-
-    /* Categories */
-    .category-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:44px}
-    .category-card{min-height:240px;border-radius:24px;border:1px solid var(--line);padding:24px;background:linear-gradient(150deg,#17120e,#0c0a08);display:flex;flex-direction:column;justify-content:space-between;transition:.25s ease;overflow:hidden;position:relative}
-    .category-card:hover{transform:translateY(-5px);border-color:rgba(232,69,47,.45)}
-    .category-card span{font-size:.72rem;color:#9c8f7d;text-transform:uppercase;letter-spacing:.15em;font-weight:850}
-    .category-card strong{font-size:2rem;letter-spacing:-.06em}
-    .category-card em{font-style:normal;color:var(--red);font-size:2rem}
-    .category-card::after{content:"";position:absolute;right:-60px;top:-60px;width:190px;height:190px;border-radius:50%;border:1px solid rgba(255,255,255,.08);box-shadow:0 0 0 24px rgba(255,255,255,.025),0 0 0 48px rgba(255,255,255,.015)}
-
-    /* Reviews */
-    .reviews{background:linear-gradient(180deg,#0b0907,#100d0a)}
-    .rating-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}
-    .rating-num{font-size:clamp(6rem,13vw,11rem);font-weight:950;line-height:.72;letter-spacing:-.11em}
-    .rating-side{max-width:470px}
-    .rating-side .stars{font-size:1.2rem;margin-bottom:14px}
-    .review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .review-card{min-height:330px;padding:25px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));display:flex;flex-direction:column;justify-content:space-between;transition:.25s ease}
-    .review-card:hover{transform:translateY(-6px);border-color:rgba(232,69,47,.38)}
-    .review-card .source{font-size:.75rem;color:#9f9484;text-transform:uppercase;letter-spacing:.12em;font-weight:800}
-    .review-card blockquote{margin:28px 0;font-size:1.08rem;line-height:1.7;color:#f0e9dd}
-    .review-card footer{color:#b7aa99;font-size:.9rem}
-
-    /* Visit */
-    .visit-wrap{padding-bottom:130px}
-    .visit-card{position:relative;overflow:hidden;border-radius:38px;background:linear-gradient(135deg,#ef5d3e 0%,#e8452f 48%,#f4b64f 145%);color:#16110d;padding:56px;box-shadow:0 35px 100px rgba(232,69,47,.2)}
-    .visit-card::after{content:"ROCA’S";position:absolute;right:-1%;bottom:-23%;font-size:clamp(8rem,22vw,20rem);font-weight:950;letter-spacing:-.11em;color:rgba(25,15,9,.08)}
-    .visit-card .kicker{color:#1a120d}
-    .visit-card h2{position:relative;z-index:2;max-width:1000px;margin:12px 0 30px;font-size:clamp(3.4rem,8vw,8rem);line-height:.82;letter-spacing:-.085em}
-    .visit-actions{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:10px}
-    .visit-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:44px}
-    .visit-fact{padding-top:16px;border-top:1px solid rgba(26,18,13,.28)}
-    .visit-fact span{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;font-weight:850;opacity:.66;margin-bottom:8px}
-    .visit-fact strong{font-size:1.03rem;line-height:1.45}
-
-    /* Footer */
-    .footer{padding:0 0 44px;color:#807568;font-size:.85rem}
-    .footer-inner{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center}
-    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
-    .footer a:hover{color:#d8cfc0}
-
-    /* Reveal */
-    .reveal{opacity:0;transform:translateY(38px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.74,.2,1)}
-    .reveal.in{opacity:1;transform:none}
-
-    @media (max-width:1000px){
+    @media(max-width:1000px){
       .nav-links{display:none}
-      .hero-grid,.concept-grid{grid-template-columns:1fr}
-      .hero{padding-top:125px}
-      .hero-visual{min-height:600px;margin-top:-20px}
-      .concept-art,.concept-copy{min-height:520px}
-      .menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .site-gallery{grid-template-columns:1fr;grid-template-rows:520px 330px 330px}
-      .site-shot.large{grid-row:auto}
-      .category-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .review-grid{grid-template-columns:1fr}
-      .visit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero-grid,.intro-grid,.menu-intro,.visit-card{grid-template-columns:1fr}
+      .hero-grid{gap:34px}
+      .food-collage{min-height:560px}
+      .category-head{grid-template-columns:1fr;gap:14px}
+      .footer-main{grid-template-columns:1fr 1fr}
     }
-    @media (max-width:650px){
-      .shell{width:min(100% - 28px,var(--max))}
-      .nav-wrap{top:8px;padding-inline:8px}
-      .nav{padding-left:12px}
-      .brand{font-size:1rem}.brand-mark{width:32px;height:32px}
-      .nav .btn{min-height:42px;padding:0 13px;font-size:.82rem}
-      .hero{padding-top:108px}
-      .hero h1{font-size:clamp(4.3rem,22vw,7rem)}
-      .hero-actions .btn{width:100%}
-      .hero-visual{min-height:500px}
-      .float-one{left:0;top:10%}.float-two{right:0;bottom:10%}
-      section{padding:82px 0}
-      .concept-copy{padding:29px 23px}
-      .concept-art{padding:18px;min-height:430px}
-      .fact-list,.menu-grid,.category-strip,.visit-grid{grid-template-columns:1fr}
-      .menu-cta,.visuals-header,.rating-head,.footer-inner{align-items:flex-start;flex-direction:column}
-      .site-gallery{grid-template-rows:420px 280px 280px}
-      .visit-card{padding:34px 22px}
-      .visit-card h2{font-size:clamp(3.4rem,16vw,5.4rem)}
-      .review-card{min-height:270px}
+    @media(max-width:720px){
+      .shell{width:min(100% - 26px,var(--max))}
+      .topbar{font-size:.68rem}
+      .nav{min-height:68px}
+      .nav-actions .btn-outline{display:none}
+      .btn{min-height:44px;padding:0 15px}
+      .hero{padding:54px 0 42px}
+      h1{font-size:clamp(3.7rem,18vw,6.3rem)}
+      .food-collage{min-height:470px}
+      .food-main{width:84%;height:62%}
+      .food-left{width:58%;height:38%}
+      .food-small{width:41%;height:31%}
+      .food-badge{width:94px;height:94px;font-size:.9rem}
+      .intro,.gallery,.menu-wrap,.visit{padding:72px 0}
+      .quality-grid{grid-template-columns:1fr}
+      .gallery-head{display:block}
+      .gallery-head p{margin-top:18px}
+      .gallery-grid{grid-template-columns:1fr;grid-template-rows:330px 250px 250px}
+      .gallery-card:first-child{grid-row:auto}
+      .menu-nav-wrap{top:68px}
+      .menu-list{grid-template-columns:1fr}
+      .menu-category{scroll-margin-top:138px;padding-top:58px}
+      .visit-copy,.hours{padding:32px 24px}
+      .footer-main{grid-template-columns:1fr;padding-top:46px}
     }
-    @media (prefers-reduced-motion:reduce){
-      *{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   </style>
 </head>
-<body>
+<body id="top">
+  <div class="topbar">Paris meets Napoli · Pizza · Croques · Bowls · Wraps</div>
   <div class="nav-wrap">
-    <nav class="nav" aria-label="Hauptnavigation">
-      <a class="brand" href="#top" aria-label="ROCA’S Startseite"><span class="brand-mark" aria-hidden="true"></span>ROCA’S</a>
+    <nav class="nav shell" aria-label="Hauptnavigation">
+      <a class="brand" href="#top"><span class="brand-mark">R</span><span>ROCA'S</span></a>
       <div class="nav-links">
-        <a href="#concept">Konzept</a>
+        <a href="#about">Über uns</a>
         <a href="#menu">Speisekarte</a>
-        <a href="#visuals">Bilder</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#visit">Kontakt</a>
+        <a href="#visit">Besuch</a>
       </div>
-      <a class="btn btn-primary" href="tel:+494028542179">Jetzt anrufen ↗</a>
+      <div class="nav-actions">
+        <a class="btn btn-outline" href="tel:+494028542179">Anrufen</a>
+        <a class="btn btn-primary" href="#menu">Speisekarte</a>
+      </div>
     </nav>
   </div>
 
-  <main id="top">
-    <section class="hero" id="hero">
+  <main>
+    <section class="hero">
       <div class="shell hero-grid">
-        <div class="hero-copy reveal">
-          <span class="eyebrow"><span class="eyebrow-dot"></span> Pizza · Croques · Bowls · Wraps</span>
-          <h1>
-            <span class="line">PARIS</span>
-            <span class="line accent">MEETS</span>
-            <span class="line outline">NAPOLI.</span>
-          </h1>
-          <p class="lead">Bei ROCA’S trifft knuspriger Croque auf italienische Pizza. Dazu Bowls, Wraps, Salate und mehr — mitten in Hamburg an der Dehnhaide.</p>
+        <div class="hero-copy">
+          <span class="eyebrow">ROCA'S Hamburg</span>
+          <h1>Paris <em>meets Napoli.</em></h1>
+          <p>Knusprige neapolitanische Pizza, frisch belegte Croques und bunte Bowls – unkompliziert, frisch und mitten in Hamburg.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#menu">Speisekarte entdecken ↘</a>
-            <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dehnhaide%206%2C%2022081%20Hamburg">Route starten ↗</a>
+            <a class="btn btn-primary" href="#menu">Komplette Speisekarte</a>
+            <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=Dehnhaide%206%2C%2022081%20Hamburg" target="_blank" rel="noopener">Route planen</a>
           </div>
-          <div class="hero-proof">
-            <div class="proof-pill"><span class="stars">★★★★★</span><span><strong>4,9/5</strong> Google</span></div>
-            <div class="proof-pill"><span>📍</span><span><strong>Dehnhaide 6</strong>, Hamburg</span></div>
-            <div class="proof-pill"><span>€</span><span><strong>10–20 €</strong> pro Person</span></div>
+          <div class="hero-meta">
+            <span><b>Dehnhaide 6</b> · 22081 Hamburg</span>
+            <span><b>040 28542179</b></span>
           </div>
         </div>
+        <div class="food-collage" aria-label="Auswahl unserer Speisen">
+          <div class="food-badge">Frisch gemacht<br>in Hamburg</div>
+          <figure class="food-card food-main"><img src="https://imageproxy.wolt.com/assets/6a3691defc20666989e0ccde" alt="Frisch gebackene Pizza" loading="eager"></figure>
+          <figure class="food-card food-left"><img src="https://imageproxy.wolt.com/assets/6a2933227de32cf3fb4724f2" alt="Frisch belegter Croque" loading="eager"></figure>
+          <figure class="food-card food-small"><img src="https://imageproxy.wolt.com/assets/6a2933a27de32cf3fb472527" alt="Bunte Bowl mit frischen Zutaten" loading="eager"></figure>
+        </div>
+      </div>
+    </section>
 
-        <div class="hero-visual reveal" id="heroVisual">
-          <div class="hero-glow"></div>
-          <div class="phone-card" id="phoneCard">
-            <div class="phone-screen">
-              <div class="phone-notch"></div>
-              <img src="https://image.thum.io/get/width/1000/crop/1400/noanimate/https://rocas-hamburg.de/speisen" alt="Vorschau der bestehenden ROCA’S Speisekarte" loading="eager" onerror="this.style.display='none'" />
-              <div class="phone-label"><span>ROCA’S Hamburg</span><strong>Originale Speisen.<br>Neu inszeniert.</strong></div>
+    <section class="intro" id="about">
+      <div class="shell intro-grid">
+        <div>
+          <span class="kicker">Unser Konzept</span>
+          <h2 class="display-title">Comfort Food, das frisch aussieht und genauso schmeckt.</h2>
+        </div>
+        <div>
+          <p class="intro-copy">Bei ROCA'S treffen italienisch inspirierte Pizza, französischer Croque-Charakter und moderne Bowls aufeinander. Die Karte ist bewusst vielseitig: herzhaft, frisch, vegetarisch oder mit Fleisch – für Lunch, Dinner, Take-away und den spontanen Hunger zwischendurch.</p>
+          <div class="quality-grid">
+            <article class="quality-card"><span>01</span><strong>Pizza</strong><p>Ca. 32 cm, mit Tomatensoße, Oregano und Fior di Latte.</p></article>
+            <article class="quality-card"><span>02</span><strong>Croques</strong><p>Knuspriges Baguette, frischer Salat, Käse und deine Lieblingsfüllung.</p></article>
+            <article class="quality-card"><span>03</span><strong>Bowls & Wraps</strong><p>Frische Zutaten, kräftige Toppings und Soße nach Wahl.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <div class="shell">
+        <div class="gallery-head">
+          <div><span class="kicker">Appetit bekommen?</span><h2 class="display-title">Frisch. Knusprig. Großzügig.</h2></div>
+          <p>Produktfotos zeigen eine Auswahl aus Pizza, Croques, Bowls, Wraps und Salaten. Servierung und Zutaten können je nach Gericht variieren.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-card"><img src="https://imageproxy.wolt.com/assets/6a29337511515485c953378c" alt="Pizza Margherita" loading="lazy"><figcaption class="gallery-label">Pizza</figcaption></figure>
+          <figure class="gallery-card"><img src="https://imageproxy.wolt.com/assets/6a2933517de32cf3fb472508" alt="Falafel Wrap" loading="lazy"><figcaption class="gallery-label">Wraps</figcaption></figure>
+          <figure class="gallery-card"><img src="https://imageproxy.wolt.com/assets/6a2933987de32cf3fb472522" alt="Frischer Salat" loading="lazy"><figcaption class="gallery-label">Salate & Bowls</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-wrap" id="menu">
+      <div class="shell menu-intro">
+        <div><span class="kicker">Die komplette Karte</span><h2 class="display-title">Speisekarte</h2></div>
+        <p>Alle verfügbaren Kategorien auf einen Blick – Pizza, Croques, Bowls, Wraps, Salate, Soßen, Desserts und Getränke.</p>
+      </div>
+      <div class="menu-nav-wrap"><div class="shell menu-nav" aria-label="Speisekarten-Kategorien"><a href="#pizza">Pizza</a>
+<a href="#croques">Croques</a>
+<a href="#bowls">Bowls</a>
+<a href="#wraps">Wraps</a>
+<a href="#salate">Salate</a>
+<a href="#saucen">Soßen</a>
+<a href="#desserts">Desserts</a>
+<a href="#getraenke">Getränke</a></div></div>
+      <div class="shell"><section class="menu-category" id="pizza">
+      <div class="category-head">
+        <div><span class="category-index">01</span><h2>Pizza</h2></div>
+        <p>Ca. Ø 32 cm · mit Tomatensoße, Oregano und Fior di Latte Mozzarella. Marinara ohne Mozzarella.</p>
+      </div>
+      <div class="menu-list"><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Marinara</h3>
+              <p>Tomatensoße, Knoblauch, Olivenöl</p>
             </div>
-          </div>
-          <div class="float-card float-one"><small>Google Rating</small><strong>4,9 ★</strong></div>
-          <div class="float-card float-two"><small>Signature Mix</small><strong>Paris × Napoli</strong></div>
-        </div>
-      </div>
-      <div class="scroll-note">Scroll to taste<i></i></div>
-    </section>
-
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Pizza</span><span>Croques</span><span>Bowls</span><span>Wraps</span><span>Salate</span><span>Desserts</span><span>Soßen</span>
-        <span>Pizza</span><span>Croques</span><span>Bowls</span><span>Wraps</span><span>Salate</span><span>Desserts</span><span>Soßen</span>
-      </div>
-    </div>
-
-    <section id="concept">
-      <div class="shell">
-        <div class="reveal">
-          <span class="kicker">Das ROCA’S Konzept</span>
-          <h2 class="section-title">Zwei Food-Welten. Ein Spot.</h2>
-          <p class="section-copy">ROCA’S verbindet französische Croque-Kultur mit italienischem Pizza-Feeling — ergänzt um Bowls, Wraps, Salate, Desserts und Soßen.</p>
-        </div>
-
-        <div class="concept-grid">
-          <div class="panel concept-art reveal" id="conceptArt">
-            <div class="pizza-orbit" id="pizzaOrbit">
-              <div class="pizza-disc"></div>
-              <div class="croque-layer"></div>
+            <strong class="price">10,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Margherita</h3>
+              <p>Fior di Latte Mozzarella</p>
             </div>
-          </div>
-
-          <div class="panel concept-copy reveal">
-            <div>
-              <span class="kicker">Good to know</span>
-              <h3>Dein Food-Spot an der Dehnhaide.</h3>
-              <p class="section-copy">Für den schnellen Hunger, Take-away, Lieferung oder einen spontanen Food-Stopp: ROCA’S sitzt direkt in Hamburg-Nord.</p>
-              <div class="fact-list">
-                <div class="fact"><span>Adresse</span><strong>Dehnhaide 6<br>22081 Hamburg</strong></div>
-                <div class="fact"><span>Telefon</span><strong>040 28542179</strong></div>
-                <div class="fact"><span>Preisniveau</span><strong>10–20 € pro Person</strong></div>
-                <div class="fact"><span>Services</span><strong>Take-away & Lieferung</strong></div>
-              </div>
+            <strong class="price">12,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Funghi</h3>
+              <p>Champignons, Fior di Latte Mozzarella</p>
             </div>
-            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px">
-              <a class="btn btn-primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dehnhaide%206%2C%2022081%20Hamburg">Auf Google Maps ↗</a>
-              <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.instagram.com/rocas.official/">Instagram ↗</a>
+            <strong class="price">13,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Salami</h3>
+              <p>Salami, Fior di Latte Mozzarella</p>
             </div>
-          </div>
-        </div>
+            <strong class="price">14,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Pute</h3>
+              <p>Putenschinken, Fior di Latte Mozzarella</p>
+            </div>
+            <strong class="price">14,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Tuna</h3>
+              <p>Thunfisch, Mais, rote Zwiebeln, Fior di Latte Mozzarella</p>
+            </div>
+            <strong class="price">15,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Chicken Strips</h3>
+              <p>Hähnchenbruststreifen, Mais, Kirschtomaten, Fior di Latte Mozzarella</p>
+            </div>
+            <strong class="price">16,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Sucuk</h3>
+              <p>Sucuk vom Rind, Feta, milde Peperoni, Fior di Latte Mozzarella</p>
+            </div>
+            <strong class="price">16,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>ROCA&#x27;S</h3>
+              <p>Pastrami vom Rind, Feta, Fior di Latte Mozzarella</p>
+            </div>
+            <strong class="price">17,90 €</strong>
+          </article></div>
+    </section><section class="menu-category" id="croques">
+      <div class="category-head">
+        <div><span class="category-index">02</span><h2>Croques</h2></div>
+        <p>Mit Weizenbaguette, Eisbergsalat, Kraut, roten Zwiebeln und einer Soße deiner Wahl.</p>
       </div>
+      <div class="menu-list"><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Salami</h3>
+              <p>Salami, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Pute</h3>
+              <p>Putenschinken, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Falafel</h3>
+              <p>Falafel, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Hot Dog</h3>
+              <p>Geflügelwürstchen, Gewürzgurken, Röstzwiebeln und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Hawaii</h3>
+              <p>Hähnchenschinken, Ananas und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Veggie</h3>
+              <p>Champignons, Mais, Gurken, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Mozzarella</h3>
+              <p>Mozzarella, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Camembert</h3>
+              <p>Camembert, Preiselbeeren und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Frikadelle</h3>
+              <p>Frikadellen vom Rind, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Feta Peperoni</h3>
+              <p>Feta, Peperoni, Gurken, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Tuna</h3>
+              <p>Thunfisch, Mais, Tomaten und Käse</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Crispy Chicken</h3>
+              <p>Knuspriges Hähnchenfleisch und Käse</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Sucuk</h3>
+              <p>Sucuk vom Rind, Feta, Peperoni, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque Chicken Strips</h3>
+              <p>Hähnchenbruststreifen, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Croque ROCA&#x27;S</h3>
+              <p>Pastrami vom Rind, Feta, Tomaten und Gouda</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article></div>
+    </section><section class="menu-category" id="bowls">
+      <div class="category-head">
+        <div><span class="category-index">03</span><h2>Bowls</h2></div>
+        <p>Mit Bohnen, grünen Linsen, Kichererbsen, Grillgemüse, eingelegten Karotten und einer Basis deiner Wahl.</p>
+      </div>
+      <div class="menu-list"><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Vegan Bowl</h3>
+              <p>Bunte Bowl-Basis mit Hülsenfrüchten und Gemüse</p>
+            </div>
+            <strong class="price">9,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Feta Bowl</h3>
+              <p>Mit Feta</p>
+            </div>
+            <strong class="price">11,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Falafel Bowl</h3>
+              <p>Mit Falafel</p>
+            </div>
+            <strong class="price">12,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Tuna Bowl</h3>
+              <p>Mit Thunfisch</p>
+            </div>
+            <strong class="price">13,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Chicken Bowl</h3>
+              <p>Mit Hähnchenbruststreifen</p>
+            </div>
+            <strong class="price">14,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Crispy Chicken Bowl</h3>
+              <p>Mit knusprigem Hähnchenfleisch</p>
+            </div>
+            <strong class="price">13,90 €</strong>
+          </article></div>
+    </section><section class="menu-category" id="wraps">
+      <div class="category-head">
+        <div><span class="category-index">04</span><h2>Wraps</h2></div>
+        <p>Mit Eisbergsalat, frischem Kraut, Tomaten, Gurken, roten Zwiebeln, Mais, Peperoni, schwarzen Oliven und einer Soße deiner Wahl.</p>
+      </div>
+      <div class="menu-list"><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Feta Wrap</h3>
+              <p>Mit Feta</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Mozzarella Wrap</h3>
+              <p>Mit Mozzarella</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Falafel Wrap</h3>
+              <p>Mit Falafel</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Tuna Wrap</h3>
+              <p>Mit Thunfisch</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Sucuk Wrap</h3>
+              <p>Mit Sucuk vom Rind</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Crispy Chicken Wrap</h3>
+              <p>Mit knusprigem Hähnchenfleisch</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article></div>
+    </section><section class="menu-category" id="salate">
+      <div class="category-head">
+        <div><span class="category-index">05</span><h2>Salate</h2></div>
+        <p>Mit Eisbergsalat, frischem Kraut, Tomaten, Gurken, roten Zwiebeln, Mais, Peperoni, schwarzen Oliven und einer Soße deiner Wahl.</p>
+      </div>
+      <div class="menu-list"><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Basis Salat</h3>
+              <p>Frisch, knackig und individuell mit Soße deiner Wahl</p>
+            </div>
+            <strong class="price">6,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Feta Salat</h3>
+              <p>Mit Feta</p>
+            </div>
+            <strong class="price">7,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Tuna Salat</h3>
+              <p>Mit Thunfisch</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Crispy Chicken Salat</h3>
+              <p>Mit knusprigem Hähnchenfleisch</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Falafel Salat</h3>
+              <p>Mit Falafel</p>
+            </div>
+            <strong class="price">8,90 €</strong>
+          </article></div>
+    </section><section class="menu-category" id="saucen">
+      <div class="category-head">
+        <div><span class="category-index">06</span><h2>Soßen</h2></div>
+        <p>Je 80 ml.</p>
+      </div>
+      <div class="menu-list"><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Knoblauchsoße</h3>
+              <p>80 ml</p>
+            </div>
+            <strong class="price">2,00 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Chilisoße</h3>
+              <p>80 ml</p>
+            </div>
+            <strong class="price">2,00 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Cocktailsoße</h3>
+              <p>80 ml</p>
+            </div>
+            <strong class="price">2,00 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Remouladensoße</h3>
+              <p>80 ml</p>
+            </div>
+            <strong class="price">2,00 €</strong>
+          </article></div>
+    </section><section class="menu-category" id="desserts">
+      <div class="category-head">
+        <div><span class="category-index">07</span><h2>Desserts</h2></div>
+        <p>Der süße Abschluss.</p>
+      </div>
+      <div class="menu-list"><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Donuts</h3>
+              
+            </div>
+            <strong class="price">2,50 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Cookies</h3>
+              
+            </div>
+            <strong class="price">2,50 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Pastel de Nata</h3>
+              <p>Portugiesisches Blätterteigtörtchen mit Vanillecreme-Füllung</p>
+            </div>
+            <strong class="price">2,50 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Cheesecake</h3>
+              <p>Käsekuchen</p>
+            </div>
+            <strong class="price">4,50 €</strong>
+          </article></div>
+    </section><section class="menu-category" id="getraenke">
+      <div class="category-head">
+        <div><span class="category-index">08</span><h2>Getränke</h2></div>
+        <p>Alkoholfreie Getränke · zzgl. Pfand, sofern angegeben.</p>
+      </div>
+      <div class="menu-list"><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>ViO Still 0,5 l</h3>
+              <p>Mineralwasser ohne Kohlensäure · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,25 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>ViO Medium 0,5 l</h3>
+              <p>Mineralwasser mit mittlerem Kohlensäuregehalt · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,25 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Coca-Cola® 0,33 l</h3>
+              <p>Koffeinhaltiges Erfrischungsgetränk · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,45 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Coca-Cola® Zero 0,33 l</h3>
+              <p>Zuckerfrei · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,45 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Sprite 0,33 l</h3>
+              <p>Zitronenlimonade · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,45 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Fanta 0,33 l</h3>
+              <p>Orangenlimonade · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,45 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Fanta Exotic 0,33 l</h3>
+              <p>Exotische Fruchtaromen · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,45 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Mezzo Mix 0,33 l</h3>
+              <p>Cola-Orange · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,45 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Uludag Gazoz 0,33 l</h3>
+              <p>Kohlensäurehaltiges Erfrischungsgetränk · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,45 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Red Bull Energy Drink 0,25 l</h3>
+              <p>Koffeinhaltig · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,75 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Haydi Ayran 0,25 l</h3>
+              <p>Joghurtgetränk, leicht gesalzen</p>
+            </div>
+            <strong class="price">2,30 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Fuze Tea Pfirsich 0,33 l</h3>
+              <p>Eistee mit Pfirsichgeschmack · zzgl. 0,25 € Pfand</p>
+            </div>
+            <strong class="price">2,25 €</strong>
+          </article><article class="menu-item">
+            <div class="menu-item-copy">
+              <h3>Fuze Tea Zitrone 0,33 l</h3>
+              <p>Preis bitte vor Veröffentlichung prüfen</p>
+            </div>
+            <strong class="price">—</strong>
+          </article></div>
+    </section></div>
     </section>
 
-    <section class="menu-section" id="menu">
-      <div class="shell">
-        <div class="reveal">
-          <span class="kicker">Speisekarte</span>
-          <h2 class="section-title">Von Napoli bis Paris. Und noch weiter.</h2>
-          <p class="section-copy">Eine kuratierte Auswahl aus dem bestehenden ROCA’S-Angebot. Die vollständige Karte findest du über den Button unten.</p>
-        </div>
-
-        <div class="menu-tabs reveal" role="tablist" aria-label="Menükategorien">
-          <button class="tab active" data-filter="all" type="button">Alle</button>
-          <button class="tab" data-filter="pizza" type="button">Pizza</button>
-          <button class="tab" data-filter="croque" type="button">Croques</button>
-          <button class="tab" data-filter="more" type="button">Mehr</button>
-        </div>
-
-        <div class="menu-grid reveal" id="menuGrid">
-          <article class="menu-card show" data-category="pizza">
-            <span class="cat">Pizza</span><h3>Marinara</h3><p>Tomatensauce, Knoblauch und Olivenöl.</p><div class="price">10,90 €</div><div class="mini-art" aria-hidden="true"></div>
-          </article>
-          <article class="menu-card show" data-category="pizza">
-            <span class="cat">Pizza</span><h3>Margherita</h3><p>Fior di Latte Mozzarella auf traditioneller Tomatensauce.</p><div class="price">12,90 €</div><div class="mini-art" aria-hidden="true"></div>
-          </article>
-          <article class="menu-card show" data-category="pizza">
-            <span class="cat">Pizza</span><h3>Funghi</h3><p>Champignons und Fior di Latte Mozzarella.</p><div class="price">13,90 €</div><div class="mini-art" aria-hidden="true"></div>
-          </article>
-          <article class="menu-card show" data-category="pizza">
-            <span class="cat">Pizza</span><h3>Salami</h3><p>Salami und Fior di Latte Mozzarella.</p><div class="price">14,90 €</div><div class="mini-art" aria-hidden="true"></div>
-          </article>
-          <article class="menu-card show" data-category="croque">
-            <span class="cat">Croque</span><h3>Paris Vibes</h3><p>Knusprig, heiß und mit frei wählbaren Extras wie Salami, Putenbrust, Thunfisch, Chicken, Sucuk oder Pastrami.</p><div class="price">Croque Selection</div><div class="mini-art" aria-hidden="true" style="border-radius:22px;transform:rotateX(58deg) rotateZ(12deg)"></div>
-          </article>
-          <article class="menu-card show" data-category="more">
-            <span class="cat">Mehr</span><h3>Chicken</h3><p>Hähnchenbruststreifen, Mais, Cherry-Tomaten und Fior di Latte Mozzarella.</p><div class="price">Fresh & filling</div><div class="mini-art" aria-hidden="true" style="background:radial-gradient(circle,#79a452 0 42%,#e9c76c 43% 66%,#7d4b28 67%)"></div>
-          </article>
-        </div>
-
-        <div class="menu-cta reveal">
-          <p>Die bestehende ROCA’S-Seite führt außerdem Bowls, Wraps, Salate, Desserts und Soßen. Für die vollständige Auswahl geht es direkt zur Original-Speisekarte.</p>
-          <a class="btn btn-paper" target="_blank" rel="noopener" href="https://rocas-hamburg.de/speisen">Komplette Speisekarte ↗</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="visuals">
-      <div class="shell">
-        <div class="visuals-header reveal">
-          <div><span class="kicker">Originale Inhalte</span><h2 class="section-title" style="margin-bottom:0">Echte ROCA’S Visuals. Neues Editorial Design.</h2></div>
-          <p class="section-copy">Diese Galerie bindet Vorschauen der bestehenden ROCA’S-Website ein und zeigt, wie vorhandene Inhalte in einem hochwertigeren visuellen Umfeld wirken.</p>
-        </div>
-
-        <div class="site-gallery reveal">
-          <a class="site-shot large" target="_blank" rel="noopener" href="https://rocas-hamburg.de/speisen">
-            <img src="https://image.thum.io/get/width/1400/crop/1800/noanimate/https://rocas-hamburg.de/speisen" alt="Vorschau der bestehenden ROCA’S Speisekarte" loading="lazy" onerror="this.style.display='none'" />
-            <div class="site-shot-copy"><span>Bestehende Speisekarte</span><strong>Pizza · Croques · Bowls · Wraps</strong></div>
-          </a>
-          <a class="site-shot" target="_blank" rel="noopener" href="https://rocas-hamburg.de/">
-            <img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https://rocas-hamburg.de/" alt="Vorschau der bestehenden ROCA’S Startseite" loading="lazy" onerror="this.style.display='none'" />
-            <div class="site-shot-copy"><span>Bestehende Startseite</span><strong>ROCA’S Hamburg</strong></div>
-          </a>
-          <a class="site-shot" target="_blank" rel="noopener" href="https://www.instagram.com/rocas.official/">
-            <img src="https://image.thum.io/get/width/1200/crop/900/noanimate/https://rocas-hamburg.de/speisen" alt="ROCA’S Food-Auswahl" loading="lazy" onerror="this.style.display='none'" style="object-position:center 32%" />
-            <div class="site-shot-copy"><span>Food Selection</span><strong>Paris meets Napoli</strong></div>
-          </a>
-        </div>
-
-        <div class="category-strip reveal">
-          <div class="category-card"><span>01 — Napoli</span><strong>Pizza <em>↗</em></strong></div>
-          <div class="category-card"><span>02 — Paris</span><strong>Croques <em>↗</em></strong></div>
-          <div class="category-card"><span>03 — Fresh</span><strong>Bowls & Salate <em>↗</em></strong></div>
-          <div class="category-card"><span>04 — Quick</span><strong>Wraps & More <em>↗</em></strong></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="reviews" id="reviews">
-      <div class="shell">
-        <div class="rating-head reveal">
-          <div><span class="kicker">Gästestimmen</span><div class="rating-num">4,9</div></div>
-          <div class="rating-side"><div class="stars">★★★★★</div><p class="section-copy">37 Google-Rezensionen und starke 5-Sterne-Stimmen für Pizza, Croques, Service und Team.</p></div>
-        </div>
-
-        <div class="review-grid">
-          <article class="review-card reveal"><div><span class="source">Google Rezension · 5/5</span><blockquote>„Ein echter Geheimtipp für alle Pizza-Liebhaber und Croque.“</blockquote></div><footer>hasbihal ilahi grubu</footer></article>
-          <article class="review-card reveal"><div><span class="source">Google Rezension · 5/5</span><blockquote>„Bester Croque, den ich bis jetzt gegessen habe. Sehr guter Service und die Mitarbeiter sind sehr nett und sympathisch.“</blockquote></div><footer>Oguzhan Topcu</footer></article>
-          <article class="review-card reveal"><div><span class="source">Google Rezension · 5/5</span><blockquote>„Wir hatten Pizza und Croque. Die Pizza war schön dünn und knusprig — auch der Boden.“</blockquote></div><footer>Anja Baude</footer></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="visit-wrap" id="visit">
-      <div class="shell">
-        <div class="visit-card reveal">
-          <span class="kicker">Hungry yet?</span>
-          <h2>Heute noch bei ROCA’S vorbeischauen.</h2>
+    <section class="visit" id="visit">
+      <div class="shell visit-card">
+        <div class="visit-copy">
+          <span class="kicker">Vorbeikommen</span>
+          <h2>Dein ROCA'S in Hamburg.</h2>
+          <p>Dehnhaide 6 · 22081 Hamburg<br>Zum Mitnehmen oder direkt vor Ort genießen.</p>
           <div class="visit-actions">
-            <a class="btn btn-paper" href="tel:+494028542179">040 28542179 anrufen ↗</a>
-            <a class="btn btn-light" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Dehnhaide%206%2C%2022081%20Hamburg">Route starten ↗</a>
-            <a class="btn btn-light" target="_blank" rel="noopener" href="https://rocas-hamburg.de/speisen">Speisekarte ↗</a>
+            <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Dehnhaide%206%2C%2022081%20Hamburg" target="_blank" rel="noopener">Route planen</a>
+            <a class="btn btn-outline" href="tel:+494028542179">040 28542179</a>
           </div>
-          <div class="visit-grid">
-            <div class="visit-fact"><span>Adresse</span><strong>Dehnhaide 6<br>22081 Hamburg-Nord</strong></div>
-            <div class="visit-fact"><span>Telefon</span><strong>040 28542179</strong></div>
-            <div class="visit-fact"><span>Preisniveau</span><strong>10–20 € pro Person</strong></div>
-            <div class="visit-fact"><span>Öffnungsstatus</span><strong>Geöffnet · schließt um 00:00 Uhr</strong></div>
+        </div>
+        <div class="hours">
+          <h3>Öffnungszeiten</h3>
+          <div class="hours-list">
+            <div class="hours-row"><span>Montag – Donnerstag</span><strong>11:30 – 22:00</strong></div>
+            <div class="hours-row"><span>Freitag</span><strong>11:30 – 00:00</strong></div>
+            <div class="hours-row"><span>Samstag</span><strong>11:30 – 00:00</strong></div>
+            <div class="hours-row"><span>Sonntag</span><strong>11:30 – 22:00</strong></div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="shell footer-inner">
-      <div>© <span id="year"></span> ROCA’S Hamburg · Backlust UG</div>
-      <div class="footer-links">
-        <a href="mailto:rocashamburg@gmail.com">E-Mail</a>
-        <a target="_blank" rel="noopener" href="https://www.instagram.com/rocas.official/">Instagram</a>
-        <a target="_blank" rel="noopener" href="https://rocas-hamburg.de/impressum">Impressum</a>
-        <a target="_blank" rel="noopener" href="https://rocas-hamburg.de/datenschutz">Datenschutz</a>
+  <footer>
+    <div class="shell footer-main">
+      <div class="footer-brand">
+        <strong>ROCA'S</strong>
+        <p>Paris meets Napoli.<br>Pizza · Croques · Bowls · Wraps</p>
+      </div>
+      <div class="footer-col">
+        <h3>Kontakt</h3>
+        <div class="footer-links">
+          <span>Dehnhaide 6, 22081 Hamburg</span>
+          <a href="tel:+494028542179">040 28542179</a>
+          <a href="mailto:rocashamburg@gmail.com">rocashamburg@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h3>Mehr</h3>
+        <div class="footer-links">
+          <a href="#menu">Speisekarte</a>
+          <a href="https://www.instagram.com/rocas.official/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Dehnhaide%206%2C%2022081%20Hamburg" target="_blank" rel="noopener">Route</a>
+        </div>
       </div>
     </div>
+    <div class="shell legal">
+      <strong>Impressum:</strong> Backlust UG (haftungsbeschränkt), Wartenburger Weg 17, 22049 Hamburg · Vertreten durch Caner Aydin · Telefon 040 28542179 · E-Mail rocashamburg@gmail.com
+      <details class="legal-details"><summary>Hinweis zu Datenschutz & externen Inhalten</summary><div>Diese statische Website setzt selbst keine Analyse- oder Marketing-Cookies. Beim Laden eingebundener Produktbilder sowie beim Öffnen externer Links können Daten an den jeweiligen Drittanbieter übertragen werden. Vor dem produktiven Einsatz sollte die Datenschutzerklärung entsprechend dem finalen Hosting, den eingebundenen Diensten und den tatsächlichen Geschäftsprozessen rechtlich geprüft und ergänzt werden.</div></details>
+    </div>
   </footer>
-
-  <script>
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Scroll reveal
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: .13 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Hero motion + subtle parallax
-    const hero = document.getElementById('hero');
-    const phone = document.getElementById('phoneCard');
-    if (!reduced) {
-      window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        const p = Math.min(1, y / window.innerHeight);
-        phone.style.transform = `translateY(${y * .10}px) scale(${1 - p * .08}) rotateY(${-10 + p * 8}deg) rotateX(${4 + p * 2}deg) rotateZ(${3 - p * 5}deg)`;
-        hero.style.opacity = Math.max(.25, 1 - p * .5);
-      }, { passive: true });
-    }
-
-    // Pointer-driven 3D tilt on hero device
-    const visual = document.getElementById('heroVisual');
-    if (!reduced && visual && phone) {
-      visual.addEventListener('pointermove', e => {
-        if (window.scrollY > window.innerHeight * .7) return;
-        const r = visual.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - .5;
-        const y = (e.clientY - r.top) / r.height - .5;
-        phone.style.transform = `rotateY(${-10 + x * 10}deg) rotateX(${4 - y * 9}deg) rotateZ(${3 + x * 3}deg) translate3d(${x * 8}px,${y * 8}px,0)`;
-      });
-      visual.addEventListener('pointerleave', () => {
-        phone.style.transform = 'rotateY(-10deg) rotateX(4deg) rotateZ(3deg)';
-      });
-    }
-
-    // Concept 3D motion
-    const conceptArt = document.getElementById('conceptArt');
-    const orbit = document.getElementById('pizzaOrbit');
-    if (!reduced && conceptArt && orbit) {
-      conceptArt.addEventListener('pointermove', e => {
-        const r = conceptArt.getBoundingClientRect();
-        const x = (e.clientX-r.left)/r.width-.5;
-        const y = (e.clientY-r.top)/r.height-.5;
-        orbit.style.transform = `rotateX(${60-y*12}deg) rotateZ(${-20+x*13}deg) rotateY(${x*10}deg)`;
-      });
-      conceptArt.addEventListener('pointerleave', () => orbit.style.transform = 'rotateX(60deg) rotateZ(-20deg)');
-    }
-
-    // Menu tabs
-    const tabs = [...document.querySelectorAll('.tab')];
-    const cards = [...document.querySelectorAll('.menu-card')];
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const filter = tab.dataset.filter;
-        tabs.forEach(t => t.classList.toggle('active', t === tab));
-        cards.forEach(card => card.classList.toggle('show', filter === 'all' || card.dataset.category === filter));
-      });
-    });
-  </script>
 </body>
 </html>

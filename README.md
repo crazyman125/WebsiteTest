@@ -1,17 +1,17 @@
-# ROCA'S Hamburg — Professional Redesign
+# ROCA'S Hamburg – Professional Redesign
 
-Statische One-Page-Website für GitHub Pages.
+Statische One-Page-Website ohne Frameworks.
 
-## Lokal testen
+## Enthalten
+- Helles, warmes Farbschema
+- Appetitliche Food-Fotografie
+- Vollständige Speisekarte mit allen Kategorien
+- Keine Reviews und keine Verlinkungen zur alten Website
+- Responsive für Smartphone, Tablet und Desktop
+- GitHub Pages kompatibel
 
-`index.html` doppelklicken oder mit einem lokalen Server öffnen.
+## Start
+`index.html` direkt im Browser öffnen oder den gesamten Ordner in ein GitHub-Repository laden und GitHub Pages aktivieren.
 
-## GitHub Pages
-
-1. Repository erstellen.
-2. `index.html` in den Root-Ordner hochladen.
-3. Settings → Pages → Deploy from a branch → `main` / `(root)`.
-
-## Hinweise
-
-Die visuellen Vorschauen der bestehenden ROCA'S-Website werden zur Laufzeit über einen Screenshot-Dienst geladen. Für einen finalen Produktivbetrieb sollten die Originalbilder mit entsprechender Berechtigung lokal im Repository gespeichert und direkt eingebunden werden.
+## Hinweis
+Die Produktbilder werden derzeit extern von einem Bildserver geladen. Für eine finale Produktionsversion sollten die Originaldateien lokal in `/assets` gespeichert und die Bildpfade entsprechend angepasst werden.
