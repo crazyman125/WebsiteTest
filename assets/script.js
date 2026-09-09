@@ -22,161 +22,89 @@
     }));
   }
 
-  // Apple-style scroll sequence:
-  // the page is the timeline. No rotate(), skew() or scaleX() is applied to the jewelry.
-  // Each scroll position selects a locally stored photographic zoom frame.
-  const scene = document.querySelector('[data-hero-scroll]');
-  const canvas = document.querySelector('[data-jewelry-sequence]');
-  const stage = canvas?.closest('.sequence-stage');
-  const heroCopy = document.querySelector('[data-hero-copy]');
-  const kicker = document.querySelector('[data-sequence-kicker]');
-  const caption = document.querySelector('[data-sequence-caption]');
-  const progressBar = document.querySelector('[data-scroll-progress]');
+  // Mid-page scroll story.
+  // Four genuine high-resolution photographic stages are stacked on top of each other.
+  // Scroll progress crossfades between dedicated macro/detail/full shots instead of enlarging
+  // one small source image. This keeps the close-up sharp and avoids stretching/distortion.
+  const story = document.querySelector('[data-story-scroll]');
+  const images = [...document.querySelectorAll('[data-story-image]')];
+  const copies = [...document.querySelectorAll('[data-story-copy]')];
+  const progress = document.querySelector('[data-story-progress]');
+  const progressNumber = document.querySelector('[data-story-progress-number]');
   const header = document.querySelector('[data-header]');
 
-  if (scene && canvas && !reducedMotion) {
-    const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
-    const FRAME_COUNT = 96;
-    const frames = new Array(FRAME_COUNT);
-    let currentProgress = 0;
-    let requestedFrame = 0;
-    let rafId = 0;
-    let canvasWidth = 0;
-    let canvasHeight = 0;
+  if (story && images.length === 4 && copies.length === 4 && !reducedMotion) {
+    let target = 0;
+    let current = 0;
+    let raf = 0;
 
-    const frameUrl = (i) => `assets/sequence/frame-${String(i).padStart(3, '0')}.webp`;
-
-    const loadFrame = (i) => new Promise((resolve) => {
-      const img = new Image();
-      img.decoding = 'async';
-      img.onload = () => {
-        frames[i] = img;
-        resolve(img);
-      };
-      img.onerror = () => resolve(null);
-      img.src = frameUrl(i);
-    });
-
-    // Draw without geometric distortion: source aspect ratio is always preserved.
-    const drawCover = (img) => {
-      if (!img || !ctx || !canvasWidth || !canvasHeight) return;
-      const srcRatio = img.naturalWidth / img.naturalHeight;
-      const dstRatio = canvasWidth / canvasHeight;
-      let sx = 0, sy = 0, sw = img.naturalWidth, sh = img.naturalHeight;
-
-      if (dstRatio > srcRatio) {
-        sh = sw / dstRatio;
-        sy = (img.naturalHeight - sh) / 2;
-      } else {
-        sw = sh * dstRatio;
-        sx = (img.naturalWidth - sw) / 2;
-      }
-
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvasWidth, canvasHeight);
+    const imageOpacity = (p, i) => {
+      const centers = [0.00, 0.34, 0.66, 1.00];
+      if (i === 0) return 1 - smoothstep((p - 0.17) / 0.18);
+      if (i === 3) return smoothstep((p - 0.76) / 0.18);
+      const center = centers[i];
+      const half = .24;
+      const dist = Math.abs(p - center);
+      return 1 - smoothstep((dist - .04) / (half - .04));
     };
 
-    const nearestLoaded = (index) => {
-      if (frames[index]) return frames[index];
-      for (let d = 1; d < FRAME_COUNT; d += 1) {
-        const lower = index - d;
-        const upper = index + d;
-        if (lower >= 0 && frames[lower]) return frames[lower];
-        if (upper < FRAME_COUNT && frames[upper]) return frames[upper];
-      }
-      return null;
-    };
-
-    const resizeCanvas = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const rect = canvas.getBoundingClientRect();
-      canvasWidth = Math.max(1, Math.round(rect.width * dpr));
-      canvasHeight = Math.max(1, Math.round(rect.height * dpr));
-      if (canvas.width !== canvasWidth || canvas.height !== canvasHeight) {
-        canvas.width = canvasWidth;
-        canvas.height = canvasHeight;
-      }
-      drawCover(nearestLoaded(requestedFrame));
+    const copyOpacity = (p, i) => {
+      const start = i * .25;
+      const end = start + .25;
+      const fade = .055;
+      const fadeIn = smoothstep((p - start) / fade);
+      const fadeOut = 1 - smoothstep((p - (end - fade)) / fade);
+      if (i === 0 && p < fade) return 1;
+      if (i === 3 && p > end - fade) return 1;
+      return clamp(fadeIn * fadeOut, 0, 1);
     };
 
     const render = () => {
-      rafId = 0;
-      // First 82% of the sticky section is the camera pull-back.
-      // The final 18% holds on the complete necklace while the main message resolves.
-      const visualProgress = clamp(currentProgress / 0.82, 0, 1);
-      requestedFrame = Math.round(visualProgress * (FRAME_COUNT - 1));
-      drawCover(nearestLoaded(requestedFrame));
+      raf = 0;
+      // Small smoothing only removes wheel/touch jitter; the scroll position still controls the scene.
+      current += (target - current) * 0.18;
+      if (Math.abs(target - current) < 0.00035) current = target;
 
-      // Detail annotation fades out while the camera leaves macro range.
-      const kickerOut = smoothstep(currentProgress / 0.22);
-      if (kicker) {
-        kicker.style.opacity = String(1 - kickerOut);
-        kicker.style.transform = `translateY(${-10 * kickerOut}px)`;
-      }
+      images.forEach((img, i) => {
+        const o = imageOpacity(current, i);
+        img.style.opacity = o.toFixed(4);
+        // Each source is already framed at its own camera distance. The tiny movement adds depth
+        // without scaling a macro crop into a blurry full-screen picture.
+        const local = clamp((current - i * .25) / .25, -1, 2);
+        const scale = 1.035 - clamp(local, 0, 1) * .035;
+        const y = (0.5 - clamp(local, 0, 1)) * 10;
+        img.style.transform = `scale(${scale}) translate3d(0, ${y}px, 0)`;
+      });
 
-      // Midway annotation accompanies the revealing shape, then gets out of the way.
-      const captionIn = smoothstep((currentProgress - 0.30) / 0.16);
-      const captionOut = smoothstep((currentProgress - 0.68) / 0.12);
-      const captionOpacity = captionIn * (1 - captionOut);
-      if (caption) {
-        caption.style.opacity = String(captionOpacity);
-        caption.style.transform = `translateY(${18 * (1 - captionIn)}px)`;
-      }
+      let activeIndex = Math.min(3, Math.floor(current * 4));
+      if (current >= .999) activeIndex = 3;
+      copies.forEach((copy, i) => {
+        const o = copyOpacity(current, i);
+        copy.style.opacity = o.toFixed(4);
+        copy.style.transform = `translateY(${(1 - o) * 28}px)`;
+        copy.classList.toggle('is-active', i === activeIndex && o > .45);
+      });
 
-      // Main copy appears only once the necklace is nearly fully revealed.
-      const copyProgress = smoothstep((currentProgress - 0.67) / 0.16);
-      if (heroCopy) {
-        heroCopy.style.opacity = String(copyProgress);
-        if (window.innerWidth <= 720) {
-          heroCopy.style.transform = `translateY(${34 * (1 - copyProgress)}px)`;
-        } else {
-          heroCopy.style.transform = `translate(-50%,-50%) translateY(${42 * (1 - copyProgress)}px)`;
-        }
-        heroCopy.classList.toggle('is-visible', copyProgress > 0.75);
-      }
+      if (progress) progress.style.transform = `scaleY(${Math.max(.005, current)})`;
+      if (progressNumber) progressNumber.textContent = String(activeIndex + 1).padStart(2, '0');
 
-      if (progressBar) {
-        progressBar.style.transform = `scaleY(${Math.max(0.02, currentProgress)})`;
-      }
+      if (Math.abs(target - current) > 0.00035) raf = requestAnimationFrame(render);
     };
 
     const readScroll = () => {
-      const rect = scene.getBoundingClientRect();
-      const travel = Math.max(1, scene.offsetHeight - window.innerHeight);
-      currentProgress = clamp(-rect.top / travel, 0, 1);
-      if (!rafId) rafId = requestAnimationFrame(render);
-      if (header) header.classList.toggle('hero-mode', rect.bottom > 90);
+      const rect = story.getBoundingClientRect();
+      const travel = Math.max(1, story.offsetHeight - window.innerHeight);
+      target = clamp(-rect.top / travel, 0, 1);
+      if (!raf) raf = requestAnimationFrame(render);
+      if (header) {
+        const inStory = rect.top < 90 && rect.bottom > 90;
+        header.classList.toggle('dark-mode', inStory);
+      }
     };
 
-    // Load the first frame immediately so the experience starts without a flash,
-    // then preload the full local sequence. All assets remain offline.
-    loadFrame(0).then((first) => {
-      if (first) {
-        stage?.classList.add('ready');
-        resizeCanvas();
-        readScroll();
-      }
-      // Prioritize frames in scroll order. Browser decoding happens asynchronously.
-      for (let i = 1; i < FRAME_COUNT; i += 1) {
-        loadFrame(i).then(() => {
-          if (Math.abs(i - requestedFrame) <= 1 && !rafId) {
-            rafId = requestAnimationFrame(render);
-          }
-        });
-      }
-    });
-
     window.addEventListener('scroll', readScroll, { passive: true });
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      readScroll();
-    }, { passive: true });
-    resizeCanvas();
+    window.addEventListener('resize', readScroll, { passive: true });
     readScroll();
-  } else if (heroCopy) {
-    // Accessible static fallback for reduced-motion users.
-    heroCopy.style.opacity = '1';
-    heroCopy.classList.add('is-visible');
   }
 
   // Contact demo: privacy-first, no network submission.
@@ -191,12 +119,7 @@
         return;
       }
       const data = new FormData(form);
-      const name = data.get('name') || '';
-      const email = data.get('email') || '';
-      const interest = data.get('interest') || '';
-      const message = data.get('message') || '';
-      const draft = `Betreff: Anfrage – ${interest}\n\nName: ${name}\nE-Mail: ${email}\nThema: ${interest}\n\n${message}`;
-
+      const draft = `Betreff: Anfrage – ${data.get('interest') || ''}\n\nName: ${data.get('name') || ''}\nE-Mail: ${data.get('email') || ''}\nThema: ${data.get('interest') || ''}\n\n${data.get('message') || ''}`;
       navigator.clipboard?.writeText(draft).then(() => {
         if (status) status.textContent = 'Anfrage-Text wurde in die Zwischenablage kopiert. Vor Livegang bitte die echte Kontakt-E-Mail im Website-Setup hinterlegen.';
       }).catch(() => {
