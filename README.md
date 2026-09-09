@@ -1,34 +1,23 @@
-# MARIAM ÉCLAT — Website-Prototyp
+# MARIAM ÉCLAT – Fine Jewelry Demo
 
-Offline-fähiger Frontend-Prototyp für eine Fine-Jewelry-Website.
+Offline-fähiger Website-Prototyp für Fine Jewelry, Diamanten, Farbedelsteine und individuelle Anfertigungen.
 
-## Start
+## Neu in dieser Version
+- Die scroll-gesteuerte Produktinszenierung liegt bewusst **in der Mitte der Seite**, nicht im Hero.
+- Der Einstieg der Website ist wieder eine klassische, ruhige Luxury-Hero-Section.
+- Die Scroll-Story nutzt vier getrennte hochauflösende Motive: Makro → Detail → Reveal → Gesamtcollier.
+- Dadurch wird kein einzelnes kleines Foto extrem aufgeblasen. Das verbessert die Schärfe deutlich.
+- Parallel zum visuellen Zoom wechseln Informationen zu Schliff, Fassung, Komposition und Gesamtstück.
+- Kein Canvas, kein rotateY, kein Stauchen des Schmuckfotos.
 
-`index.html` im Browser öffnen.
-
-Falls ein Browser lokale JavaScript-/Bilddateien restriktiv behandelt, den Ordner über einen kleinen lokalen Webserver öffnen, z. B.:
+## Lokal ansehen
+`index.html` direkt im Browser öffnen oder einen lokalen Server starten, z. B.:
 
 ```bash
-python -m http.server 8080
+python -m http.server 8000
 ```
 
-und anschließend `http://localhost:8080` aufrufen.
+Dann `http://localhost:8000` öffnen.
 
-## Neue Hero-Mechanik
-
-Der Hero nutzt eine Apple-artige scrollgebundene Produktsequenz:
-
-- 96 lokal gespeicherte WebP-Frames unter `assets/sequence/`
-- Start als extreme Makroansicht eines Diamanten
-- Scrollposition steuert direkt die Bildsequenz
-- kontinuierliche Kamerafahrt / Herauszoomen bis zur Gesamtansicht der Kette
-- kein `rotateY`, kein horizontales Stauchen, kein Scroll-Hijacking
-- Sticky Scene über mehrere Viewport-Höhen
-- Haupttext blendet erst ein, wenn die Kette weitgehend vollständig sichtbar ist
-- `prefers-reduced-motion` erhält eine statische, zugängliche Fallback-Version
-
-## Datenschutz
-
-Die Demo lädt keine externen Fonts, Tracker, Marketing-Pixel oder Drittanbieter-Embeds. Das Kontaktformular überträgt in diesem Prototyp keine Daten an einen Server.
-
-Vor einem Livegang müssen Impressum, Kontaktdaten, Hosting-/Datenschutzangaben und die final tatsächlich eingesetzten Tools/Services geprüft und angepasst werden.
+## Vor Livegang
+Impressum, Datenschutz, Kontaktinformationen, Hosting/AV-Verträge und die finalen Nutzungsrechte sämtlicher Produktfotos prüfen bzw. ergänzen.
