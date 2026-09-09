@@ -8,6 +8,7 @@
   <meta name="description" content="MARIAM ÉCLAT – Fine Jewelry, Diamanten, Edelsteine und individuelle Schmuckanfertigungen.">
   <title>MARIAM ÉCLAT — Fine Jewelry & individuelle Anfertigungen</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/sequence/frame-000.webp">
   <link rel="stylesheet" href="assets/styles.css">
   <script src="assets/script.js" defer></script>
 </head>
@@ -36,19 +37,18 @@
   <main id="main">
     <section class="hero-scroll" id="home" data-hero-scroll aria-labelledby="hero-title">
       <div class="hero-sticky">
-        <div class="hero-noise" aria-hidden="true"></div>
-
-        <div class="necklace-stage" aria-hidden="true">
-          <div class="necklace-shadow"></div>
-          <div class="necklace-ghost">
-            <img src="assets/images/hero-necklace.webp" alt="">
-          </div>
-          <div class="necklace-photo" data-necklace>
-            <img src="assets/images/hero-necklace.webp" alt="">
-          </div>
+        <div class="sequence-stage" aria-hidden="true">
+          <canvas class="jewelry-sequence" data-jewelry-sequence></canvas>
+          <img class="sequence-fallback" src="assets/images/hero-sequence-poster.webp" alt="">
+          <div class="sequence-vignette"></div>
         </div>
 
-        <div class="hero-copy">
+        <div class="sequence-kicker" data-sequence-kicker aria-hidden="true">
+          <span>01</span>
+          <p>Ganz nah.<br>Bis ins letzte Detail.</p>
+        </div>
+
+        <div class="hero-copy" data-hero-copy>
           <p class="eyebrow">Fine Jewelry · Diamonds · Bespoke</p>
           <h1 id="hero-title">Ein Stein.<br><em>Eine Geschichte.</em></h1>
           <p class="hero-lead">Außergewöhnliche Diamanten und Farbedelsteine, gefasst in Gold oder Platin. Ausgewählte Kreationen und persönliche Einzelanfertigungen – begleitet von Mariam.</p>
@@ -58,9 +58,9 @@
           </div>
         </div>
 
-        <div class="hero-side-copy" aria-hidden="true">
-          <span>01</span>
-          <p>Diamanten<br>Edelsteine<br>Handwerk</p>
+        <div class="sequence-caption" data-sequence-caption aria-hidden="true">
+          <span>02</span>
+          <p>Vom einzelnen Schliff<br>zur ganzen Komposition.</p>
         </div>
 
         <div class="scroll-hint" aria-hidden="true">
