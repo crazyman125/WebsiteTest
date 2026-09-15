@@ -85,7 +85,7 @@ COLOR_LABELS = {
     "schwarz": "Schwarz / Dunkel",
     "dunkel": "Schwarz / Dunkel",
     "klar": "Klar / Weiß",
-    "hell": "Klar / Weiß",
+    "hell": "Hell / Creme",
     "mehrfarbig": "Mehrfarbig",
 }
 
