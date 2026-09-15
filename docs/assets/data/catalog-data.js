@@ -85,7 +85,7 @@ window.MERVELLE_CATALOG = [
     "category": "perlen",
     "categoryLabel": "Perlen & Perlenstränge",
     "color": "hell",
-    "colorLabel": "Klar / Weiß",
+    "colorLabel": "Hell / Creme",
     "tags": [
       "perlen",
       "hell",
