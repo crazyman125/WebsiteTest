@@ -1,0 +1,18 @@
+MERVELLE KATALOG – BILDER EINSORTIEREN
+
+Struktur: Produkttyp / Farbe / Bilddatei
+
+Beispiele:
+  straenge/blau/lapislazuli-rund.webp
+  perlen/rosa/peach-perlen.webp
+  rohsteine/mehrfarbig/turmalin-roh.webp
+  geschliffen/mehrfarbig/farbsteine-mix.webp
+  beads/gruen/gruene-beads.webp
+
+WICHTIG:
+- Dateinamen möglichst beschreibend wählen.
+- JPG, JPEG, PNG, WEBP und AVIF sind erlaubt.
+- Nach dem Hinzufügen lokal `python tools/build_catalog.py` ausführen.
+- Bei GitHub Pages erledigt das der enthaltene Workflow automatisch.
+- Optional kann neben jedem Bild eine gleichnamige .json-Datei für Titel,
+  Beschreibung, Tags und Reihenfolge liegen. Details siehe README.md.
