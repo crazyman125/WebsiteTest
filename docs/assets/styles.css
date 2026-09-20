@@ -2769,3 +2769,117 @@ body{
   }
   .hero-home .hero-stage{padding-top:24px!important}
 }
+
+/* ========================================================================== 
+   FILTER + KONTAKT TYPOGRAFIE – Feedback 20.09.2026 v25
+   --------------------------------------------------------------------------
+   EDIT: Dieser Block steuert ausschließlich die Lesbarkeit des Produktfilters
+   und der Kontakt-/Anfragefelder. Er steht am Dateiende und überschreibt die
+   älteren kleineren Werte weiter oben.
+   ========================================================================== */
+
+/* PRODUKTFILTER ----------------------------------------------------------- */
+.filter-chip{
+  font-size:15px!important;
+  line-height:1.2!important;
+  padding:11px 17px!important;
+  font-weight:600!important;
+}
+.catalog-count{
+  font-size:14px!important;
+  line-height:1.25!important;
+  letter-spacing:.15em!important;
+}
+.catalog-count strong{
+  font-size:15px!important;
+  font-weight:750!important;
+}
+.search-field input,
+.select-field select{
+  height:54px!important;
+  font-size:16px!important;
+  line-height:1.25!important;
+}
+.search-field input{
+  padding-left:46px!important;
+}
+.search-field svg{
+  width:20px!important;
+  height:20px!important;
+  left:15px!important;
+}
+.select-field{
+  gap:8px!important;
+  font-size:12px!important;
+  line-height:1.2!important;
+  letter-spacing:.14em!important;
+  font-weight:750!important;
+}
+.select-field select{
+  font-weight:600!important;
+}
+.reset-filter{
+  height:54px!important;
+  font-size:15px!important;
+  line-height:1.25!important;
+  font-weight:500!important;
+}
+
+/* KONTAKT: TELEFON / E-MAIL / ANSCHRIFT ---------------------------------- */
+.contact-dl dt{
+  font-size:11px!important;
+  line-height:1.25!important;
+  letter-spacing:.16em!important;
+  font-weight:700!important;
+}
+.contact-dl dd{
+  font-size:21px!important;
+  line-height:1.35!important;
+  font-weight:700!important;
+  color:var(--ink)!important;
+}
+.contact-dl div{
+  padding:17px 0!important;
+  align-items:center!important;
+}
+
+/* KONTAKT-/BESCHAFFUNGSFORMULAR ----------------------------------------- */
+.request-form label{
+  gap:9px!important;
+  font-size:12px!important;
+  line-height:1.25!important;
+  letter-spacing:.12em!important;
+  font-weight:750!important;
+}
+.request-form input,
+.request-form select,
+.request-form textarea{
+  font-size:16px!important;
+  line-height:1.45!important;
+  padding:15px 0!important;
+}
+.request-form input::placeholder,
+.request-form textarea::placeholder{
+  font-size:15px!important;
+  line-height:1.4!important;
+  color:#8a7d70!important;
+  opacity:1!important;
+}
+.compact-request-form{
+  gap:18px!important;
+}
+.compact-request-form textarea{
+  min-height:112px!important;
+}
+
+@media(max-width:560px){
+  .filter-chip{font-size:14px!important;padding:10px 14px!important}
+  .catalog-count{font-size:13px!important}
+  .search-field input,.select-field select{font-size:15px!important;height:52px!important}
+  .select-field{font-size:11px!important}
+  .reset-filter{font-size:14px!important;height:48px!important}
+  .contact-dl dd{font-size:18px!important}
+  .request-form label{font-size:11px!important}
+  .request-form input,.request-form select,.request-form textarea{font-size:15px!important}
+  .request-form input::placeholder,.request-form textarea::placeholder{font-size:14px!important}
+}
