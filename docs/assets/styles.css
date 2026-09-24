@@ -1,0 +1,3183 @@
+/*
+  MERVELLE GEMSTONES – STYLESHEET
+  ================================================================
+  Diese Datei enthält das komplette visuelle Layout der Website.
+
+  SCHNELL ÄNDERN:
+  - Farben / Logo-Größe / Header: Abschnitt "CUSTOM PROPERTIES + HEADER"
+  - Hero-Hintergrund: Bildpfad in index.html, Abdunklung hier unter "HERO"
+  - Sortiment-Karten: Abschnitt "CATALOG"
+  - Scroll-Story: Abschnitt "SOURCING / SCROLL STORY"
+  - Mobile Darstellung: Media Queries am Ende der jeweiligen Bereiche
+
+  Tipp: Suche in dieser Datei nach "EDIT:". Dort liegen die wichtigsten
+  Stellschrauben für spätere Änderungen.
+*/
+
+/* ===== GLOBAL DESIGN TOKENS ===== */
+:root{
+  --paper:#f4f0e8;
+  --paper-soft:#faf8f3;
+  --ink:#171511;
+  --muted:#6e685f;
+  --gold:#9c6b2e;
+  --line:rgba(23,21,17,.15);
+  --dark:#171511;
+  --white:#fffdf9;
+  --serif:"Baskerville","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --shell:min(1440px,calc(100vw - 64px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+body.modal-open{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{color:inherit}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip-link{position:fixed;z-index:9999;left:18px;top:-80px;background:white;padding:12px 16px;border:1px solid var(--line)}
+.skip-link:focus{top:18px}
+.shell{width:var(--shell);margin-inline:auto}
+.section{padding:clamp(88px,8vw,136px) 0}
+.eyebrow{margin:0 0 18px;text-transform:uppercase;letter-spacing:.2em;font-size:11px;font-weight:700;color:var(--gold)}
+.eyebrow.inverse{color:#d7b982}
+
+/* ===== BASE HEADER (wird später im Custom-Block überschrieben) ===== */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(244,240,232,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.header-inner{width:var(--shell);height:88px;margin:auto;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:36px}
+.wordmark,.footer-brand{display:inline-flex;align-items:center;gap:12px;width:max-content}
+.wordmark img{width:42px;height:42px;object-fit:contain}
+.wordmark span,.footer-brand span{display:grid;line-height:1}
+.wordmark strong,.footer-brand strong{font-family:var(--serif);font-size:20px;letter-spacing:.14em;font-weight:500}
+.wordmark small,.footer-brand small{margin-top:6px;font-size:8px;letter-spacing:.32em}
+.main-nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(18px,2vw,34px);font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:650}
+.main-nav a{white-space:nowrap}
+.main-nav a:not(.nav-cta){padding:12px 0;border-bottom:1px solid transparent}
+.main-nav a:not(.nav-cta):hover{border-color:var(--ink)}
+.nav-cta{padding:12px 16px;border:1px solid var(--ink)}
+.menu-toggle{display:none;border:0;background:none;padding:8px;justify-self:end}
+.menu-toggle span:not(.sr-only){display:block;width:24px;height:1px;background:var(--ink);margin:5px 0}
+
+/* ===== BASE HERO ===== */
+.hero{background:linear-gradient(135deg,#f8f5ef 0%,#eee7da 100%);border-bottom:1px solid var(--line)}
+.hero-grid{min-height:760px;padding:64px 0 70px;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(54px,6vw,100px);align-items:center}
+.hero-copy{max-width:610px}
+.hero h1,.intro h2,.section-head h2,.sourcing-head h2,.about h2,.request h2,.contact h2{font-family:var(--serif);font-weight:400;letter-spacing:-.045em;line-height:.95;margin:0}
+.hero h1{font-size:clamp(66px,6.4vw,104px)}
+.hero h1 em{font-weight:400;color:var(--gold)}
+.hero-lead{font-family:var(--serif);font-size:clamp(21px,1.8vw,29px);line-height:1.3;margin:30px 0 14px;max-width:560px}
+.hero-sub{margin:0;color:var(--muted);max-width:560px}
+.hero-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:34px}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border:1px solid transparent;text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:750;cursor:pointer;transition:.2s ease}
+.button-dark{background:var(--ink);border-color:var(--ink);color:white}.button-dark:hover{background:#332d25;border-color:#332d25}
+.text-link{display:inline-flex;align-items:center;gap:10px;border:0;background:none;padding:0;font-size:13px;font-weight:650;cursor:pointer}.text-link span{font-size:17px}
+.hero-media{height:620px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(170px,.55fr);grid-template-rows:1fr 1fr;gap:12px}
+.hero-media figure{margin:0;overflow:hidden;background:#ded7cb;position:relative}
+.hero-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.hero-media figure:hover img{transform:scale(1.025)}
+.hero-main{grid-row:1 / 3}
+.hero-main figcaption{position:absolute;left:18px;right:18px;bottom:18px;display:flex;justify-content:space-between;gap:16px;align-items:center;background:rgba(250,248,243,.9);backdrop-filter:blur(10px);padding:12px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.12em}
+.hero-main figcaption small{color:var(--muted);font-size:9px}
+
+/* ===== INTRO / COMPANY POSITIONING ===== */
+.intro{background:var(--paper-soft)}
+.intro-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(60px,9vw,150px);align-items:start}
+.intro h2{font-size:clamp(48px,4.7vw,76px)}
+.intro-copy{max-width:650px;color:#514c45}
+.intro-copy p{margin:0 0 22px}
+.intro-copy .lead{font-family:var(--serif);font-size:21px;line-height:1.45;color:var(--ink)}
+
+/* ===== SORTIMENT + FILTER ===== */
+.assortment{background:#eee7dc}
+.section-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:70px;align-items:end;margin-bottom:52px}
+.section-head.compact{grid-template-columns:1fr}
+.section-head h2{font-size:clamp(50px,5vw,80px)}
+.section-head>p{margin:0 0 4px;color:var(--muted);max-width:610px}
+.category-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:48px}
+.category-strip article{padding:24px 20px 28px;border-right:1px solid var(--line)}
+.category-strip article:first-child{padding-left:0}.category-strip article:last-child{border-right:0;padding-right:0}
+.category-strip span{font-size:10px;font-weight:800;color:var(--gold)}
+.category-strip h3{font-family:var(--serif);font-size:20px;font-weight:400;line-height:1.1;margin:18px 0 10px}
+.category-strip p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+.catalog-panel{border:1px solid var(--line);background:rgba(255,255,255,.34);padding:20px 22px;margin-bottom:28px}
+.filter-topline{display:flex;justify-content:space-between;gap:24px;align-items:center}
+.filter-group{display:flex;flex-wrap:wrap;gap:8px}
+.filter-chip{border:1px solid rgba(23,21,17,.22);background:transparent;border-radius:999px;padding:8px 13px;font-size:12px;cursor:pointer;transition:.18s ease}
+.filter-chip:hover,.filter-chip.is-active{background:var(--ink);border-color:var(--ink);color:#fff}
+.catalog-count{margin:0;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);white-space:nowrap}.catalog-count strong{color:var(--ink)}
+.filter-controls{display:grid;grid-template-columns:minmax(260px,1fr) 190px 170px auto;gap:12px;align-items:end;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.search-field{position:relative;display:block}
+.search-field svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:17px;fill:none;stroke:currentColor;stroke-width:1.5}
+.search-field input,.select-field select{width:100%;height:46px;border:1px solid rgba(23,21,17,.2);background:#fffdf9;color:var(--ink);padding:0 14px;border-radius:0;outline:none}
+.search-field input{padding-left:40px}
+.select-field{display:grid;gap:6px;font-size:9px;text-transform:uppercase;letter-spacing:.14em;font-weight:700;color:var(--muted)}
+.reset-filter{height:46px;border:0;background:transparent;text-decoration:underline;text-underline-offset:5px;cursor:pointer;color:var(--muted);padding:0 4px}
+.catalog-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.catalog-card{min-width:0}
+.catalog-open{width:100%;border:0;background:transparent;padding:0;cursor:pointer;text-align:left;color:var(--ink)}
+.catalog-image{aspect-ratio:4/5;overflow:hidden;background:#ddd6ca;position:relative}
+.catalog-image img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+.catalog-open:hover .catalog-image img{transform:scale(1.035)}
+.catalog-image::after{content:"↗";position:absolute;right:14px;bottom:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;opacity:0;transform:translateY(6px);transition:.2s ease}
+.catalog-open:hover .catalog-image::after{opacity:1;transform:none}
+.catalog-info{padding:14px 2px 4px}
+.catalog-info small{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:var(--gold);margin-bottom:6px}
+.catalog-info strong{display:block;font-family:var(--serif);font-size:21px;font-weight:400;line-height:1.15}
+.catalog-info p{margin:7px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+.catalog-note,.catalog-empty{max-width:880px;margin:25px 0 0;color:var(--muted);font-size:12px}
+.catalog-empty{padding:24px;border:1px solid var(--line);background:rgba(255,255,255,.35)}
+
+/* ===== SOURCING / SCROLL STORY ===== */
+.sourcing{padding:clamp(96px,9vw,150px) 0;background:var(--dark);color:#fff}
+.sourcing-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.7fr);column-gap:80px;align-items:end;margin-bottom:78px}
+.sourcing-head .eyebrow{grid-column:1/-1;color:#d7b982}
+.sourcing-head h2{font-size:clamp(52px,5vw,82px)}
+.sourcing-head>p{margin:0;color:rgba(255,255,255,.65);max-width:580px}
+.sourcing-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.75fr);gap:clamp(60px,7vw,120px);align-items:start}
+.sourcing-visual{position:sticky;top:120px;height:calc(100vh - 160px);min-height:560px;max-height:760px}
+.sourcing-frame{position:relative;width:100%;height:100%;overflow:hidden;background:#29241d}
+.story-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.035);transition:opacity .55s ease,transform 1.1s ease}
+.story-image.is-active{opacity:1;transform:scale(1)}
+.story-index{position:absolute;left:18px;right:18px;bottom:18px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;background:rgba(18,15,11,.68);backdrop-filter:blur(12px);padding:12px 14px;font-size:10px;letter-spacing:.15em}.story-index i{height:1px;background:rgba(255,255,255,.35)}
+.sourcing-steps{padding-bottom:18vh}
+.story-step{min-height:72vh;display:flex;flex-direction:column;justify-content:center;border-top:1px solid rgba(255,255,255,.13);opacity:.4;transition:opacity .35s ease}
+.story-step.is-active{opacity:1}
+.story-step>span{font-size:10px;letter-spacing:.16em;color:#d7b982;margin-bottom:30px}
+.story-step .eyebrow{color:#d7b982;margin-bottom:13px}
+.story-step h3{font-family:var(--serif);font-size:clamp(38px,3.8vw,58px);font-weight:400;line-height:1;margin:0 0 24px;letter-spacing:-.035em}
+.story-step p:not(.eyebrow){max-width:520px;color:rgba(255,255,255,.68);margin:0}
+.story-step .text-link{margin-top:24px;color:#fff;align-self:flex-start}
+
+/* ===== BENEFITS / WARUM MERVELLE ===== */
+.benefits{background:var(--paper-soft)}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.benefit-grid article{padding:34px 42px 38px;border-right:1px solid var(--line)}
+.benefit-grid article:first-child{padding-left:0}.benefit-grid article:last-child{border-right:0;padding-right:0}
+.benefit-grid span{font-size:10px;color:var(--gold);font-weight:800}.benefit-grid h3{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.1;margin:32px 0 14px}.benefit-grid p{margin:0;color:var(--muted);font-size:14px}
+
+/* ===== ÜBER UNS ===== */
+.about{padding:clamp(90px,9vw,150px) 0;background:#e9e0d2}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(60px,8vw,130px);align-items:center}
+.about-image{height:min(760px,74vw);max-height:760px;overflow:hidden;background:#d7cec1}.about-image img{width:100%;height:100%;object-fit:cover}
+.about-copy{max-width:650px}.about h2{font-size:clamp(50px,4.8vw,78px);margin-bottom:30px}.about-copy>p:not(.eyebrow){color:#514b43;margin:0 0 20px}.brand-signature{margin-top:34px;padding-top:28px;border-top:1px solid var(--line)}.brand-signature img{width:160px;height:auto;max-height:150px;object-fit:contain;object-position:left center}
+
+/* ===== ANFRAGEFORMULAR ===== */
+.request{background:var(--paper-soft)}
+.request-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(60px,8vw,130px);align-items:start}
+.request h2{font-size:clamp(52px,5vw,82px)}
+.request-intro>p:not(.eyebrow){max-width:560px;color:var(--muted)}
+.request-hints{display:flex;flex-wrap:wrap;gap:7px;margin-top:28px}.request-hints span{border:1px solid var(--line);padding:7px 10px;font-size:9px;text-transform:uppercase;letter-spacing:.12em}
+.request-form{display:grid;gap:18px}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field-row.three{grid-template-columns:repeat(3,1fr)}
+.request-form label{display:grid;gap:7px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+.request-form input,.request-form select,.request-form textarea{width:100%;border:0;border-bottom:1px solid #a79f93;background:transparent;padding:13px 0;color:var(--ink);outline:none;border-radius:0;text-transform:none;letter-spacing:0;font-weight:400}.request-form input:focus,.request-form select:focus,.request-form textarea:focus{border-bottom-color:var(--gold);box-shadow:0 1px 0 var(--gold)}.request-form textarea{resize:vertical}.privacy-check{display:flex!important;gap:10px!important;align-items:flex-start;text-transform:none!important;letter-spacing:0!important;font-size:12px!important;font-weight:400!important;color:var(--muted)}.privacy-check input{width:auto;margin-top:3px}.privacy-check a{text-decoration:underline}.request-form .button{justify-self:start}.form-status{min-height:20px;margin:0;color:var(--muted);font-size:12px}
+
+/* ===== KONTAKT ===== */
+.contact{padding:clamp(80px,8vw,130px) 0;background:#15130f;color:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}.contact h2{font-size:clamp(52px,5vw,82px)}.contact-copy{max-width:650px;color:rgba(255,255,255,.68)}.contact-copy>p{margin:0}.contact-copy dl{margin:34px 0 0;border-top:1px solid rgba(255,255,255,.16)}.contact-copy dl div{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14)}.contact-copy dt{font-size:9px;text-transform:uppercase;letter-spacing:.15em}.contact-copy dd{margin:0;color:#fff}
+
+/* ===== FOOTER ===== */
+.site-footer{background:#0d0b08;color:rgba(255,255,255,.62);border-top:1px solid rgba(255,255,255,.08)}
+.footer-grid{padding:44px 0;display:grid;grid-template-columns:auto 1fr auto;gap:38px;align-items:center;font-size:12px}.footer-brand img{width:38px;height:38px;object-fit:contain}.footer-brand strong{font-size:18px;color:#fff}.footer-brand small{color:rgba(255,255,255,.7)}.site-footer nav{display:flex;gap:22px;color:#fff}.footer-note{grid-column:2/-1;margin:0;color:rgba(255,255,255,.4);font-size:10px}
+
+/* ===== PRODUKT-MODAL ===== */
+.product-modal{padding:0;border:0;width:min(980px,94vw);max-height:92vh;background:var(--paper-soft);box-shadow:0 30px 120px rgba(0,0,0,.4)}.product-modal::backdrop{background:rgba(10,8,5,.72);backdrop-filter:blur(5px)}.modal-close{position:absolute;z-index:4;right:14px;top:12px;width:40px;height:40px;border:1px solid rgba(23,21,17,.15);background:rgba(255,255,255,.9);font-size:24px;cursor:pointer}.modal-grid{display:grid;grid-template-columns:1.08fr .92fr;min-height:620px}.modal-media{background:#ddd5ca;min-height:620px}.modal-media img{width:100%;height:100%;object-fit:contain;background:#ece7de}.modal-copy{padding:68px 52px;display:flex;flex-direction:column;justify-content:center}.modal-copy h2{font-family:var(--serif);font-size:46px;font-weight:400;line-height:1;margin:0 0 18px}.modal-copy>p:not(.eyebrow){color:var(--muted)}.modal-meta{margin:24px 0;border-top:1px solid var(--line)}.modal-meta div{display:grid;grid-template-columns:90px 1fr;padding:10px 0;border-bottom:1px solid var(--line)}.modal-meta dt{font-size:9px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted)}.modal-meta dd{margin:0;font-size:12px}.modal-actions{display:flex;align-items:center;gap:22px;margin-top:22px}
+
+/* Legal / information pages */
+/* ===== RECHTLICHE / INFO-SEITEN ===== */
+.legal-page{background:var(--paper-soft);color:var(--ink);min-height:100vh;padding:34px 20px 80px}.legal-back{display:inline-flex;margin:0 0 34px 2vw;font-size:12px;text-transform:uppercase;letter-spacing:.12em}.legal-shell{width:min(900px,94vw);margin:0 auto;background:white;padding:clamp(34px,6vw,76px);box-shadow:0 20px 70px rgba(30,23,16,.08)}.legal-shell h1{font-family:var(--serif);font-size:clamp(48px,7vw,84px);font-weight:400;line-height:.95;margin:0 0 38px;letter-spacing:-.04em}.legal-shell h2{font-family:var(--serif);font-size:26px;font-weight:400;margin:40px 0 12px}.legal-shell p{color:#554f47}.legal-shell a{text-decoration:underline;text-underline-offset:3px}.legal-warning{background:#f2eadc;border-left:3px solid var(--gold);padding:18px 20px;color:#584c3b;margin:0 0 34px}
+
+@media (max-width:1180px){
+  :root{--shell:min(100% - 44px,1180px)}
+  .main-nav{gap:16px;font-size:10px}.nav-cta{padding:11px 13px}
+  .hero-grid{grid-template-columns:.88fr 1.12fr;gap:44px}.hero-media{height:560px}
+  .category-strip{grid-template-columns:repeat(2,1fr)}.category-strip article{border-bottom:1px solid var(--line)}.category-strip article:nth-child(2n){border-right:0}.category-strip article:nth-child(odd){padding-left:0}.category-strip article:last-child{grid-column:1/-1;border-bottom:0}
+  .catalog-grid{grid-template-columns:repeat(3,1fr)}
+  .filter-controls{grid-template-columns:1fr 170px 160px}.reset-filter{grid-column:1/-1;justify-self:start;height:auto;margin-top:4px}
+}
+@media (max-width:860px){
+  :root{--shell:calc(100vw - 36px)}
+  .header-inner{height:76px;grid-template-columns:auto auto}.wordmark img{width:34px;height:34px}.wordmark strong{font-size:17px}.wordmark small{font-size:7px}
+  .menu-toggle{display:block}.main-nav{position:absolute;left:0;right:0;top:76px;background:var(--paper);border-bottom:1px solid var(--line);display:grid;gap:0;padding:12px 18px 22px;transform:translateY(-130%);opacity:0;pointer-events:none;transition:.25s ease}.main-nav.is-open{transform:none;opacity:1;pointer-events:auto}.main-nav a{padding:13px 0;border-bottom:1px solid var(--line)}.main-nav .nav-cta{margin-top:12px;text-align:center;border:1px solid var(--ink)}
+  .hero-grid{min-height:0;padding:70px 0 76px;grid-template-columns:1fr;gap:42px}.hero-copy{max-width:680px}.hero h1{font-size:clamp(58px,13vw,88px)}.hero-media{height:560px;grid-template-columns:1fr 1fr;grid-template-rows:1.55fr .75fr}.hero-main{grid-column:1/-1;grid-row:1}.hero-side{grid-row:2}.hero-side-top{grid-column:1}.hero-side-bottom{grid-column:2}
+  .intro-grid,.section-head,.sourcing-head,.request-grid,.contact-grid,.about-grid{grid-template-columns:1fr;gap:42px}.intro h2,.section-head h2,.sourcing-head h2,.request h2,.contact h2,.about h2{font-size:clamp(44px,11vw,68px)}
+  .section-head>p{max-width:720px}.sourcing-head .eyebrow{grid-column:auto}.sourcing-head{margin-bottom:50px}
+  .catalog-grid{grid-template-columns:repeat(2,1fr)}.filter-topline{align-items:flex-start;flex-direction:column}.filter-controls{grid-template-columns:1fr 1fr}.search-field{grid-column:1/-1}.reset-filter{grid-column:1/-1}
+  .sourcing-layout{grid-template-columns:1fr;gap:0}.sourcing-visual{position:sticky;top:76px;z-index:2;height:52vh;min-height:360px;max-height:none;margin-bottom:10px}.sourcing-steps{padding-bottom:0}.story-step{min-height:58vh;padding:52px 0;background:var(--dark)}
+  .benefit-grid{grid-template-columns:1fr}.benefit-grid article,.benefit-grid article:first-child,.benefit-grid article:last-child{padding:28px 0;border-right:0;border-bottom:1px solid var(--line)}.benefit-grid article:last-child{border-bottom:0}.benefit-grid h3{margin-top:20px}
+  .about-image{height:58vh;min-height:430px}.about-copy{max-width:720px}
+  .footer-grid{grid-template-columns:1fr;gap:20px}.site-footer nav{flex-wrap:wrap}.footer-note{grid-column:auto}
+  .modal-grid{grid-template-columns:1fr;max-height:92vh;overflow:auto}.modal-media{min-height:44vh;height:44vh}.modal-copy{padding:34px 24px 42px}.modal-copy h2{font-size:38px}
+}
+@media (max-width:560px){
+  :root{--shell:calc(100vw - 28px)}
+  .section{padding:72px 0}.hero-grid{padding-top:52px}.hero-media{height:460px;grid-template-columns:1fr;grid-template-rows:1fr}.hero-main{grid-column:1;grid-row:1}.hero-side{display:none}.hero-main figcaption{left:12px;right:12px;bottom:12px}.hero-actions{align-items:flex-start;flex-direction:column}
+  .category-strip{grid-template-columns:1fr}.category-strip article,.category-strip article:first-child,.category-strip article:last-child,.category-strip article:nth-child(odd){grid-column:auto;padding:22px 0;border-right:0;border-bottom:1px solid var(--line)}.category-strip article:last-child{border-bottom:0}
+  .filter-controls{grid-template-columns:1fr}.search-field{grid-column:auto}.catalog-grid{grid-template-columns:1fr}.catalog-image{aspect-ratio:5/4}.filter-group{gap:6px}.filter-chip{padding:7px 10px;font-size:11px}
+  .field-row,.field-row.three{grid-template-columns:1fr}.contact-copy dl div{grid-template-columns:90px 1fr}.sourcing-visual{height:44vh;min-height:320px}.story-step{min-height:52vh}.brand-signature img{width:130px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}}
+
+/* ========================================================================== 
+   CUSTOM PROPERTIES + HEADER / BRAND PLAQUE
+   --------------------------------------------------------------------------
+   Dieser Block überschreibt bewusst die allgemeinen Header-Regeln oben.
+   Er ist die wichtigste Stelle für spätere Marken-/Header-Anpassungen.
+   ========================================================================== */
+:root{
+  /* EDIT: Hauptfarben der Navigation. */
+  --header-bg:rgba(11,8,6,.94);
+  --header-bg-scrolled:#0b0907;
+  --header-text:#f2e8d7;
+  --header-accent:#d2ad73;
+
+  /* EDIT: Logo-Plakette im geöffneten Zustand ganz oben auf der Seite. */
+  --brand-plaque-width:220px;
+  --brand-plaque-height:188px;
+  --brand-logo-width:190px;
+
+  /* EDIT: Kompaktere Variante derselben Logo-Datei nach dem Scrollen. */
+  --brand-plaque-scrolled-width:148px;
+  --brand-plaque-scrolled-height:112px;
+  --brand-logo-scrolled-width:122px;
+
+  /* Navigation bleibt bewusst wesentlich flacher als das große Logo. */
+  --header-height:106px;
+}
+
+/*
+  HEADER
+  Die Navigationsleiste ist sticky und ab Werk bereits fast deckend.
+  Sobald .is-scrolled gesetzt wird, wird sie komplett blickdicht.
+*/
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  height:var(--header-height);
+  background:var(--header-bg);
+  color:var(--header-text);
+  border-bottom:1px solid rgba(210,173,115,.18);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  transition:background-color .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.site-header.is-scrolled{
+  background:var(--header-bg-scrolled);
+  border-bottom-color:rgba(210,173,115,.24);
+  box-shadow:0 12px 34px rgba(0,0,0,.25);
+}
+
+/*
+  HEADER-INHALT
+  Die erste Grid-Spalte reserviert horizontalen Platz für die Brand-Plakette.
+  Dadurch kollidiert die Navigation nicht mit dem Logo.
+*/
+.header-inner{
+  position:relative;
+  width:var(--shell);
+  height:var(--header-height);
+  margin:auto;
+  display:grid;
+  grid-template-columns:250px 1fr;
+  align-items:center;
+  gap:28px;
+}
+
+/*
+  BRAND-PLAKETTE
+  Das ist die alternative Logo-Einbettung: Das Logo sitzt NICHT mehr einfach
+  als kleines Bild in der Navigationszeile, sondern in einer eigenen Fläche,
+  die am Seitenanfang in den Hero hineinragt. So bleibt die Navigation schlank.
+*/
+.wordmark{
+  position:absolute;
+  z-index:4;
+  left:0;
+  top:9px;
+  width:var(--brand-plaque-width);
+  height:var(--brand-plaque-height);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 14px 15px;
+  background:
+    linear-gradient(180deg,rgba(15,11,8,.98),rgba(11,8,6,.965));
+  border:1px solid rgba(210,173,115,.2);
+  border-top-color:rgba(210,173,115,.08);
+  box-shadow:0 18px 46px rgba(0,0,0,.28);
+  transition:width .25s ease,height .25s ease,top .25s ease,padding .25s ease,box-shadow .25s ease;
+}
+.wordmark-frame{
+  display:flex;
+  width:100%;
+  height:100%;
+  align-items:center;
+  justify-content:center;
+}
+.wordmark img{
+  width:var(--brand-logo-width);
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 4px 11px rgba(0,0,0,.24));
+  transition:width .25s ease;
+}
+
+/*
+  SCROLLED LOGO
+  Es bleibt dieselbe mervelle-logo.png, wird aber kompakter, damit die
+  überlappende Plakette beim Scrollen keinen Seiteninhalt verdeckt.
+*/
+.site-header.is-scrolled .wordmark{
+  top:0;
+  width:var(--brand-plaque-scrolled-width);
+  height:var(--brand-plaque-scrolled-height);
+  padding:8px 10px;
+  box-shadow:0 10px 28px rgba(0,0,0,.24);
+}
+.site-header.is-scrolled .wordmark img{
+  width:var(--brand-logo-scrolled-width);
+}
+
+/*
+  NAVIGATION
+  EDIT: Abstand und Schriftgröße können hier angepasst werden.
+*/
+.main-nav{
+  grid-column:2;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:clamp(17px,1.8vw,34px);
+  color:var(--header-text);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-weight:650;
+}
+.main-nav a{white-space:nowrap;opacity:.96}
+.main-nav a:not(.nav-cta){padding:12px 0;border-bottom:1px solid transparent}
+.main-nav a:not(.nav-cta):hover{color:#fff7e8;border-color:rgba(210,173,115,.82)}
+.nav-cta{
+  padding:13px 18px;
+  border:1px solid rgba(210,173,115,.68);
+  color:#fff7e8;
+  background:rgba(255,255,255,.025);
+}
+.nav-cta:hover{background:rgba(210,173,115,.14);border-color:rgba(210,173,115,.95)}
+.menu-toggle span:not(.sr-only){background:var(--header-text)}
+
+/* ========================================================================== 
+   HERO
+   --------------------------------------------------------------------------
+   EDIT: Das Bild selbst steht in index.html unter .hero-bg.
+   Hier wird nur geregelt, wie dunkel/warm das Bild überlagert wird.
+   ========================================================================== */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:#110d09;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.57) saturate(.94) contrast(1.03);
+  transform:scale(1.025);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(6,5,4,.91) 0%,rgba(8,7,5,.80) 32%,rgba(10,8,6,.46) 59%,rgba(8,7,6,.58) 77%,rgba(8,7,6,.74) 100%),
+    radial-gradient(circle at 76% 28%,rgba(240,205,148,.12) 0%,rgba(240,205,148,.04) 18%,transparent 40%);
+}
+.hero-stage{
+  position:relative;
+  z-index:1;
+  min-height:760px;
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(280px,.55fr);
+  gap:clamp(50px,7vw,120px);
+  align-items:end;
+  padding:104px 0 72px;
+}
+.hero-copy{max-width:650px}
+.hero .eyebrow{color:var(--header-accent)}
+.hero h1{font-size:clamp(72px,7vw,112px)}
+.hero h1 em{font-style:italic;font-weight:400;color:#fff4df}
+.hero-lead{font-family:var(--serif);font-size:clamp(21px,2vw,30px);line-height:1.3;margin:30px 0 12px;max-width:590px;color:rgba(255,255,255,.96)}
+.hero-sub{margin:0;color:rgba(255,255,255,.76);max-width:630px}
+.hero-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:34px}
+.button-gold{background:#c8a56c;border-color:#c8a56c;color:#16120d}
+.button-gold:hover{background:#d4b27a;border-color:#d4b27a}
+.hero .text-link{color:#fff}
+.hero-meta{display:inline-flex;align-items:center;gap:14px;margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.7)}
+.hero-meta i{display:block;width:46px;height:1px;background:rgba(255,255,255,.34)}
+.hero-aside{display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;min-height:100%;padding-bottom:12px}
+.hero-brand-blend{display:none}
+.hero-callout{max-width:420px;margin:0 0 10px auto;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(34px,3vw,50px);line-height:.98;text-align:right;color:rgba(255,247,232,.94);text-shadow:0 6px 28px rgba(0,0,0,.28)}
+
+/* OFFIZIELLES LOGO auch im About-Bereich und Footer unverändert verwenden. */
+.brand-signature img{width:220px;height:auto;max-height:none;object-fit:contain;object-position:left center}
+.footer-brand img{width:220px;height:auto;max-width:100%;object-fit:contain}
+
+/* ========================================================================== 
+   RESPONSIVE HEADER / LOGO
+   ========================================================================== */
+@media (max-width:1180px){
+  :root{
+    --brand-plaque-width:188px;
+    --brand-plaque-height:162px;
+    --brand-logo-width:162px;
+    --header-height:96px;
+  }
+  .header-inner{grid-template-columns:205px 1fr;gap:18px}
+  .main-nav{gap:14px;font-size:10px}
+  .hero-stage{min-height:700px;grid-template-columns:minmax(0,.94fr) minmax(230px,.58fr);gap:44px}
+}
+
+/*
+  TABLET / MOBILE
+  Das große Logo bleibt sichtbar, die eigentliche Navigation wird zum Menübutton.
+*/
+@media (max-width:860px){
+  :root{
+    --brand-plaque-width:156px;
+    --brand-plaque-height:136px;
+    --brand-logo-width:134px;
+    --header-height:86px;
+    --brand-plaque-scrolled-width:126px;
+    --brand-plaque-scrolled-height:92px;
+    --brand-logo-scrolled-width:104px;
+  }
+  .header-inner{grid-template-columns:170px auto}
+  .menu-toggle{display:block;grid-column:2;justify-self:end}
+  .main-nav{
+    position:absolute;
+    left:0;right:0;top:100%;
+    grid-column:auto;
+    background:#0b0907;
+    border-bottom:1px solid rgba(210,173,115,.18);
+    display:grid;gap:0;padding:16px 18px 24px;
+    transform:translateY(-130%);
+    opacity:0;
+    pointer-events:none;
+    transition:.25s ease;
+  }
+  .main-nav.is-open{transform:none;opacity:1;pointer-events:auto}
+  .main-nav a{padding:13px 0;color:#fff;border-bottom:1px solid rgba(255,255,255,.09)}
+  .main-nav .nav-cta{margin-top:12px;text-align:center;border:1px solid rgba(210,173,115,.5)}
+  .hero-stage{min-height:0;grid-template-columns:1fr;gap:24px;padding:82px 0 58px}
+  .hero-aside{min-height:160px;align-items:flex-start}
+  .hero-callout{max-width:350px;margin-top:auto;text-align:left;font-size:clamp(28px,7vw,40px)}
+}
+
+@media (max-width:560px){
+  :root{
+    --brand-plaque-width:138px;
+    --brand-plaque-height:120px;
+    --brand-logo-width:118px;
+    --brand-plaque-scrolled-width:112px;
+    --brand-plaque-scrolled-height:84px;
+    --brand-logo-scrolled-width:92px;
+    --header-height:78px;
+  }
+  .header-inner{grid-template-columns:150px auto}
+  .hero-stage{padding:72px 0 54px}
+  .hero h1{font-size:clamp(56px,15vw,82px)}
+  .hero-lead{font-size:20px}
+  .hero-callout{font-size:25px;max-width:260px}
+}
+
+/* ========================================================================== 
+   HEADER BRAND LOCKUP (v11)
+   --------------------------------------------------------------------------
+   Neue Lösung auf Wunsch:
+   - In der Navigation wird nur das M-Signet mit Edelsteinen als Bild gezeigt.
+   - Der Name "MERVELLE GEMSTONES" und der Claim werden als echter Text gesetzt.
+   So bleibt die Marke klar lesbar, ohne dass das komplette hohe Logo die
+   gesamte Navigationsleiste dominiert.
+   ========================================================================== */
+:root{
+  /* EDIT: Größe des M-Signets in der Navigation. */
+  --brand-mark-width: 86px;
+  /* EDIT: Typografie des ausgeschriebenen Logos. */
+  --brand-title-size: 27px;
+  --brand-subtitle-size: 10px;
+  --brand-claim-size: 12px;
+  /* EDIT: Horizontaler Platz der Marke im Header. */
+  --brand-lockup-width: 350px;
+}
+
+/* Der Header bleibt bewusst deckend, damit das Menü überall lesbar ist. */
+.site-header{
+  background:rgba(11,8,6,.985);
+  border-bottom:1px solid rgba(210,173,115,.22);
+}
+.site-header.is-scrolled{
+  background:#0a0806;
+}
+
+.header-inner{
+  grid-template-columns:minmax(290px,var(--brand-lockup-width)) 1fr;
+  height:104px;
+  gap:22px;
+}
+
+/* EDIT: Marke links im Header. */
+.wordmark{
+  position:relative;
+  left:auto;
+  top:auto;
+  width:auto;
+  height:auto;
+  padding:0;
+  background:none;
+  border:0;
+  box-shadow:none;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+}
+.wordmark-frame{
+  width:var(--brand-mark-width);
+  flex:0 0 var(--brand-mark-width);
+  height:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.wordmark img{
+  width:100%;
+  height:auto;
+  max-width:none;
+  max-height:none;
+  object-fit:contain;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.22));
+}
+
+/* Ausgeschriebene Titelschrift rechts neben dem M-Signet. */
+.wordmark-text{
+  display:grid;
+  align-content:center;
+  line-height:1;
+  color:var(--header-text);
+}
+.wordmark-title{
+  font-family:var(--serif);
+  font-size:var(--brand-title-size);
+  font-weight:500;
+  letter-spacing:.16em;
+}
+.wordmark-subtitle{
+  margin-top:5px;
+  font-size:var(--brand-subtitle-size);
+  font-weight:700;
+  letter-spacing:.34em;
+  text-transform:uppercase;
+  color:rgba(242,232,215,.92);
+}
+.wordmark-claim{
+  margin-top:7px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:var(--brand-claim-size);
+  letter-spacing:.04em;
+  color:rgba(210,173,115,.96);
+}
+
+/* Kein eigenes Schrumpf-Panel mehr, nur eine leichte Verdichtung beim Scrollen. */
+.site-header.is-scrolled .wordmark{
+  width:auto;
+  height:auto;
+  padding:0;
+  box-shadow:none;
+}
+.site-header.is-scrolled .wordmark img{width:100%}
+.site-header.is-scrolled .wordmark-title{font-size:25px}
+.site-header.is-scrolled .wordmark-claim{opacity:.92}
+
+.main-nav{
+  gap:clamp(16px,1.7vw,32px);
+}
+
+@media (max-width:1180px){
+  :root{
+    --brand-mark-width: 74px;
+    --brand-title-size: 23px;
+    --brand-subtitle-size: 9px;
+    --brand-claim-size: 11px;
+    --brand-lockup-width: 300px;
+  }
+  .header-inner{height:96px;gap:18px}
+}
+
+@media (max-width:860px){
+  :root{
+    --brand-mark-width: 58px;
+    --brand-title-size: 18px;
+    --brand-subtitle-size: 8px;
+    --brand-claim-size: 10px;
+    --brand-lockup-width: 236px;
+  }
+  .header-inner{grid-template-columns:minmax(200px,1fr) auto;height:84px}
+  .wordmark{gap:10px}
+}
+
+@media (max-width:560px){
+  :root{
+    --brand-mark-width: 48px;
+    --brand-title-size: 16px;
+    --brand-subtitle-size: 7px;
+    --brand-claim-size: 9px;
+    --brand-lockup-width: 186px;
+  }
+  .header-inner{height:76px;gap:12px}
+  /* EDIT: Auf sehr kleinen Displays Claim ausblenden, damit Menü Platz hat. */
+  .wordmark-claim{display:none}
+}
+
+/* ========================================================================== 
+   HEADER BRAND SWITCH (v12)
+   --------------------------------------------------------------------------
+   Neue Lösung auf Wunsch:
+   - Ganz oben auf der Seite: vollständiges Original-Logo sichtbar.
+   - Sobald gescrollt wird: nur noch das M-Signet mit Edelsteinen.
+
+   Beide Varianten liegen im selben Link und werden nur per CSS ein-/ausgeblendet.
+   Dadurch gibt es kein "immer kleiner werden" mehr beim Hochscrollen.
+   ========================================================================== */
+:root{
+  /* EDIT: Größen der beiden Logo-Zustände */
+  --header-height: 106px;
+  --header-top-logo-width: 250px;
+  --header-top-logo-height: 82px;
+  --header-mark-width: 70px;
+  --header-mark-height: 70px;
+  --header-brand-slot: 280px;
+}
+
+/* Header immer gut lesbar, unabhängig vom Bild darunter. */
+.site-header{
+  height:var(--header-height);
+  background:rgba(11,8,6,.97);
+  color:var(--header-text);
+  border-bottom:1px solid rgba(210,173,115,.22);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.site-header.is-scrolled{
+  background:#0a0806;
+  box-shadow:0 12px 34px rgba(0,0,0,.24);
+}
+
+.header-inner{
+  width:var(--shell);
+  height:var(--header-height);
+  margin:auto;
+  display:grid;
+  grid-template-columns:var(--header-brand-slot) 1fr;
+  align-items:center;
+  gap:20px;
+  position:relative;
+}
+
+/* Nur noch der Markenwechsel-Link, keine Plakette und keine Text-Bausteine mehr. */
+.wordmark{
+  position:relative;
+  left:auto;
+  top:auto;
+  width:var(--header-brand-slot);
+  height:var(--header-height);
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding:0;
+  background:none;
+  border:0;
+  box-shadow:none;
+  overflow:visible;
+}
+.wordmark-full,
+.wordmark-mark{
+  position:absolute;
+  left:0;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  transform-origin:left center;
+  transition:opacity .22s ease, transform .22s ease;
+}
+.wordmark-full{
+  width:var(--header-top-logo-width);
+  height:var(--header-top-logo-height);
+  opacity:1;
+}
+.wordmark-full img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:left center;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.20));
+}
+.wordmark-mark{
+  width:var(--header-mark-width);
+  height:var(--header-mark-height);
+  opacity:0;
+  transform:translateY(-50%) scale(.92);
+}
+.wordmark-mark img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:left center;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.20));
+}
+
+/* Scrolled-Zustand: volles Logo ausblenden, M einblenden. */
+.site-header.is-scrolled .wordmark-full{
+  opacity:0;
+  transform:translateY(-50%) scale(.9);
+  pointer-events:none;
+}
+.site-header.is-scrolled .wordmark-mark{
+  opacity:1;
+  transform:translateY(-50%) scale(1);
+}
+
+.main-nav{
+  grid-column:2;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:clamp(16px,1.65vw,32px);
+  color:var(--header-text);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  font-weight:650;
+}
+.main-nav a{white-space:nowrap;opacity:.98}
+.main-nav a:not(.nav-cta){padding:12px 0;border-bottom:1px solid transparent}
+.main-nav a:not(.nav-cta):hover{color:#fff7e8;border-color:rgba(210,173,115,.82)}
+.nav-cta{
+  padding:13px 18px;
+  border:1px solid rgba(210,173,115,.68);
+  color:#fff7e8;
+  background:rgba(255,255,255,.03);
+}
+.nav-cta:hover{background:rgba(210,173,115,.14);border-color:rgba(210,173,115,.95)}
+.menu-toggle span:not(.sr-only){background:var(--header-text)}
+
+@media (max-width:1180px){
+  :root{
+    --header-height: 96px;
+    --header-top-logo-width: 220px;
+    --header-top-logo-height: 72px;
+    --header-mark-width: 60px;
+    --header-mark-height: 60px;
+    --header-brand-slot: 245px;
+  }
+  .header-inner{gap:16px}
+}
+
+@media (max-width:860px){
+  :root{
+    --header-height: 84px;
+    --header-top-logo-width: 184px;
+    --header-top-logo-height: 60px;
+    --header-mark-width: 52px;
+    --header-mark-height: 52px;
+    --header-brand-slot: 196px;
+  }
+  .header-inner{
+    grid-template-columns:var(--header-brand-slot) auto;
+    gap:12px;
+  }
+}
+
+@media (max-width:560px){
+  :root{
+    --header-height: 76px;
+    --header-top-logo-width: 154px;
+    --header-top-logo-height: 52px;
+    --header-mark-width: 44px;
+    --header-mark-height: 44px;
+    --header-brand-slot: 164px;
+  }
+  .header-inner{gap:10px}
+}
+
+/* ========================================================================== 
+   WORD-CONTENT LAYOUT (v13)
+   --------------------------------------------------------------------------
+   Diese Regeln formatieren die 1:1 übernommenen Inhalte aus der Word-Datei,
+   ohne den Wortlaut zu verändern.
+   ========================================================================== */
+.home-copy-actions{margin-top:28px}
+.source-copy{max-width:720px;color:#514b43}
+.source-copy p{margin:0 0 18px}
+.source-copy p:first-child{font-family:var(--serif);font-size:24px;color:var(--ink)}
+.source-copy .button{margin-top:12px}
+.section-head-copy{max-width:610px}
+.section-head-copy .lead{font-family:var(--serif);font-size:25px;line-height:1.25;color:var(--ink);margin:0 0 12px}
+.section-head-copy p:not(.lead){margin:0;color:var(--muted)}
+.assortment-subtitle{font-family:var(--serif);font-size:32px;font-weight:400;margin:0 0 28px}
+.not-found-block{max-width:820px;margin-top:72px;padding-top:48px;border-top:1px solid var(--line)}
+.not-found-block h3{font-family:var(--serif);font-size:clamp(38px,4vw,58px);font-weight:400;line-height:1;margin:0 0 24px;letter-spacing:-.035em}
+.not-found-block p:not(.eyebrow){max-width:760px;margin:0 0 15px;color:var(--muted)}
+.not-found-block .button{margin-top:18px}
+.about-copy h3{font-family:var(--serif);font-size:30px;font-weight:400;line-height:1.1;margin:36px 0 16px}
+.brand-signature{display:block}
+.brand-signature-name{font-family:var(--serif);font-size:28px!important;color:var(--ink)!important;margin:0!important;letter-spacing:.08em}
+.brand-signature-claim{font-family:var(--serif);font-style:italic;font-size:20px!important;color:var(--gold)!important;margin:5px 0 0!important}
+.contact-copy p{margin:0 0 14px}
+.contact-mail-button{margin-top:28px}
+
+@media (max-width:860px){
+  .section-head-copy{max-width:720px}
+  .not-found-block{margin-top:56px;padding-top:38px}
+}
+
+/* ========================================================================== 
+   MERVELLE LIGHT THEME (v14)
+   --------------------------------------------------------------------------
+   Kundenfeedback: Die Website soll insgesamt hell, elegant und in Creme-/
+   Beigetönen erscheinen. Dieser Block überschreibt bewusst ältere dunkle
+   Farbstile, damit alle Bereiche visuell zusammenpassen.
+
+   EDIT: Die wichtigsten Markenfarben stehen direkt hier.
+   ========================================================================== */
+:root{
+  --paper:#f5eee5;
+  --paper-soft:#fbf8f3;
+  --ink:#2c241d;
+  --muted:#776b60;
+  --gold:#a9783f;
+  --gold-soft:#c8a979;
+  --line:rgba(74,57,43,.14);
+  --cream:#f2eadf;
+  --cream-2:#eadcca;
+  --cream-3:#dfccb5;
+  --header-text:#3b3027;
+  --header-accent:#a9783f;
+}
+
+body{background:var(--paper);color:var(--ink)}
+
+/* --------------------------------------------------------------------------
+   HEADER: kein Schwarz mehr. Der Header ist immer deckend und cremefarben.
+   Ganz oben vollständiges Logo, nach dem Scrollen nur das M-Signet.
+   Die äußere Headerhöhe bleibt konstant, damit beim Hochscrollen kein
+   Layout-Sprung entsteht.
+   -------------------------------------------------------------------------- */
+:root{
+  --header-height:112px;
+  --header-top-logo-width:118px;
+  --header-top-logo-height:102px;
+  --header-mark-width:72px;
+  --header-mark-height:64px;
+  --header-brand-slot:145px;
+}
+.site-header,
+.site-header.is-scrolled{
+  height:var(--header-height);
+  background:rgba(245,238,229,.985);
+  color:var(--header-text);
+  border-bottom:1px solid rgba(132,99,65,.18);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.site-header.is-scrolled{
+  background:rgba(241,232,220,.99);
+  box-shadow:0 10px 30px rgba(75,54,36,.10);
+}
+.header-inner{
+  height:var(--header-height);
+  grid-template-columns:var(--header-brand-slot) 1fr;
+  gap:24px;
+}
+.wordmark{
+  width:var(--header-brand-slot);
+  height:var(--header-height);
+}
+.wordmark-full{
+  width:var(--header-top-logo-width);
+  height:var(--header-top-logo-height);
+}
+.wordmark-mark{
+  width:var(--header-mark-width);
+  height:var(--header-mark-height);
+}
+.wordmark-full img,
+.wordmark-mark img{
+  filter:drop-shadow(0 4px 10px rgba(104,72,42,.10));
+}
+.main-nav{color:#493c31}
+.main-nav a{opacity:1}
+.main-nav a:not(.nav-cta):hover{color:#8d6339;border-color:#b99160}
+.nav-cta{
+  border-color:#ab875d;
+  color:#49362a;
+  background:rgba(255,255,255,.28);
+}
+.nav-cta:hover{background:#e8d8c5;border-color:#9a7249;color:#34271e}
+.menu-toggle span:not(.sr-only){background:#493c31}
+
+/* --------------------------------------------------------------------------
+   HERO: helle Editorial-Optik. Das final gelieferte Perlenbild (M5) sitzt
+   rechts; links bleibt eine ruhige Cremefläche für den Text.
+   -------------------------------------------------------------------------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(110deg,#f6f0e8 0%,#f3eadf 54%,#e9dac8 100%);
+  color:var(--ink);
+  border-bottom:1px solid var(--line);
+}
+.hero-bg{
+  position:absolute;
+  inset:0 0 0 43%;
+  overflow:hidden;
+}
+.hero-bg img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:center 55%;
+  filter:saturate(.94) contrast(.98) brightness(1.03);
+  transform:none;
+}
+.hero::after{
+  content:"";
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(90deg,#f6f0e8 0%,rgba(246,240,232,.98) 34%,rgba(246,240,232,.80) 49%,rgba(246,240,232,.12) 70%,rgba(246,240,232,.04) 100%),
+    linear-gradient(180deg,rgba(255,255,255,.08),rgba(214,192,167,.08));
+}
+.hero-stage{
+  min-height:720px;
+  padding:72px 0 62px;
+  grid-template-columns:minmax(0,.90fr) minmax(280px,.58fr);
+  align-items:center;
+}
+.hero-copy{max-width:650px;padding-top:0}
+.hero .eyebrow{color:#9a6d3e}
+.hero h1{color:#2f251d;font-size:clamp(68px,6.2vw,102px)}
+.hero h1 em{color:#7f5a35;text-shadow:none}
+.hero-lead{color:#332920}
+.hero-sub{color:#76695e}
+.hero .text-link{color:#5b4736}
+.button-gold{background:#c5a06e;border-color:#c5a06e;color:#302419}
+.button-gold:hover{background:#b98e59;border-color:#b98e59;color:#fff}
+.hero-aside{justify-content:flex-end;align-items:flex-end}
+.hero-callout{
+  color:#fffaf3;
+  text-shadow:0 4px 24px rgba(72,45,24,.22);
+  background:rgba(141,103,66,.16);
+  backdrop-filter:blur(5px);
+  padding:18px 22px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:2px;
+}
+
+/* --------------------------------------------------------------------------
+   HELLE SEKTIONSFARBEN
+   -------------------------------------------------------------------------- */
+.intro{background:#fcfaf6}
+.request{background:#f3e9dc}
+.benefits{background:#fbf8f3}
+.assortment{background:#eee2d3}
+.about{background:#f7f1e9}
+
+/* Früher dunkler Kontaktbereich -> warme Beige-Fläche. */
+.contact{
+  background:#d9c3a9;
+  color:#30261f;
+  border-top:1px solid rgba(78,58,42,.10);
+}
+.contact .eyebrow.inverse{color:#855d34}
+.contact-copy{color:#625244}
+.contact-copy dl{border-top-color:rgba(72,53,39,.20)}
+.contact-copy dl div{border-bottom-color:rgba(72,53,39,.16)}
+.contact-copy dd{color:#30261f}
+.contact-mail-button{background:#a87842;border-color:#a87842;color:#fffaf3}
+.contact-mail-button:hover{background:#8f6438;border-color:#8f6438}
+
+/* Footer ebenfalls hell statt schwarz. */
+.site-footer{
+  background:#cdb59a;
+  color:#59493c;
+  border-top:1px solid rgba(73,53,38,.12);
+}
+.site-footer nav{color:#3e3026}
+.footer-note{color:#756252}
+.footer-brand img{filter:drop-shadow(0 3px 8px rgba(87,58,32,.08))}
+
+/* Buttons, Filter und Karten auf die neue helle Farbwelt abstimmen. */
+.button-dark{background:#4b3b2e;border-color:#4b3b2e;color:#fffaf4}
+.button-dark:hover{background:#6a513d;border-color:#6a513d}
+.filter-chip:hover,.filter-chip.is-active{background:#8f693f;border-color:#8f693f;color:#fff}
+.catalog-panel{background:rgba(255,252,247,.54);border-color:rgba(92,69,49,.14)}
+.search-field input,.select-field select{background:#fffaf4;border-color:rgba(92,69,49,.18)}
+.catalog-image{background:#e5d8c9}
+.catalog-info small{color:#93683b}
+.product-modal{background:#fbf8f2}
+.modal-media{background:#eadfD3}
+.modal-media img{background:#f2ebe2}
+
+/* Über-uns-Bild und große Fotos bekommen weichere Kanten/Farben. */
+.about-image{background:#e8dccf}
+.about-image img{filter:saturate(.96) brightness(1.02)}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width:1180px){
+  :root{
+    --header-height:100px;
+    --header-top-logo-width:106px;
+    --header-top-logo-height:92px;
+    --header-mark-width:64px;
+    --header-mark-height:58px;
+    --header-brand-slot:132px;
+  }
+  .hero-stage{min-height:650px}
+}
+@media (max-width:860px){
+  :root{
+    --header-height:84px;
+    --header-top-logo-width:84px;
+    --header-top-logo-height:76px;
+    --header-mark-width:54px;
+    --header-mark-height:50px;
+    --header-brand-slot:100px;
+  }
+  .main-nav{
+    top:var(--header-height);
+    background:#f3eadf;
+    border-bottom:1px solid rgba(92,69,49,.14);
+    color:#493c31;
+  }
+  .main-nav a{color:#493c31;border-bottom-color:rgba(92,69,49,.10)}
+  .main-nav .nav-cta{border-color:#aa8458}
+  .hero-bg{inset:45% 0 0 0}
+  .hero::after{
+    background:linear-gradient(180deg,#f6f0e8 0%,rgba(246,240,232,.98) 48%,rgba(246,240,232,.58) 65%,rgba(246,240,232,.08) 100%);
+  }
+  .hero-stage{min-height:780px;grid-template-columns:1fr;align-items:start;padding:62px 0 48px}
+  .hero-copy{max-width:680px}
+  .hero-aside{min-height:300px;justify-content:flex-end;align-items:flex-start}
+  .hero-callout{font-size:32px;text-align:left}
+}
+@media (max-width:560px){
+  :root{
+    --header-height:76px;
+    --header-top-logo-width:74px;
+    --header-top-logo-height:66px;
+    --header-mark-width:46px;
+    --header-mark-height:44px;
+    --header-brand-slot:86px;
+  }
+  .hero-stage{min-height:720px;padding-top:48px}
+  .hero h1{font-size:clamp(52px,14vw,72px)}
+  .hero-callout{font-size:27px}
+}
+
+
+/* ==========================================================================
+   HERO FULL-BLEED IMAGE (v15)
+   --------------------------------------------------------------------------
+   EDIT: Das Hero-Bild läuft jetzt über die komplette Breite – auch hinter
+   dem Text links. Ein heller Creme-Verlauf sorgt weiterhin für Lesbarkeit.
+   ========================================================================== */
+.hero-bg{
+  inset:0;
+}
+.hero-bg img{
+  object-position:center 55%;
+}
+.hero::after{
+  background:
+    linear-gradient(90deg,
+      rgba(246,240,232,.97) 0%,
+      rgba(246,240,232,.93) 28%,
+      rgba(246,240,232,.78) 46%,
+      rgba(246,240,232,.38) 64%,
+      rgba(246,240,232,.10) 82%,
+      rgba(246,240,232,.04) 100%),
+    linear-gradient(180deg,rgba(255,255,255,.08),rgba(214,192,167,.08));
+}
+.hero-callout{
+  font-style:normal;
+  font-size:clamp(22px,2.1vw,34px);
+  letter-spacing:.04em;
+  color:#fffaf3;
+  background:rgba(122,91,61,.18);
+  padding:15px 20px;
+}
+
+@media (max-width:860px){
+  .hero-bg{inset:0}
+  .hero::after{
+    background:linear-gradient(180deg,
+      rgba(246,240,232,.96) 0%,
+      rgba(246,240,232,.92) 42%,
+      rgba(246,240,232,.58) 62%,
+      rgba(246,240,232,.12) 100%);
+  }
+}
+
+/* ========================================================================== 
+   MERVELLE FEEDBACK ROUND – v16
+   --------------------------------------------------------------------------
+   Zentrale Designvorgaben aus dem Kundenfeedback:
+   - warmer Ivory-/Cremegrund, Champagner, Beige und Taupe
+   - dezente Bronze-/Goldakzente statt dunkler Flächen
+   - viel Weißraum, große Produktbilder, B2B-Showroom statt Shop
+   - MERVELLE GEMSTONES immer vollständig ausgeschrieben
+   - eigener Seitenaufbau für Produkte, Dienstleistungen, Über uns und Kontakt
+   ========================================================================== */
+:root{
+  --paper:#f7f2ea;
+  --paper-soft:#fcfaf6;
+  --ivory:#fbf8f1;
+  --champagne:#e9ddca;
+  --beige:#eee4d7;
+  --taupe:#8a7766;
+  --taupe-dark:#514438;
+  --ink:#43382f;
+  --muted:#75695f;
+  --gold:#a7835e;
+  --bronze:#96704d;
+  --line:rgba(81,68,56,.14);
+  --white:#fffdf9;
+  --dark:#514438;
+  --header-text:#4d4137;
+  --header-accent:#9f7a55;
+}
+body{background:var(--paper);color:var(--ink)}
+
+/* HEADER: bewusst hell und deckend, damit die Navigation immer lesbar bleibt. */
+.site-header,.site-header.is-scrolled{
+  background:rgba(248,243,235,.985);
+  color:var(--header-text);
+  border-bottom:1px solid rgba(104,83,65,.14);
+  box-shadow:none;
+}
+.site-header.is-scrolled{background:rgba(245,238,228,.995);box-shadow:0 8px 28px rgba(77,62,48,.08)}
+.main-nav{color:var(--header-text)}
+.main-nav a[aria-current="page"]{color:var(--bronze);border-bottom-color:var(--bronze)}
+.main-nav a:not(.nav-cta):hover{color:var(--bronze);border-color:rgba(150,112,77,.5)}
+.nav-cta{border-color:rgba(150,112,77,.55);color:#5a4636;background:rgba(255,255,255,.32)}
+.nav-cta:hover{background:#e7d9c6;border-color:var(--bronze);color:#423329}
+.menu-toggle span:not(.sr-only){background:var(--header-text)}
+
+/* HERO HOME: Bild bleibt full-bleed, Markenname steht klar im Mittelpunkt. */
+.hero-home{min-height:760px;background:#e9dfd2;color:var(--ink)}
+.hero-home .hero-bg{inset:0}
+.hero-home .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 54%;filter:saturate(.92) brightness(1.04) contrast(.96)}
+.hero-home::after{
+  background:linear-gradient(90deg,
+    rgba(249,244,236,.97) 0%,
+    rgba(249,244,236,.94) 27%,
+    rgba(249,244,236,.78) 47%,
+    rgba(249,244,236,.38) 66%,
+    rgba(249,244,236,.08) 87%,
+    rgba(249,244,236,.03) 100%);
+}
+.hero-home .hero-stage{min-height:760px;padding:84px 0 68px;align-items:center}
+.hero-brand-copy{max-width:760px}
+.hero-kicker{margin:0 0 22px;text-transform:uppercase;letter-spacing:.22em;font-size:10px;font-weight:700;color:var(--bronze)}
+.hero-brand-title{font-family:var(--serif);font-size:clamp(78px,8.5vw,146px)!important;line-height:.82!important;letter-spacing:-.055em!important;font-weight:400!important;color:#3f342c!important;margin:0!important}
+.hero-claim{font-family:var(--serif);font-size:clamp(19px,1.6vw,27px);font-style:italic;color:var(--bronze);margin:28px 0 20px;letter-spacing:.01em}
+.hero-b2b{font-family:var(--serif);font-size:clamp(18px,1.5vw,25px);line-height:1.38;max-width:600px;margin:0 0 10px;color:#4e4238}
+.hero-home .hero-sub{font-size:14px;color:#74675c;max-width:620px}
+.hero-home .hero-callout{font-family:var(--sans);font-style:normal;font-size:13px;text-transform:uppercase;letter-spacing:.16em;color:#5a4636;background:rgba(250,246,239,.74);border:1px solid rgba(112,84,59,.14);backdrop-filter:blur(8px);padding:12px 16px;text-shadow:none}
+.button-bronze{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border:1px solid var(--bronze);background:var(--bronze);color:#fffaf3;text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:750;cursor:pointer;transition:.2s ease}
+.button-bronze:hover{background:#805d3f;border-color:#805d3f}
+.button-outline{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border:1px solid rgba(81,68,56,.34);background:transparent;color:var(--ink);text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:750;cursor:pointer;transition:.2s ease}
+.button-outline:hover{border-color:var(--bronze);background:rgba(167,131,94,.08);color:#6d5038}
+
+/* Home introductory section */
+.brand-intro{background:var(--paper-soft)}
+.brand-intro .intro-grid{align-items:start}
+.brand-intro h2{font-family:var(--serif);font-size:clamp(50px,4.7vw,76px);font-weight:400;letter-spacing:-.045em;line-height:.95;margin:0}
+.brand-intro .intro-copy{padding-top:36px}
+
+/* SHOWROOM TEASER */
+.home-showroom{background:var(--ivory)}
+.showroom-head{align-items:end}
+.showroom-head>div:last-child{display:grid;gap:22px;justify-items:start}
+.showroom-preview{display:grid;grid-template-columns:1.35fr .85fr .85fr;grid-auto-rows:330px;gap:16px}
+.showroom-shot{position:relative;overflow:hidden;background:#e8ded1;display:block}
+.showroom-shot img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.showroom-shot:hover img{transform:scale(1.025)}
+.showroom-shot::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(180deg,transparent,rgba(45,35,28,.52))}
+.showroom-shot span{position:absolute;z-index:2;left:24px;bottom:22px;color:#fffdf9;font-family:var(--serif);font-size:25px;line-height:1.05;max-width:80%}
+.showroom-shot-large{grid-row:span 2}
+.showroom-shot-wide{grid-column:2/4}
+
+/* INDIVIDUELLE BESCHAFFUNG */
+.sourcing-highlight{background:var(--champagne);padding:clamp(96px,9vw,150px) 0}
+.sourcing-highlight-grid{display:grid;grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);gap:clamp(70px,8vw,130px);align-items:center}
+.sourcing-highlight-copy{max-width:610px}
+.sourcing-highlight h2,.presentation-cta h2,.home-contact-cta h2{font-family:var(--serif);font-size:clamp(52px,5vw,84px);line-height:.94;font-weight:400;letter-spacing:-.045em;margin:0 0 28px}
+.sourcing-highlight .lead{font-family:var(--serif);font-size:25px;color:var(--ink)}
+.sourcing-highlight-copy>p:not(.eyebrow){color:#65574b}
+.sourcing-highlight-media{height:680px;overflow:hidden;background:#ddd0bf}
+.sourcing-highlight-media img{width:100%;height:100%;object-fit:cover}
+
+.home-benefits{background:#fbf8f2}
+.presentation-cta{background:#f0e5d7}
+.presentation-grid,.contact-cta-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.8fr);gap:80px;align-items:end}
+.presentation-grid>div:last-child,.contact-cta-inner>div:last-child{max-width:600px;display:grid;gap:24px;justify-items:start;color:var(--muted)}
+.home-contact-cta{background:#f9f5ee}
+
+/* SUBPAGE HERO */
+.page-hero{padding:clamp(70px,7vw,110px) 0;background:linear-gradient(135deg,#fbf8f2 0%,#eee4d7 100%);border-bottom:1px solid var(--line)}
+.page-hero-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:clamp(60px,8vw,130px);align-items:center}
+.page-hero h1{font-family:var(--serif);font-size:clamp(68px,6.8vw,112px);font-weight:400;line-height:.9;letter-spacing:-.052em;margin:0 0 30px}
+.page-lead{font-family:var(--serif);font-size:clamp(21px,1.8vw,29px);line-height:1.4;color:#5f5044;max-width:650px}
+.page-hero-image{height:590px;overflow:hidden;background:#e4d8ca}
+.page-hero-image img{width:100%;height:100%;object-fit:cover}
+
+/* PRODUCT SHOWROOM */
+.product-categories{background:#fcfaf6;padding-bottom:40px}
+.showroom-categories{margin-bottom:0}
+.showroom-section{background:#f4ece2}
+.showroom-section .catalog-panel{margin-top:10px;background:rgba(255,253,249,.74)}
+.showroom-grid.catalog-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px 22px}
+.showroom-grid .catalog-image{aspect-ratio:4/5;background:#e5d9cb}
+.showroom-grid .catalog-info{padding:16px 2px 8px}
+.showroom-grid .catalog-info strong{font-size:24px}
+.showroom-grid .catalog-info p{display:none}
+.showroom-grid .catalog-info small{color:var(--bronze)}
+.showroom-source-cta{background:#f8f3ec}
+
+/* SERVICES */
+.service-block{background:#fbf8f2}
+.service-block-alt{background:#eee3d5}
+.service-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(70px,8vw,130px);align-items:center}
+.service-grid.reverse>div:first-child{order:2}.service-grid.reverse>.service-image{order:1}
+.service-grid h2{font-family:var(--serif);font-size:clamp(52px,5vw,82px);font-weight:400;letter-spacing:-.045em;line-height:.95;margin:0 0 24px}
+.service-grid .lead{font-family:var(--serif);font-size:25px;color:var(--ink)}
+.service-grid p:not(.eyebrow){color:var(--muted);max-width:620px}
+.service-image{height:650px;overflow:hidden;background:#e1d6c8}
+.service-image img{width:100%;height:100%;object-fit:cover}
+.service-summary{background:#f9f5ef}
+.three-service-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.three-service-grid article{padding:34px 36px;border-right:1px solid var(--line)}
+.three-service-grid article:last-child{border-right:0}
+.three-service-grid span{font-size:10px;color:var(--bronze);font-weight:800}.three-service-grid h3{font-family:var(--serif);font-size:27px;font-weight:400;margin:22px 0 10px}.three-service-grid p{color:var(--muted);font-size:14px}
+
+/* ABOUT */
+.about-page{background:#fbf8f2}
+.about-partnership{background:#eee4d7}
+.about-page-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(70px,9vw,150px);align-items:start}
+.about-page-grid h2{font-family:var(--serif);font-size:clamp(52px,5vw,82px);font-weight:400;line-height:.95;letter-spacing:-.045em;margin:0}
+.about-page-copy{max-width:680px;color:var(--muted);font-size:16px}.about-page-copy p{margin:0 0 22px}
+.about-wide-image{height:650px;overflow:hidden}.about-wide-image img{width:100%;height:100%;object-fit:cover}
+.about-visual{background:#f7f2ea;padding-top:40px}
+
+/* CONTACT */
+.page-hero-contact{background:#f7f1e8}
+.contact-options{background:#fbf8f2}
+.contact-option-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.contact-option-grid article{border:1px solid var(--line);background:#fffdf9;padding:36px 32px;min-height:360px;display:flex;flex-direction:column;align-items:flex-start}
+.contact-option-grid article>span{font-size:10px;color:var(--bronze);font-weight:800}.contact-option-grid h2{font-family:var(--serif);font-size:34px;font-weight:400;line-height:1.02;margin:28px 0 18px}.contact-option-grid p{color:var(--muted);margin:0 0 30px}.contact-option-grid .button{margin-top:auto}
+.sourcing-form-section{background:#eee3d5}
+.request-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(60px,8vw,130px);align-items:start}
+.request-intro h2{font-family:var(--serif);font-size:clamp(52px,5vw,82px);font-weight:400;letter-spacing:-.045em;line-height:.95;margin:0 0 26px}.request-intro>p:not(.eyebrow){color:var(--muted);max-width:560px}
+.request-hints{display:flex;flex-wrap:wrap;gap:7px;margin-top:28px}.request-hints span{border:1px solid var(--line);padding:7px 10px;font-size:9px;text-transform:uppercase;letter-spacing:.12em;background:rgba(255,255,255,.25)}
+.request-form{display:grid;gap:18px}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field-row.three{grid-template-columns:repeat(3,1fr)}
+.request-form label{display:grid;gap:7px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:700}.request-form input,.request-form select,.request-form textarea{width:100%;border:0;border-bottom:1px solid #a99a8d;background:transparent;padding:13px 0;color:var(--ink);outline:none;border-radius:0;text-transform:none;letter-spacing:0;font-weight:400}.request-form input:focus,.request-form select:focus,.request-form textarea:focus{border-bottom-color:var(--bronze);box-shadow:0 1px 0 var(--bronze)}.request-form textarea{resize:vertical}.request-form .button{justify-self:start}.form-status{min-height:20px;margin:0;color:var(--muted);font-size:12px}
+.contact-details{background:#f8f3ec}.contact-dl{margin:0;border-top:1px solid var(--line);width:100%}.contact-dl div{display:grid;grid-template-columns:120px 1fr;gap:22px;padding:14px 0;border-bottom:1px solid var(--line)}.contact-dl dt{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--bronze)}.contact-dl dd{margin:0;color:var(--ink)}
+
+/* FOOTER: hell, ruhig, weniger schwer als zuvor. */
+.site-footer{background:#e5d7c5;color:#625448;border-top:1px solid rgba(82,66,52,.12)}
+.footer-grid{grid-template-columns:auto 1fr auto;gap:30px;padding:44px 0;align-items:center}
+.footer-brand img{height:80px;width:auto;max-width:190px}.site-footer nav{color:#4d4035;display:flex;gap:20px;flex-wrap:wrap}.footer-legal{grid-column:2/-1;justify-content:flex-end;font-size:11px}.site-footer p{margin:0}
+
+/* MODAL auf helle Markenwelt abstimmen. */
+.product-modal{background:#fbf8f2}.product-modal::backdrop{background:rgba(67,56,47,.54);backdrop-filter:blur(5px)}.modal-media{background:#e7dccf}.modal-media img{background:#f2ece4}.modal-copy>p:not(.eyebrow){color:var(--muted)}
+
+@media(max-width:1180px){
+  .showroom-grid.catalog-grid{grid-template-columns:repeat(2,1fr)}
+  .showroom-preview{grid-template-columns:1.2fr 1fr;grid-auto-rows:290px}.showroom-shot-large{grid-row:span 2}.showroom-shot-wide{grid-column:1/-1}
+}
+@media(max-width:860px){
+  .main-nav{top:var(--header-height);background:#f6efe5;border-bottom:1px solid var(--line)}
+  .main-nav a{color:var(--ink)}
+  .hero-home::after{background:linear-gradient(180deg,rgba(249,244,236,.97) 0%,rgba(249,244,236,.92) 48%,rgba(249,244,236,.54) 66%,rgba(249,244,236,.09) 100%)}
+  .hero-home .hero-stage{min-height:820px;grid-template-columns:1fr;align-items:start;padding:70px 0 50px}
+  .hero-brand-title{font-size:clamp(62px,14vw,96px)!important}
+  .hero-aside{min-height:210px;justify-content:flex-end;align-items:flex-start}
+  .showroom-preview,.page-hero-grid,.sourcing-highlight-grid,.presentation-grid,.contact-cta-inner,.service-grid,.about-page-grid,.request-grid{grid-template-columns:1fr}
+  .showroom-preview{grid-auto-rows:300px}.showroom-shot-large{grid-row:auto}.showroom-shot-wide{grid-column:auto}.showroom-shot{min-height:300px}
+  .sourcing-highlight-media,.service-image,.page-hero-image,.about-wide-image{height:52vh;min-height:420px}
+  .service-grid.reverse>div:first-child,.service-grid.reverse>.service-image{order:initial}
+  .three-service-grid,.contact-option-grid{grid-template-columns:1fr}.three-service-grid article{border-right:0;border-bottom:1px solid var(--line)}.three-service-grid article:last-child{border-bottom:0}
+  .footer-grid{grid-template-columns:1fr}.footer-legal{grid-column:auto;justify-content:flex-start}
+}
+@media(max-width:560px){
+  .hero-brand-title{font-size:clamp(52px,15vw,74px)!important}
+  .hero-claim{font-size:19px}.hero-b2b{font-size:19px}
+  .showroom-grid.catalog-grid{grid-template-columns:1fr}.showroom-grid .catalog-image{aspect-ratio:5/4}
+  .page-hero h1{font-size:clamp(52px,13vw,76px)}
+  .field-row,.field-row.three{grid-template-columns:1fr}
+  .sourcing-highlight-media,.service-image,.page-hero-image,.about-wide-image{height:46vh;min-height:340px}
+  .contact-option-grid article{min-height:310px;padding:30px 24px}
+}
+
+/* ========================================================================== 
+   COMPACT PAGE ARCHITECTURE (v17)
+   --------------------------------------------------------------------------
+   Ziel: weniger Scrolltiefe auf Home/Produkte, keine doppelten Kontakt-CTAs,
+   Dienstleistungen klarer bündeln und die Kontaktseite in einem Hub organisieren.
+   ========================================================================== */
+
+/* Header: "Kontakt" ist jetzt der einzige globale Kontaktpunkt; kein zweiter CTA. */
+.header-inner{grid-template-columns:var(--header-brand-slot) 1fr}
+.main-nav{gap:clamp(18px,2vw,36px)}
+
+/* HOME: hero etwas kompakter, ohne an Präsenz zu verlieren. */
+.hero-home{min-height:650px}
+.hero-home .hero-stage{min-height:650px;padding:64px 0 54px}
+.hero-brand-title{font-size:clamp(72px,7.8vw,132px)!important}
+
+/* HOME SHOWROOM: vier Bildwelten in einer kompakten Reihe statt langem Mosaic. */
+.home-showroom{padding:clamp(66px,6vw,92px) 0}
+.showroom-head{margin-bottom:34px}
+.showroom-preview-compact{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:300px;
+  gap:14px;
+}
+.showroom-preview-compact .showroom-shot,
+.showroom-preview-compact .showroom-shot-large,
+.showroom-preview-compact .showroom-shot-wide{
+  grid-column:auto;
+  grid-row:auto;
+  min-height:0;
+}
+.showroom-preview-compact .showroom-shot span{font-size:21px;left:18px;bottom:18px}
+
+/* HOME VALUE: Beschaffung + Kernargumente in einem einzigen Abschnitt. */
+.home-value-section{background:var(--champagne);padding:clamp(72px,6.5vw,104px) 0}
+.home-value-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(54px,7vw,110px);align-items:start}
+.sourcing-compact{max-width:620px}
+.sourcing-compact h2{font-family:var(--serif);font-size:clamp(48px,4.7vw,76px);font-weight:400;line-height:.96;letter-spacing:-.045em;margin:0 0 24px}
+.sourcing-compact>p:not(.eyebrow){color:#65574b;margin:0 0 26px}
+.benefits-compact{border-top:1px solid var(--line)}
+.benefits-compact article{display:grid;grid-template-columns:42px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.benefits-compact article>span{font-size:10px;font-weight:800;color:var(--bronze);padding-top:5px}
+.benefits-compact h3{font-family:var(--serif);font-size:25px;font-weight:400;margin:0 0 7px}
+.benefits-compact p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+
+/* Persönlicher Vorführtermin nur noch als schmaler Abschluss-Strip. */
+.presentation-cta{padding:58px 0;background:#f0e5d7}
+.presentation-cta h2{font-size:clamp(38px,3.7vw,58px);margin-bottom:0}
+.presentation-grid{align-items:center;gap:60px}
+.presentation-grid>div:last-child{gap:18px}
+
+/* SUBPAGES: kleinere Heros und Bilder = schneller am eigentlichen Inhalt. */
+.page-hero{padding:54px 0}
+.page-hero-grid{gap:clamp(44px,6vw,90px)}
+.page-hero h1{font-size:clamp(58px,5.8vw,92px);margin-bottom:22px}
+.page-lead{font-size:clamp(19px,1.55vw,25px)}
+.page-hero-image{height:410px}
+.page-hero-compact .page-hero-image{height:360px}
+
+/* PRODUKTE: Showroom startet direkt nach Hero, ohne separaten Kategorie-Block. */
+.showroom-section{padding:clamp(60px,5.5vw,86px) 0}
+.showroom-section .section-head{margin-bottom:30px}
+.showroom-grid.catalog-grid{gap:24px 18px}
+.catalog-more{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:34px;min-height:52px}
+.catalog-more small{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.catalog-more[hidden]{display:none}
+.showroom-source-cta{padding:54px 0}
+.showroom-source-cta h2{font-size:clamp(38px,3.7vw,58px);margin-bottom:0}
+.showroom-source-cta .contact-cta-inner{align-items:center}
+
+/* DIENSTLEISTUNGEN: zwei Kernleistungen, Prozess direkt im Beschaffungsblock. */
+.service-block{padding:clamp(64px,5.8vw,92px) 0}
+.service-image{height:500px}
+.service-grid h2{font-size:clamp(46px,4.4vw,70px)}
+.service-steps-inline{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 28px}
+.service-steps-inline span{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);padding:8px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:#67594d;background:rgba(255,255,255,.24)}
+.service-steps-inline b{font-size:9px;color:var(--bronze)}
+
+/* KONTAKT: ein Hub statt drei Cards + Formular + Extra-Kontaktblock. */
+.contact-hub{background:#f8f3ec;padding:clamp(66px,6vw,96px) 0}
+.contact-hub-grid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(54px,7vw,110px);align-items:start}
+.contact-hub-info{position:sticky;top:calc(var(--header-height) + 28px)}
+.contact-hub-info h2,.contact-sourcing-card h2{font-family:var(--serif);font-size:clamp(44px,4.2vw,68px);font-weight:400;line-height:.96;letter-spacing:-.04em;margin:0 0 22px}
+.contact-hub-info>p:not(.eyebrow),.contact-sourcing-card>p:not(.eyebrow){color:var(--muted);max-width:580px}
+.contact-mail-actions{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 34px}
+.contact-hub-info .contact-dl{margin-top:0}
+.contact-sourcing-card{background:#eee3d5;padding:clamp(30px,3.8vw,52px)}
+.contact-sourcing-card .request-hints{margin:20px 0 26px}
+.compact-request-form{gap:15px}
+.compact-request-form textarea{min-height:92px}
+
+@media(max-width:1180px){
+  .showroom-preview-compact{grid-template-columns:repeat(2,1fr);grid-auto-rows:270px}
+  .home-value-grid{gap:56px}
+}
+
+@media(max-width:860px){
+  .hero-home{min-height:700px}.hero-home .hero-stage{min-height:700px;padding:58px 0 44px}
+  .showroom-preview-compact{grid-template-columns:repeat(2,1fr);grid-auto-rows:260px}
+  .home-value-grid,.contact-hub-grid{grid-template-columns:1fr}
+  .contact-hub-info{position:static}
+  .page-hero-image{height:42vh;min-height:320px}
+  .service-image{height:44vh;min-height:340px}
+}
+
+@media(max-width:560px){
+  .showroom-preview-compact{grid-template-columns:1fr;grid-auto-rows:250px}
+  .showroom-preview-compact .showroom-shot:nth-child(n+4){display:none}
+  .home-showroom,.home-value-section,.service-block,.showroom-section,.contact-hub{padding:58px 0}
+  .presentation-cta{padding:46px 0}
+  .catalog-more{flex-direction:column;gap:10px}
+  .contact-mail-actions{display:grid;grid-template-columns:1fr}
+  .contact-mail-actions .button{width:100%}
+  .contact-sourcing-card{padding:28px 20px}
+}
+
+/* Feintuning v17.1: Produktseite noch kompakter. */
+.showroom-grid .catalog-image{aspect-ratio:1/1}
+.page-hero-contact .page-hero-image{height:320px}
+.service-image{height:460px}
+
+
+/* ========================================================================== 
+   TYPOGRAFIE + HERO FEINTUNING (v18)
+   --------------------------------------------------------------------------
+   Änderungswünsche September 2026:
+   - MERVELLE GEMSTONES ca. 1/3 kleiner
+   - B2B-Leitsatz ca. doppelt so groß
+   - Navigation ca. doppelt so groß
+   - alle echten Buttons gleich groß und ca. 1/3 größer
+   - Hero-Foto gespiegelt, damit die Perlen rechts im Freiraum liegen
+   ========================================================================== */
+
+/* HERO-BILD: horizontal spiegeln, Perlen liegen dadurch auf der rechten Seite. */
+.hero-home .hero-bg img{
+  object-position:center 54%;
+  transform:scaleX(-1) scale(1.015);
+  transform-origin:center;
+}
+
+/* Markenname: ca. ein Drittel kleiner als zuvor. */
+.hero-brand-title{
+  font-size:clamp(48px,5.2vw,88px)!important;
+  line-height:.88!important;
+  letter-spacing:-.045em!important;
+}
+
+/* B2B-Zeile: bewusst deutlich größer und prominenter. */
+.hero-b2b{
+  font-size:clamp(36px,3vw,50px)!important;
+  line-height:1.16!important;
+  max-width:760px!important;
+  margin:22px 0 16px!important;
+}
+
+/* Claim bleibt klar kleiner als Markenname und B2B-Leitsatz. */
+.hero-claim{
+  font-size:clamp(18px,1.35vw,24px)!important;
+  margin:20px 0 14px!important;
+}
+.hero-home .hero-sub{
+  font-size:15px!important;
+  line-height:1.55;
+}
+
+/* Navigation: etwa doppelte Schriftgröße gegenüber der bisherigen 11px-Regel. */
+.main-nav{
+  font-size:22px!important;
+  gap:clamp(22px,2.25vw,42px)!important;
+  letter-spacing:.09em!important;
+  font-weight:600!important;
+}
+
+/*
+  EINHEITLICHE BUTTON-GRÖSSE
+  Alle Elemente mit .button erhalten dieselbe Höhe, Mindestbreite und Typografie.
+  EDIT: Für spätere Anpassungen nur diese Werte ändern.
+*/
+.button,
+.button-bronze,
+.button-outline,
+.contact-mail-button{
+  min-height:66px!important;
+  min-width:230px;
+  padding:0 30px!important;
+  font-size:15px!important;
+  line-height:1!important;
+  letter-spacing:.12em!important;
+  white-space:nowrap;
+}
+
+.hero-actions{
+  gap:16px!important;
+  align-items:center!important;
+}
+
+/* Bei mittleren Screens Navigation leicht reduzieren, bevor das Mobile-Menü greift. */
+@media(max-width:1180px){
+  .main-nav{
+    font-size:18px!important;
+    gap:18px!important;
+  }
+  .hero-brand-title{font-size:clamp(46px,6vw,78px)!important}
+  .hero-b2b{font-size:clamp(31px,3.6vw,43px)!important}
+}
+
+@media(max-width:860px){
+  .main-nav{font-size:18px!important}
+  .hero-home .hero-bg img{
+    object-position:center 52%;
+    transform:scaleX(-1) scale(1.02);
+  }
+  .hero-brand-title{font-size:clamp(46px,11vw,70px)!important}
+  .hero-b2b{font-size:clamp(28px,7vw,38px)!important;max-width:92%!important}
+  .button,
+  .button-bronze,
+  .button-outline,
+  .contact-mail-button{min-height:62px!important;min-width:210px;font-size:14px!important}
+}
+
+@media(max-width:560px){
+  .hero-brand-title{font-size:clamp(42px,12vw,62px)!important}
+  .hero-b2b{font-size:clamp(25px,7.5vw,34px)!important}
+  .hero-actions{display:grid!important;grid-template-columns:1fr!important;width:100%;max-width:330px}
+  .button,
+  .button-bronze,
+  .button-outline,
+  .contact-mail-button{width:100%;min-width:0;min-height:60px!important;font-size:13px!important}
+}
+
+
+/* ========================================================================== 
+   FEEDBACK UPDATE – Screenshots September 2026 (v19)
+   --------------------------------------------------------------------------
+   - Navigation ohne "Dienstleistungen"
+   - kompaktere Seitenlängen
+   - Home mit klarer Markenhierarchie
+   - Dienstleistungen in Home, Produkte, Über uns und Kontakt integriert
+   - Produktbilder ruhiger und einheitlicher dargestellt
+   ========================================================================== */
+
+:root{
+  --header-height: 96px;
+  --header-top-logo-width: 136px;
+  --header-top-logo-height: 78px;
+  --header-mark-width: 58px;
+  --header-mark-height: 52px;
+  --header-brand-slot: 152px;
+}
+
+.main-nav{
+  font-size:15px!important;
+  gap:clamp(20px,2vw,36px)!important;
+  letter-spacing:.11em!important;
+  font-weight:650!important;
+}
+.main-nav a{padding:10px 0}
+.wordmark-full{width:var(--header-top-logo-width)!important;height:var(--header-top-logo-height)!important}
+.wordmark-mark{width:var(--header-mark-width)!important;height:var(--header-mark-height)!important}
+
+.hero-home{min-height:640px!important}
+.hero-home .hero-stage{min-height:640px!important;padding:56px 0 48px!important;align-items:end!important}
+.hero-home .hero-bg img{transform:none!important;object-position:center 52%!important;filter:saturate(.92) brightness(1.03) contrast(.97)!important}
+.hero-kicker,.hero-home .hero-sub,.hero-actions{display:none!important}
+.hero-brand-copy{max-width:720px!important}
+.hero-brand-title{font-size:clamp(56px,5.8vw,92px)!important;line-height:.9!important;letter-spacing:-.046em!important;margin-bottom:14px!important}
+.hero-claim{font-size:clamp(24px,2.2vw,34px)!important;font-style:italic!important;font-weight:600!important;color:var(--bronze)!important;margin:0 0 18px!important}
+.hero-b2b{font-size:clamp(26px,3vw,42px)!important;line-height:1.16!important;max-width:760px!important;margin:0!important;color:#4b4036!important}
+.hero-home .hero-callout{font-size:12px!important;letter-spacing:.18em!important;padding:12px 18px!important;background:rgba(251,247,241,.84)!important;color:#6a5440!important}
+.hero-aside{align-items:flex-end!important;justify-content:flex-end!important}
+
+.home-showroom{padding:64px 0!important}
+.showroom-head{grid-template-columns:minmax(0,1fr) minmax(320px,.92fr)!important;gap:44px!important;margin-bottom:28px!important}
+.showroom-head h2{font-size:clamp(46px,4.9vw,74px)!important;line-height:.95!important}
+.showroom-head > div:last-child{gap:18px!important}
+.showroom-preview-compact{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-auto-rows:240px!important;gap:16px!important}
+.showroom-preview-compact .showroom-shot{border-radius:0!important}
+.showroom-preview-compact .showroom-shot::after{inset:48% 0 0!important;background:linear-gradient(180deg,transparent,rgba(39,29,22,.52))!important}
+.showroom-preview-compact .showroom-shot span{font-size:23px!important;line-height:1.02!important;left:18px!important;bottom:16px!important;max-width:82%!important}
+
+.home-value-section{padding:68px 0!important;background:#efe6da!important}
+.home-value-grid{display:grid!important;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important;gap:54px!important;align-items:start!important}
+.sourcing-compact h2{font-family:var(--serif)!important;font-size:clamp(50px,4.9vw,76px)!important;line-height:.95!important;letter-spacing:-.04em!important;font-weight:400!important;margin:0 0 18px!important}
+.sourcing-compact p:not(.eyebrow){font-size:18px!important;line-height:1.7!important;color:#66574b!important;max-width:620px!important;margin:0 0 26px!important}
+.benefits-compact{display:grid!important;gap:18px!important}
+.benefits-compact article{display:grid!important;grid-template-columns:42px 1fr!important;gap:16px!important;padding:20px 0!important;border-top:1px solid var(--line)!important}
+.benefits-compact article:last-child{border-bottom:1px solid var(--line)!important}
+.benefits-compact article span{font-size:11px!important;font-weight:800!important;letter-spacing:.18em!important;color:var(--bronze)!important;display:block;padding-top:7px!important}
+.benefits-compact h3{font-family:var(--serif)!important;font-size:34px!important;line-height:1!important;font-weight:400!important;letter-spacing:-.03em!important;margin:0 0 10px!important}
+.benefits-compact p{margin:0!important;font-size:17px!important;line-height:1.65!important;color:#6d6054!important}
+
+.presentation-cta{display:none!important}
+
+.button,
+.button-bronze,
+.button-outline,
+.contact-mail-button{min-height:58px!important;min-width:220px!important;padding:0 26px!important;font-size:13px!important;letter-spacing:.12em!important}
+
+.page-hero{padding:54px 0!important}
+.page-hero-grid{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr)!important;gap:42px!important;align-items:center!important}
+.page-hero h1{font-size:clamp(54px,5.4vw,86px)!important;line-height:.95!important;margin:0 0 18px!important}
+.page-lead{font-size:clamp(19px,1.8vw,28px)!important;line-height:1.45!important;max-width:680px!important}
+.page-hero-image{height:370px!important}
+.page-hero-contact .page-hero-image{height:330px!important}
+
+.assortment{padding:60px 0!important}
+.section-head{margin-bottom:34px!important}
+.section-head h2{font-size:clamp(46px,4.8vw,74px)!important;line-height:.95!important}
+.catalog-panel{margin-bottom:24px!important}
+.catalog-count{font-size:11px!important;letter-spacing:.16em!important;text-transform:uppercase!important}
+.showroom-grid .catalog-image{aspect-ratio:1/1!important}
+.catalog-info strong{font-size:clamp(26px,2.25vw,34px)!important;line-height:1.03!important}
+.catalog-info p{display:none!important}
+.catalog-info small{font-size:10px!important;letter-spacing:.18em!important;text-transform:uppercase!important}
+.showroom-source-cta{padding:54px 0!important}
+.showroom-source-cta h2{font-size:clamp(52px,5vw,74px)!important;line-height:.95!important}
+
+.about-page{padding:64px 0 38px!important}
+.about-page-grid{gap:52px!important}
+.about-page-grid h2{font-size:clamp(48px,4.8vw,72px)!important}
+.about-page-copy{font-size:18px!important;line-height:1.8!important;color:#66584d!important;max-width:680px!important}
+.about-page-copy-large{font-size:20px!important;max-width:640px!important;padding-top:18px!important}
+.about-visual{padding-top:20px!important}
+.about-wide-image{height:400px!important}
+
+.contact-hub{padding:58px 0!important}
+.contact-hub-grid{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)!important;gap:42px!important}
+.contact-hub-info{position:static!important}
+.contact-hub-info h2,.contact-sourcing-card h2{font-size:clamp(46px,4.5vw,68px)!important;line-height:.96!important}
+.contact-hub-info>p:not(.eyebrow),.contact-sourcing-card>p:not(.eyebrow){font-size:18px!important;line-height:1.75!important}
+.contact-support-card{margin-top:30px;padding:26px;background:rgba(255,255,255,.45);border:1px solid rgba(81,68,56,.14)}
+.contact-support-card h3{font-family:var(--serif);font-size:38px;line-height:1.02;font-weight:400;letter-spacing:-.035em;margin:0 0 12px;color:var(--ink)}
+.contact-support-card p:last-of-type{margin-bottom:20px}
+.contact-sourcing-card{padding:28px!important}
+.request-hints{display:flex;flex-wrap:wrap;gap:8px!important}
+.request-hints span{font-size:10px!important}
+.contact-dl{margin-top:26px!important}
+
+.footer-grid{grid-template-columns:auto 1fr auto!important;gap:24px!important;padding:34px 0!important;font-size:13px!important}
+.footer-brand img{width:48px!important;height:48px!important}
+.site-footer nav{gap:18px!important;flex-wrap:wrap!important}
+.footer-legal{justify-self:end!important;grid-column:auto!important}
+
+@media (max-width:1024px){
+  :root{
+    --header-height: 90px;
+    --header-top-logo-width: 120px;
+    --header-top-logo-height: 72px;
+    --header-mark-width: 54px;
+    --header-mark-height: 48px;
+    --header-brand-slot: 136px;
+  }
+  .main-nav{font-size:14px!important;gap:18px!important}
+  .showroom-preview-compact{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:260px!important}
+}
+
+@media (max-width:860px){
+  :root{
+    --header-height: 82px;
+    --header-top-logo-width: 96px;
+    --header-top-logo-height: 60px;
+    --header-mark-width: 48px;
+    --header-mark-height: 42px;
+    --header-brand-slot: 110px;
+  }
+  .main-nav{font-size:16px!important}
+  .hero-home{min-height:720px!important}
+  .hero-home .hero-stage{min-height:720px!important;align-items:start!important;padding-top:96px!important}
+  .hero-brand-title{font-size:clamp(50px,10vw,74px)!important}
+  .hero-claim{font-size:clamp(22px,5vw,28px)!important}
+  .hero-b2b{font-size:clamp(24px,6vw,34px)!important;max-width:92%!important}
+  .showroom-head,.home-value-grid,.page-hero-grid,.about-page-grid,.contact-hub-grid,.contact-cta-inner{grid-template-columns:1fr!important}
+  .page-hero-image,.page-hero-contact .page-hero-image,.about-wide-image{height:320px!important}
+  .footer-grid{grid-template-columns:1fr!important}
+  .footer-legal{justify-self:start!important}
+}
+
+@media (max-width:560px){
+  .button,.button-bronze,.button-outline,.contact-mail-button{width:100%!important;min-width:0!important}
+  .contact-mail-actions{display:grid!important;grid-template-columns:1fr!important}
+  .hero-home .hero-stage{padding-top:86px!important}
+  .hero-brand-title{font-size:clamp(42px,12vw,60px)!important}
+  .hero-b2b{font-size:clamp(22px,8vw,30px)!important}
+  .showroom-preview-compact{grid-template-columns:1fr!important;grid-auto-rows:230px!important}
+  .catalog-info strong{font-size:24px!important}
+}
+
+/* ========================================================================== 
+   FEEDBACK UPDATE – Detailkorrekturen aus den markierten Screenshots (v20)
+   --------------------------------------------------------------------------
+   Dieser Block ist absichtlich am ENDE der CSS-Datei und überschreibt ältere
+   Regeln. Für spätere Änderungen bitte möglichst hier arbeiten.
+
+   Ziele dieser Runde:
+   1. Hero-Perlen wieder rechts positionieren (gespiegelt wie in der besseren Version).
+   2. Dienstleistungen vollständig aus der Hauptnavigation entfernen.
+   3. Inhalte der früheren Dienstleistungsseite verteilen:
+      - Über uns: Persönlich / flexibel / international vernetzt
+      - Produkte: individuelle Beschaffung
+      - Kontakt: persönlicher Vorführtermin
+   4. Home-Showroom-Bezeichnungen und CTA-Texte exakt an Feedback anpassen.
+   5. Vorführtermin auf Home wieder sichtbar machen.
+   6. Rechte Textspalten auf Höhe der jeweiligen linken Überschrift beginnen lassen.
+   7. Footer auf allen Seiten identisch, Logo größer und Text näher am Logo.
+   8. Typografie für gleiche Inhaltstypen über alle Seiten konsistent halten.
+   ========================================================================== */
+
+:root{
+  /* EDIT: zentrale Schriftgrößen – so bleiben alle Seiten konsistent. */
+  --fs-nav: 15px;
+  --fs-eyebrow: 10px;
+  --fs-body: 18px;
+  --fs-body-small: 15px;
+  --fs-button: 13px;
+  --fs-card-title: 30px;
+  --fs-benefit-copy: 17px;
+
+  /* EDIT: Header-/Logo-Größen. */
+  --header-height: 96px;
+  --header-top-logo-width: 154px;
+  --header-top-logo-height: 84px;
+  --header-mark-width: 58px;
+  --header-mark-height: 52px;
+  --header-brand-slot: 170px;
+}
+
+/* ---------- HEADER / NAVIGATION ---------- */
+.header-inner{
+  height:var(--header-height)!important;
+  grid-template-columns:var(--header-brand-slot) 1fr!important;
+}
+.wordmark-full{
+  width:var(--header-top-logo-width)!important;
+  height:var(--header-top-logo-height)!important;
+}
+.wordmark-mark{
+  width:var(--header-mark-width)!important;
+  height:var(--header-mark-height)!important;
+}
+.main-nav{
+  font-size:var(--fs-nav)!important;
+  gap:clamp(22px,2.1vw,38px)!important;
+  letter-spacing:.105em!important;
+  font-weight:650!important;
+}
+.main-nav a{padding:10px 0!important}
+
+/* ---------- GLOBALE TYPOGRAFIE ---------- */
+.eyebrow{
+  font-size:var(--fs-eyebrow)!important;
+  letter-spacing:.19em!important;
+}
+.page-hero h1{
+  font-size:clamp(54px,5.2vw,84px)!important;
+  line-height:.95!important;
+}
+.page-lead{
+  font-size:clamp(20px,1.75vw,27px)!important;
+  line-height:1.46!important;
+}
+.section-head h2,
+.about-page-grid h2,
+.showroom-source-cta h2,
+.presentation-cta h2{
+  font-family:var(--serif)!important;
+  font-size:clamp(48px,4.65vw,72px)!important;
+  line-height:.96!important;
+  letter-spacing:-.04em!important;
+  font-weight:400!important;
+}
+
+/* ---------- HOME HERO ---------- */
+.hero-home{min-height:640px!important}
+.hero-home .hero-stage{
+  min-height:640px!important;
+  padding:54px 0 46px!important;
+  align-items:end!important;
+}
+.hero-brand-copy{max-width:720px!important}
+.hero-brand-title{
+  font-size:clamp(56px,5.8vw,92px)!important;
+  line-height:.9!important;
+  letter-spacing:-.046em!important;
+  margin:0 0 14px!important;
+}
+.hero-claim{
+  font-size:clamp(24px,2.2vw,34px)!important;
+  line-height:1.15!important;
+  font-style:italic!important;
+  font-weight:600!important;
+  margin:0 0 18px!important;
+}
+.hero-b2b{
+  font-size:clamp(26px,2.85vw,40px)!important;
+  line-height:1.17!important;
+  max-width:760px!important;
+  margin:0!important;
+}
+/* Wichtig: Das Originalbild hat die Perlen links. Spiegeln schiebt sie nach rechts. */
+.hero-home .hero-bg img{
+  object-position:center 54%!important;
+  transform:scaleX(-1) scale(1.012)!important;
+  transform-origin:center center!important;
+  filter:saturate(.92) brightness(1.03) contrast(.97)!important;
+}
+.hero-home .hero-callout{
+  font-size:12px!important;
+  padding:12px 18px!important;
+  letter-spacing:.18em!important;
+}
+.hero-aside{align-items:flex-end!important;justify-content:flex-end!important}
+
+/* ---------- HOME SHOWROOM ---------- */
+.home-showroom{padding:64px 0!important}
+.showroom-head{
+  grid-template-columns:minmax(0,1fr) minmax(320px,.9fr)!important;
+  gap:54px!important;
+  margin-bottom:30px!important;
+  align-items:start!important;
+}
+.showroom-head .aligned-copy-right{
+  padding-top:54px!important;
+  font-size:var(--fs-body)!important;
+  line-height:1.7!important;
+  color:var(--muted)!important;
+}
+.showroom-head .aligned-copy-right p{margin:0 0 22px!important}
+.showroom-preview-compact{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  grid-auto-rows:244px!important;
+  gap:16px!important;
+}
+.showroom-preview-compact .showroom-shot span{
+  font-family:var(--serif)!important;
+  font-size:25px!important;
+  line-height:1.02!important;
+  left:18px!important;
+  bottom:16px!important;
+  max-width:84%!important;
+}
+
+/* ---------- HOME BESCHAFFUNG / VORTEILE ---------- */
+.home-value-section{padding:68px 0!important}
+.home-value-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important;
+  gap:58px!important;
+  align-items:start!important;
+}
+.sourcing-compact h2{
+  font-family:var(--serif)!important;
+  font-size:clamp(50px,4.8vw,74px)!important;
+  line-height:.95!important;
+  letter-spacing:-.04em!important;
+  font-weight:400!important;
+  margin:0 0 20px!important;
+}
+.sourcing-compact p:not(.eyebrow){
+  font-size:var(--fs-body)!important;
+  line-height:1.72!important;
+  max-width:640px!important;
+  margin:0 0 26px!important;
+  color:#66584d!important;
+}
+.benefits-compact{display:grid!important;gap:0!important}
+.benefits-compact article{
+  display:grid!important;
+  grid-template-columns:44px 1fr!important;
+  gap:18px!important;
+  padding:20px 0!important;
+  border-top:1px solid var(--line)!important;
+}
+.benefits-compact article:last-child{border-bottom:1px solid var(--line)!important}
+.benefits-compact article span{
+  font-size:11px!important;
+  letter-spacing:.16em!important;
+  font-weight:800!important;
+  color:var(--bronze)!important;
+  padding-top:7px!important;
+}
+.benefits-compact h3{
+  font-family:var(--serif)!important;
+  font-size:35px!important;
+  line-height:1!important;
+  font-weight:400!important;
+  letter-spacing:-.03em!important;
+  margin:0 0 10px!important;
+}
+.benefits-compact p{
+  font-size:var(--fs-benefit-copy)!important;
+  line-height:1.65!important;
+  margin:0!important;
+  color:#6b5d51!important;
+}
+
+/* Vorführtermin auf HOME bleibt sichtbar. */
+.presentation-cta{
+  display:block!important;
+  padding:62px 0!important;
+  background:#f5ede2!important;
+}
+.presentation-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) minmax(0,.95fr)!important;
+  gap:70px!important;
+  align-items:start!important;
+}
+.presentation-grid .presentation-copy{
+  padding-top:48px!important;
+  display:grid!important;
+  gap:22px!important;
+  justify-items:start!important;
+  color:var(--muted)!important;
+}
+.presentation-grid .presentation-copy p{
+  font-size:var(--fs-body)!important;
+  line-height:1.72!important;
+  margin:0!important;
+  max-width:620px!important;
+}
+
+/* ---------- ALLGEMEINE 2-SPALTEN-AUSRICHTUNG ---------- */
+/* Rechte Texte beginnen optisch auf Höhe der großen linken Überschrift, nicht bei der Eyebrow. */
+.aligned-copy-grid{align-items:start!important}
+.section-head > .aligned-copy-right,
+.contact-cta-inner > .aligned-copy-right,
+.about-page-grid > .aligned-copy-right{
+  padding-top:48px!important;
+}
+
+/* ---------- PRODUKTE ---------- */
+.page-hero-products .page-hero-image{height:390px!important}
+.assortment{padding:60px 0!important}
+.assortment .section-head{
+  grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr)!important;
+  gap:58px!important;
+  align-items:start!important;
+  margin-bottom:34px!important;
+}
+.assortment .section-head > p{
+  padding-top:50px!important;
+  font-size:var(--fs-body)!important;
+  line-height:1.7!important;
+  color:var(--muted)!important;
+}
+.filter-chip{font-size:12px!important;padding:9px 13px!important}
+.catalog-count{font-size:11px!important;letter-spacing:.15em!important}
+.showroom-grid .catalog-image{aspect-ratio:1/1!important}
+.catalog-info{padding-top:16px!important}
+.catalog-info small{font-size:10px!important;letter-spacing:.16em!important;text-transform:uppercase!important}
+.catalog-info strong{
+  font-family:var(--serif)!important;
+  font-size:var(--fs-card-title)!important;
+  line-height:1.05!important;
+  font-weight:400!important;
+}
+.catalog-info p{display:none!important}
+.showroom-source-cta{padding:58px 0!important}
+.showroom-source-cta .contact-cta-inner{
+  display:grid!important;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important;
+  gap:72px!important;
+  align-items:start!important;
+}
+.showroom-source-cta .source-cta-copy{
+  padding-top:48px!important;
+  font-size:var(--fs-body)!important;
+  line-height:1.72!important;
+  color:var(--muted)!important;
+}
+.showroom-source-cta .source-cta-copy p{margin:0 0 28px!important}
+
+/* ---------- ÜBER UNS ---------- */
+.about-service-transfer{padding:66px 0!important;background:#efe5d8!important}
+.service-transfer-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
+  gap:68px!important;
+  align-items:center!important;
+}
+.service-transfer-copy h2{
+  font-family:var(--serif)!important;
+  font-size:clamp(48px,4.7vw,72px)!important;
+  line-height:.95!important;
+  letter-spacing:-.04em!important;
+  font-weight:400!important;
+  margin:0 0 22px!important;
+}
+.service-transfer-copy p:not(.eyebrow){
+  font-size:var(--fs-body)!important;
+  line-height:1.72!important;
+  color:#68594d!important;
+  max-width:640px!important;
+  margin:0 0 16px!important;
+}
+.service-transfer-image{height:390px!important;overflow:hidden!important;background:#dfd2c2!important}
+.service-transfer-image img{width:100%!important;height:100%!important;object-fit:cover!important}
+.about-page{padding:64px 0!important}
+.about-page-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr)!important;
+  gap:70px!important;
+  align-items:start!important;
+}
+.about-page-copy{
+  font-size:var(--fs-body)!important;
+  line-height:1.75!important;
+  color:#66584d!important;
+  max-width:700px!important;
+}
+.about-page-copy.aligned-copy-right{padding-top:48px!important}
+.about-page-copy-large{
+  font-size:20px!important;
+  line-height:1.75!important;
+  max-width:680px!important;
+}
+.about-partnership{padding:64px 0 46px!important;background:#efe5d8!important}
+.about-wide-image{height:420px!important}
+
+/* ---------- KONTAKT ---------- */
+.page-hero-contact .page-hero-image{height:330px!important}
+.contact-hub{padding:62px 0!important}
+.contact-hub-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
+  gap:54px!important;
+  align-items:start!important;
+}
+.contact-hub-info{position:static!important}
+.contact-hub-info h2,
+.contact-sourcing-card h2{
+  font-family:var(--serif)!important;
+  font-size:clamp(46px,4.4vw,68px)!important;
+  line-height:.96!important;
+  letter-spacing:-.04em!important;
+  font-weight:400!important;
+}
+.contact-hub-info>p:not(.eyebrow),
+.contact-sourcing-card>p:not(.eyebrow){
+  font-size:var(--fs-body)!important;
+  line-height:1.72!important;
+}
+.contact-support-card{
+  margin-top:34px!important;
+  padding:30px!important;
+  background:rgba(255,255,255,.48)!important;
+  border:1px solid var(--line)!important;
+}
+.contact-support-card h3{
+  font-family:var(--serif)!important;
+  font-size:38px!important;
+  line-height:1.03!important;
+  font-weight:400!important;
+  letter-spacing:-.035em!important;
+  margin:0 0 12px!important;
+}
+.contact-support-card p:not(.eyebrow){font-size:17px!important;line-height:1.7!important}
+.contact-sourcing-card{padding:30px!important}
+
+/* ---------- BUTTONS ---------- */
+.button,
+.button-bronze,
+.button-outline,
+.contact-mail-button{
+  min-height:58px!important;
+  min-width:220px!important;
+  padding:0 26px!important;
+  font-size:var(--fs-button)!important;
+  letter-spacing:.12em!important;
+}
+
+/* ---------- EINHEITLICHER FOOTER AUF ALLEN SEITEN ---------- */
+.site-footer{
+  background:#e8d8c3!important;
+  color:#4f4136!important;
+}
+.footer-grid-unified{
+  display:grid!important;
+  grid-template-columns:minmax(360px,1fr) auto!important;
+  grid-template-areas:
+    "brand primary"
+    "brand legal"!important;
+  gap:10px 44px!important;
+  align-items:center!important;
+  padding:38px 0!important;
+  font-size:14px!important;
+}
+.footer-brand-lockup{
+  grid-area:brand!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:18px!important;
+}
+.footer-brand-lockup .footer-brand{display:block!important;flex:0 0 auto!important}
+.footer-brand-lockup .footer-brand img{
+  width:82px!important;
+  height:82px!important;
+  object-fit:contain!important;
+}
+.footer-brand-lockup p{
+  margin:0!important;
+  font-size:14px!important;
+  line-height:1.35!important;
+}
+.footer-brand-lockup strong{font-size:15px!important;letter-spacing:.02em!important}
+.footer-brand-lockup em{font-family:var(--serif)!important;font-size:15px!important;color:#8e6948!important}
+.footer-primary{
+  grid-area:primary!important;
+  justify-self:end!important;
+  display:flex!important;
+  gap:24px!important;
+  font-size:14px!important;
+}
+.footer-legal{
+  grid-area:legal!important;
+  justify-self:end!important;
+  display:flex!important;
+  gap:20px!important;
+  font-size:12px!important;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1100px){
+  :root{
+    --header-top-logo-width:138px;
+    --header-top-logo-height:78px;
+    --header-brand-slot:152px;
+  }
+  .main-nav{font-size:14px!important;gap:20px!important}
+  .showroom-preview-compact{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:260px!important}
+}
+
+@media(max-width:860px){
+  :root{
+    --header-height:84px;
+    --header-top-logo-width:104px;
+    --header-top-logo-height:66px;
+    --header-mark-width:48px;
+    --header-mark-height:44px;
+    --header-brand-slot:116px;
+  }
+  .main-nav{font-size:16px!important}
+  .hero-home{min-height:720px!important}
+  .hero-home .hero-stage{min-height:720px!important;padding-top:96px!important;align-items:start!important}
+  .hero-home .hero-bg img{object-position:center 55%!important;transform:scaleX(-1) scale(1.02)!important}
+  .hero-brand-title{font-size:clamp(48px,11vw,70px)!important}
+  .hero-claim{font-size:clamp(22px,5vw,28px)!important}
+  .hero-b2b{font-size:clamp(23px,6.5vw,32px)!important;max-width:92%!important}
+  .showroom-head,
+  .home-value-grid,
+  .presentation-grid,
+  .page-hero-grid,
+  .service-transfer-grid,
+  .about-page-grid,
+  .contact-hub-grid,
+  .showroom-source-cta .contact-cta-inner{
+    grid-template-columns:1fr!important;
+  }
+  .showroom-head .aligned-copy-right,
+  .presentation-grid .presentation-copy,
+  .assortment .section-head > p,
+  .showroom-source-cta .source-cta-copy,
+  .about-page-copy.aligned-copy-right{
+    padding-top:0!important;
+  }
+  .page-hero-image,.page-hero-contact .page-hero-image,.service-transfer-image,.about-wide-image{height:320px!important}
+  .footer-grid-unified{
+    grid-template-columns:1fr!important;
+    grid-template-areas:"brand" "primary" "legal"!important;
+    gap:22px!important;
+  }
+  .footer-primary,.footer-legal{justify-self:start!important}
+}
+
+@media(max-width:560px){
+  .showroom-preview-compact{grid-template-columns:1fr!important;grid-auto-rows:230px!important}
+  .button,.button-bronze,.button-outline,.contact-mail-button{width:100%!important;min-width:0!important}
+  .contact-mail-actions{display:grid!important;grid-template-columns:1fr!important}
+  .footer-brand-lockup .footer-brand img{width:70px!important;height:70px!important}
+}
+
+/* v20.1 – rechte Vorteilsspalte auf Höhe der linken Frage ausrichten. */
+.home-value-section .benefits-compact{padding-top:44px!important}
+@media(max-width:860px){.home-value-section .benefits-compact{padding-top:0!important}}
+
+
+/* ========================================================================== 
+   PRODUKTBILDER + KONTAKT VORFÜHRTERMIN (v21)
+   --------------------------------------------------------------------------
+   EDIT:
+   - Alle Bilder im Produktkatalog haben exakt dieselbe sichtbare Proportion.
+   - Originalbilder dürfen unterschiedlich groß/hochkant/quer sein; durch
+     object-fit: cover werden sie sauber in dieselbe 4:3-Fläche eingepasst.
+   - Der Kontaktblock "Wir kommen zu Ihnen." übernimmt den früheren
+     Dienstleistungsinhalt und ist typografisch an die restliche Seite angepasst.
+   ========================================================================== */
+
+/* PRODUKTSEITE: einheitliche Bildgrößen und Proportionen für jede Karte. */
+.showroom-grid.catalog-grid{
+  align-items:start!important;
+}
+.showroom-grid .catalog-card,
+.showroom-grid .catalog-open{
+  width:100%!important;
+  min-width:0!important;
+}
+.showroom-grid .catalog-image{
+  display:block!important;
+  width:100%!important;
+  aspect-ratio:4 / 3!important;
+  height:auto!important;
+  overflow:hidden!important;
+  background:#e5d9cb!important;
+}
+.showroom-grid .catalog-image img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+
+/* Auch auf Tablet/Mobil dieselbe Bildproportion beibehalten. */
+@media(max-width:860px){
+  .showroom-grid .catalog-image{aspect-ratio:4 / 3!important}
+}
+@media(max-width:560px){
+  .showroom-grid .catalog-image{aspect-ratio:4 / 3!important}
+}
+
+/* KONTAKT: der ehemalige Dienstleistungsblock "Wir kommen zu Ihnen." */
+.contact-support-card{
+  margin-top:34px!important;
+  padding:32px!important;
+}
+.contact-support-card h3{
+  font-size:clamp(42px,3.8vw,58px)!important;
+  margin:0 0 14px!important;
+}
+.contact-support-card .contact-support-lead{
+  font-family:var(--serif)!important;
+  font-size:clamp(22px,2vw,28px)!important;
+  line-height:1.35!important;
+  color:var(--ink)!important;
+  margin:0 0 14px!important;
+}
+.contact-support-card .contact-support-lead + p{
+  margin-top:0!important;
+  margin-bottom:24px!important;
+}
+
+/* ========================================================================== 
+   TYPOGRAFIE / HEADER / KONTAKT – Feedbackrunde v22
+   --------------------------------------------------------------------------
+   Dieser Block steht bewusst ganz am Ende und ist die zentrale Stelle für
+   die aktuellen Größen. Ältere Regeln weiter oben werden damit überschrieben.
+   ========================================================================== */
+:root{
+  /* Kleine goldene Bereichslabels wie "Aus unserem Sortiment", "Kontakt" etc. */
+  --fs-eyebrow: 12px;
+  /* Hauptüberschriften auf Home und den Unterseiten. */
+  --fs-page-title: clamp(46px,4.65vw,74px);
+  /* Große Abschnittsüberschriften innerhalb einer Seite. */
+  --fs-section-title: clamp(44px,4.3vw,68px);
+
+  /* Header oben etwas größer, damit das vollständige Logo komplett Luft hat. */
+  --header-height: 118px;
+  --header-top-logo-width: 184px;
+  --header-top-logo-height: 106px;
+  --header-mark-width: 58px;
+  --header-mark-height: 52px;
+  --header-brand-slot: 198px;
+}
+
+/* HEADER: oben großes vollständiges Logo; beim Scrollen wie bisher nur M-Signet. */
+.site-header,
+.site-header.is-scrolled{
+  height:var(--header-height)!important;
+}
+.header-inner{
+  height:var(--header-height)!important;
+  grid-template-columns:var(--header-brand-slot) 1fr!important;
+}
+.wordmark,
+.wordmark-full{
+  max-height:var(--header-height)!important;
+}
+.wordmark-full{
+  width:var(--header-top-logo-width)!important;
+  height:var(--header-top-logo-height)!important;
+}
+/* Beim Scrollen wird nicht die ganze Kopfleiste unruhig, sondern das Branding
+   wechselt sauber auf das kleinere M-Signet. */
+.site-header.is-scrolled .wordmark-mark{
+  width:var(--header-mark-width)!important;
+  height:var(--header-mark-height)!important;
+}
+
+/* KLEINE BEREICHSÜBERSCHRIFTEN: überall identische, etwas größere Größe. */
+.eyebrow{
+  font-size:var(--fs-eyebrow)!important;
+  line-height:1.25!important;
+  letter-spacing:.18em!important;
+  margin-bottom:20px!important;
+}
+
+/* HOME: Markenname zwei Größenstufen kleiner und optisch näher ans Header-Logo.
+   transform verändert nur die sichtbare Position – der B2B-Text darunter bleibt
+   dadurch auf seiner bisherigen vertikalen Höhe. */
+.hero-brand-title{
+  font-size:var(--fs-page-title)!important;
+  line-height:.91!important;
+  transform:translateY(-46px)!important;
+  margin-bottom:14px!important;
+}
+.hero-claim{
+  font-size:clamp(22px,2vw,30px)!important;
+  line-height:1.15!important;
+  transform:translateY(-46px)!important;
+  margin:0 0 18px!important;
+}
+/* Durch das Hochrücken von Marke + Claim entsteht automatisch deutlich mehr
+   Weißraum zwischen Claim und B2B-Text, ohne den B2B-Text nach oben zu ziehen. */
+.hero-b2b{
+  margin-top:0!important;
+}
+
+/* Unterseiten: dieselbe Hauptüberschrift-Größe wie der Markenname auf Home. */
+.page-hero h1{
+  font-size:var(--fs-page-title)!important;
+  line-height:.96!important;
+}
+
+/* Abschnittsüberschriften über alle Seiten konsistent. */
+.section-head h2,
+.sourcing-compact h2,
+.presentation-cta h2,
+.showroom-source-cta h2,
+.about-page-grid h2,
+.service-transfer-copy h2,
+.contact-hub-info h2,
+.contact-sourcing-card h2{
+  font-size:var(--fs-section-title)!important;
+  line-height:.97!important;
+}
+
+/* Kontakt: nach Entfernen der doppelten Produktanfrage bleibt der einzelne
+   allgemeine Kontaktbutton sauber links ausgerichtet. */
+.contact-mail-actions{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:14px!important;
+}
+
+@media(max-width:1100px){
+  :root{
+    --header-height:104px;
+    --header-top-logo-width:158px;
+    --header-top-logo-height:92px;
+    --header-brand-slot:172px;
+    --fs-page-title:clamp(44px,5.5vw,68px);
+    --fs-section-title:clamp(42px,5vw,62px);
+  }
+  .hero-brand-title,.hero-claim{transform:translateY(-34px)!important}
+}
+
+@media(max-width:860px){
+  :root{
+    --header-height:86px;
+    --header-top-logo-width:112px;
+    --header-top-logo-height:72px;
+    --header-brand-slot:124px;
+    --fs-eyebrow:11px;
+    --fs-page-title:clamp(42px,10vw,62px);
+    --fs-section-title:clamp(40px,9vw,58px);
+  }
+  .hero-brand-title,.hero-claim{transform:translateY(-24px)!important}
+  .main-nav{top:var(--header-height)!important}
+}
+
+@media(max-width:560px){
+  :root{
+    --header-height:80px;
+    --header-top-logo-width:98px;
+    --header-top-logo-height:66px;
+    --header-brand-slot:108px;
+    --fs-page-title:clamp(38px,11vw,54px);
+    --fs-section-title:clamp(36px,10vw,52px);
+  }
+  .hero-brand-title,.hero-claim{transform:translateY(-18px)!important}
+}
+
+
+/* ========================================================================== 
+   HEADER / HERO FEINJUSTIERUNG – Feedback 20.09.2026 v23
+   --------------------------------------------------------------------------
+   Ziel:
+   - Das volle Logo bleibt zu Beginn vollständig in der Kopfleiste.
+   - Erst beim Scrollen schrumpft die Leiste zusammen.
+   - Markenname + Claim rücken direkt unter das Logo.
+   - Deutlich größerer Abstand zwischen Claim und folgendem B2B-Text.
+   ========================================================================== */
+:root{
+  --header-height: 156px;
+  --header-top-logo-width: 214px;
+  --header-top-logo-height: 138px;
+  --header-brand-slot: 238px;
+  --header-scrolled-height: 88px;
+  --header-scrolled-brand-slot: 92px;
+  --header-mark-width: 60px;
+  --header-mark-height: 54px;
+}
+
+/* Oben: hohe Leiste mit komplett sichtbarem Voll-Logo */
+.site-header{
+  height:var(--header-height)!important;
+}
+.site-header .header-inner{
+  height:var(--header-height)!important;
+  grid-template-columns:var(--header-brand-slot) 1fr!important;
+  align-items:start!important;
+  padding-top:8px!important;
+}
+.wordmark{
+  align-self:start!important;
+}
+.wordmark-full{
+  width:var(--header-top-logo-width)!important;
+  height:var(--header-top-logo-height)!important;
+  max-height:none!important;
+}
+.wordmark-full img{
+  object-fit:contain!important;
+  object-position:left top!important;
+}
+
+/* Beim Scrollen wird die Leiste erst dann kompakter */
+.site-header.is-scrolled{
+  height:var(--header-scrolled-height)!important;
+}
+.site-header.is-scrolled .header-inner{
+  height:var(--header-scrolled-height)!important;
+  grid-template-columns:var(--header-scrolled-brand-slot) 1fr!important;
+  align-items:center!important;
+  padding-top:0!important;
+}
+.site-header.is-scrolled .wordmark-mark{
+  width:var(--header-mark-width)!important;
+  height:var(--header-mark-height)!important;
+}
+
+/* Hero: Copy sitzt näher am Logo / oberen Rand */
+.hero-home{
+  min-height:640px!important;
+}
+.hero-home .hero-stage{
+  min-height:640px!important;
+  align-items:start!important;
+  padding:28px 0 56px!important;
+}
+.hero-brand-copy{
+  align-self:start!important;
+  padding-top:4px!important;
+  max-width:720px!important;
+}
+.hero-brand-title{
+  font-size:var(--fs-page-title)!important;
+  line-height:.91!important;
+  transform:translateY(-112px)!important;
+  margin:0 0 10px!important;
+}
+.hero-claim{
+  font-size:clamp(22px,2vw,30px)!important;
+  line-height:1.15!important;
+  transform:translateY(-112px)!important;
+  margin:0 0 16px!important;
+}
+/* Weil Titel + Claim visuell hochgezogen werden, entsteht unten automatisch
+   mehr Weißraum. Diesen vergrößern wir zusätzlich leicht für die gewünschte
+   Ruhe vor dem B2B-Text. */
+.hero-b2b{
+  margin-top:14px!important;
+  max-width:760px!important;
+}
+
+@media(max-width:1100px){
+  :root{
+    --header-height: 138px;
+    --header-top-logo-width: 190px;
+    --header-top-logo-height: 122px;
+    --header-brand-slot: 212px;
+    --header-scrolled-height: 82px;
+    --header-scrolled-brand-slot: 86px;
+  }
+  .site-header .header-inner{padding-top:6px!important}
+  .hero-home .hero-stage{padding-top:24px!important}
+  .hero-brand-title,
+  .hero-claim{transform:translateY(-88px)!important}
+}
+
+@media(max-width:860px){
+  :root{
+    --header-height: 102px;
+    --header-top-logo-width: 130px;
+    --header-top-logo-height: 90px;
+    --header-brand-slot: 148px;
+    --header-scrolled-height: 78px;
+    --header-scrolled-brand-slot: 78px;
+    --header-mark-width: 52px;
+    --header-mark-height: 46px;
+  }
+  .site-header .header-inner{align-items:center!important;padding-top:0!important}
+  .hero-home .hero-stage{padding:30px 0 48px!important;min-height:720px!important}
+  .hero-brand-copy{padding-top:0!important}
+  .hero-brand-title,
+  .hero-claim{transform:translateY(-44px)!important}
+  .hero-b2b{margin-top:8px!important}
+}
+
+@media(max-width:560px){
+  :root{
+    --header-height: 90px;
+    --header-top-logo-width: 108px;
+    --header-top-logo-height: 76px;
+    --header-brand-slot: 122px;
+    --header-scrolled-height: 72px;
+    --header-scrolled-brand-slot: 72px;
+    --header-mark-width: 46px;
+    --header-mark-height: 40px;
+  }
+  .hero-home .hero-stage{padding-top:26px!important;min-height:700px!important}
+  .hero-brand-title,
+  .hero-claim{transform:translateY(-28px)!important}
+}
+
+
+/* ========================================================================== 
+   HEADER + HOME HERO – final verified layout v24
+   --------------------------------------------------------------------------
+   EDIT HERE:
+   - Full header height:        --header-open-height
+   - Full logo height:          --header-open-logo-height
+   - Scrolled header height:    --header-compact-height
+   - Scrolled M height:         --header-compact-logo-height
+   - Space Claim -> B2B text:   --hero-brand-gap
+
+   Implementation note:
+   The header is fixed rather than sticky. The page receives a constant top
+   padding equal to the open header height. Therefore shrinking the visible
+   header on scroll does NOT pull the document upward or cause a jump.
+   ========================================================================== */
+:root{
+  --header-open-height: 146px;
+  --header-open-logo-height: 128px;
+  --header-open-logo-width: 142px;
+  --header-open-brand-slot: 180px;
+  --header-compact-height: 82px;
+  --header-compact-logo-height: 50px;
+  --header-compact-logo-width: 72px;
+  --header-compact-brand-slot: 92px;
+  --hero-brand-gap: 116px;
+}
+
+/* Reserve the full initial header height in document flow once, so the
+   fixed/shrinking header never changes page geometry while scrolling. */
+body{
+  padding-top:var(--header-open-height)!important;
+}
+
+.site-header,
+.site-header.is-scrolled{
+  position:fixed!important;
+  top:0!important;
+  left:0!important;
+  right:0!important;
+  z-index:1000!important;
+  transition:height .28s ease, background-color .28s ease, box-shadow .28s ease!important;
+}
+.site-header{
+  height:var(--header-open-height)!important;
+  background:rgba(248,243,235,.995)!important;
+}
+.site-header.is-scrolled{
+  height:var(--header-compact-height)!important;
+  background:rgba(245,238,228,.995)!important;
+  box-shadow:0 8px 26px rgba(77,62,48,.09)!important;
+}
+
+.header-inner{
+  width:var(--shell)!important;
+  margin:0 auto!important;
+  height:var(--header-open-height)!important;
+  grid-template-columns:var(--header-open-brand-slot) 1fr!important;
+  align-items:center!important;
+  gap:24px!important;
+  padding:0!important;
+  transition:height .28s ease, grid-template-columns .28s ease!important;
+}
+.site-header.is-scrolled .header-inner{
+  height:var(--header-compact-height)!important;
+  grid-template-columns:var(--header-compact-brand-slot) 1fr!important;
+}
+
+.wordmark{
+  width:100%!important;
+  height:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  overflow:visible!important;
+}
+.wordmark-full,
+.wordmark-mark{
+  top:50%!important;
+  left:0!important;
+  transform-origin:left center!important;
+}
+.wordmark-full{
+  width:var(--header-open-logo-width)!important;
+  height:var(--header-open-logo-height)!important;
+  opacity:1!important;
+  transform:translateY(-50%) scale(1)!important;
+}
+.wordmark-full img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+}
+.wordmark-mark{
+  width:var(--header-compact-logo-width)!important;
+  height:var(--header-compact-logo-height)!important;
+  opacity:0!important;
+  transform:translateY(-50%) scale(.94)!important;
+}
+.site-header.is-scrolled .wordmark-full{
+  opacity:0!important;
+  transform:translateY(-50%) scale(.92)!important;
+  pointer-events:none!important;
+}
+.site-header.is-scrolled .wordmark-mark{
+  width:var(--header-compact-logo-width)!important;
+  height:var(--header-compact-logo-height)!important;
+  opacity:1!important;
+  transform:translateY(-50%) scale(1)!important;
+}
+
+/* Navigation stays vertically centered in both header states. */
+.main-nav{
+  align-self:center!important;
+}
+
+/* HOME HERO -------------------------------------------------------------- */
+.hero-home{
+  min-height:640px!important;
+}
+.hero-home .hero-stage{
+  min-height:640px!important;
+  align-items:start!important;
+  padding:26px 0 52px!important;
+}
+.hero-brand-copy{
+  align-self:start!important;
+  padding-top:0!important;
+  max-width:740px!important;
+}
+/* No visual translate: the title now occupies its true layout position. */
+.hero-brand-title{
+  transform:none!important;
+  margin:0 0 10px!important;
+  font-size:var(--fs-page-title)!important;
+  line-height:.91!important;
+}
+.hero-claim{
+  transform:none!important;
+  margin:0!important;
+  font-size:clamp(22px,2vw,30px)!important;
+  line-height:1.15!important;
+}
+/* This real margin creates the requested large empty area. */
+.hero-b2b{
+  margin:var(--hero-brand-gap) 0 0!important;
+  max-width:760px!important;
+}
+
+/* Mobile / tablet values keep the same logic, just scaled down. */
+@media(max-width:1100px){
+  :root{
+    --header-open-height: 130px;
+    --header-open-logo-height: 112px;
+    --header-open-logo-width: 124px;
+    --header-open-brand-slot: 158px;
+    --header-compact-height: 78px;
+    --header-compact-logo-height: 46px;
+    --header-compact-logo-width: 66px;
+    --header-compact-brand-slot: 84px;
+    --hero-brand-gap: 92px;
+  }
+}
+
+@media(max-width:860px){
+  :root{
+    --header-open-height: 100px;
+    --header-open-logo-height: 84px;
+    --header-open-logo-width: 94px;
+    --header-open-brand-slot: 112px;
+    --header-compact-height: 74px;
+    --header-compact-logo-height: 42px;
+    --header-compact-logo-width: 60px;
+    --header-compact-brand-slot: 72px;
+    --hero-brand-gap: 62px;
+  }
+  .main-nav{top:var(--header-compact-height)!important}
+  .site-header:not(.is-scrolled) .main-nav{top:var(--header-open-height)!important}
+  .hero-home .hero-stage{padding-top:28px!important;min-height:700px!important}
+}
+
+@media(max-width:560px){
+  :root{
+    --header-open-height: 90px;
+    --header-open-logo-height: 74px;
+    --header-open-logo-width: 82px;
+    --header-open-brand-slot: 100px;
+    --header-compact-height: 70px;
+    --header-compact-logo-height: 38px;
+    --header-compact-logo-width: 54px;
+    --header-compact-brand-slot: 66px;
+    --hero-brand-gap: 48px;
+  }
+  .hero-home .hero-stage{padding-top:24px!important}
+}
+
+/* ========================================================================== 
+   FILTER + KONTAKT TYPOGRAFIE – Feedback 20.09.2026 v25
+   --------------------------------------------------------------------------
+   EDIT: Dieser Block steuert ausschließlich die Lesbarkeit des Produktfilters
+   und der Kontakt-/Anfragefelder. Er steht am Dateiende und überschreibt die
+   älteren kleineren Werte weiter oben.
+   ========================================================================== */
+
+/* PRODUKTFILTER ----------------------------------------------------------- */
+.filter-chip{
+  font-size:15px!important;
+  line-height:1.2!important;
+  padding:11px 17px!important;
+  font-weight:600!important;
+}
+.catalog-count{
+  font-size:14px!important;
+  line-height:1.25!important;
+  letter-spacing:.15em!important;
+}
+.catalog-count strong{
+  font-size:15px!important;
+  font-weight:750!important;
+}
+.search-field input,
+.select-field select{
+  height:54px!important;
+  font-size:16px!important;
+  line-height:1.25!important;
+}
+.search-field input{
+  padding-left:46px!important;
+}
+.search-field svg{
+  width:20px!important;
+  height:20px!important;
+  left:15px!important;
+}
+.select-field{
+  gap:8px!important;
+  font-size:12px!important;
+  line-height:1.2!important;
+  letter-spacing:.14em!important;
+  font-weight:750!important;
+}
+.select-field select{
+  font-weight:600!important;
+}
+.reset-filter{
+  height:54px!important;
+  font-size:15px!important;
+  line-height:1.25!important;
+  font-weight:500!important;
+}
+
+/* KONTAKT: TELEFON / E-MAIL / ANSCHRIFT ---------------------------------- */
+.contact-dl dt{
+  font-size:11px!important;
+  line-height:1.25!important;
+  letter-spacing:.16em!important;
+  font-weight:700!important;
+}
+.contact-dl dd{
+  font-size:21px!important;
+  line-height:1.35!important;
+  font-weight:700!important;
+  color:var(--ink)!important;
+}
+.contact-dl div{
+  padding:17px 0!important;
+  align-items:center!important;
+}
+
+/* KONTAKT-/BESCHAFFUNGSFORMULAR ----------------------------------------- */
+.request-form label{
+  gap:9px!important;
+  font-size:12px!important;
+  line-height:1.25!important;
+  letter-spacing:.12em!important;
+  font-weight:750!important;
+}
+.request-form input,
+.request-form select,
+.request-form textarea{
+  font-size:16px!important;
+  line-height:1.45!important;
+  padding:15px 0!important;
+}
+.request-form input::placeholder,
+.request-form textarea::placeholder{
+  font-size:15px!important;
+  line-height:1.4!important;
+  color:#8a7d70!important;
+  opacity:1!important;
+}
+.compact-request-form{
+  gap:18px!important;
+}
+.compact-request-form textarea{
+  min-height:112px!important;
+}
+
+@media(max-width:560px){
+  .filter-chip{font-size:14px!important;padding:10px 14px!important}
+  .catalog-count{font-size:13px!important}
+  .search-field input,.select-field select{font-size:15px!important;height:52px!important}
+  .select-field{font-size:11px!important}
+  .reset-filter{font-size:14px!important;height:48px!important}
+  .contact-dl dd{font-size:18px!important}
+  .request-form label{font-size:11px!important}
+  .request-form input,.request-form select,.request-form textarea{font-size:15px!important}
+  .request-form input::placeholder,.request-form textarea::placeholder{font-size:14px!important}
+}
+
+
+/* ========================================================================== 
+   MOBILE MENU + PRODUKTGRID FIXES – 24.09.2026
+   --------------------------------------------------------------------------
+   Behebt das verrutschte mobile Menü sowie überlappende Texte auf der
+   Produktseite in kleinen Viewports.
+   ========================================================================== */
+body.nav-open{overflow:hidden!important}
+
+@media(max-width:860px){
+  .site-header,
+  .site-header.is-scrolled{overflow:visible!important}
+
+  .site-header .header-inner,
+  .site-header.is-scrolled .header-inner{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    column-gap:16px!important;
+    align-items:center!important;
+  }
+
+  .wordmark{max-width:var(--header-open-brand-slot)!important}
+  .site-header.is-scrolled .wordmark{max-width:var(--header-compact-brand-slot)!important}
+
+  .menu-toggle{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:48px!important;
+    height:48px!important;
+    padding:0!important;
+    border:0!important;
+    background:transparent!important;
+    justify-self:end!important;
+    z-index:1002!important;
+  }
+
+  .main-nav{
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    top:var(--header-open-height)!important;
+    padding:18px 28px 24px!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:0!important;
+    background:#f7f2ea!important;
+    color:#47392e!important;
+    border-bottom:1px solid rgba(92,69,49,.12)!important;
+    box-shadow:0 18px 36px rgba(58,43,30,.12)!important;
+    transform:translateY(-12px)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+  .site-header.is-scrolled .main-nav{top:var(--header-compact-height)!important}
+  .main-nav.is-open{
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+  .main-nav a{
+    display:block!important;
+    width:100%!important;
+    padding:15px 0!important;
+    font-size:15px!important;
+    line-height:1.3!important;
+    text-align:left!important;
+    border-bottom:1px solid rgba(92,69,49,.10)!important;
+  }
+  .main-nav a:last-child{border-bottom:0!important}
+  .main-nav .nav-cta{margin-top:10px!important}
+
+  .page-hero-grid,
+  .assortment .section-head,
+  .contact-cta-inner,
+  .showroom-source-cta .contact-cta-inner,
+  .aligned-copy-grid{
+    grid-template-columns:1fr!important;
+    gap:24px!important;
+  }
+
+  .assortment .section-head > p,
+  .showroom-source-cta .source-cta-copy,
+  .section-head > .aligned-copy-right,
+  .contact-cta-inner > .aligned-copy-right,
+  .about-page-grid > .aligned-copy-right{
+    padding-top:0!important;
+    margin:0!important;
+    max-width:none!important;
+  }
+
+  .page-hero-products .page-hero-image{height:320px!important}
+}
+
+@media(max-width:560px){
+  .page-hero{padding:40px 0 34px!important}
+  .page-hero h1{font-size:clamp(42px,11vw,60px)!important;line-height:.96!important;margin-bottom:16px!important}
+  .page-lead,
+  .assortment .section-head > p,
+  .showroom-source-cta .source-cta-copy p{font-size:15px!important;line-height:1.65!important}
+  .assortment .section-head h2{max-width:10ch!important}
+  .filter-topline{gap:16px!important}
+  .filter-group{gap:10px!important}
+  .catalog-panel{padding:18px 16px!important}
+  .main-nav{padding:16px 20px 22px!important}
+}
+
+
+/* ========================================================================== 
+   MOBILE NAVIGATION – finaler Fix v27
+   --------------------------------------------------------------------------
+   - Hamburger wieder als drei übereinanderliegende Linien
+   - Menüfläche immer über die komplette Viewport-Breite
+   - exakt dieselbe Cremefarbe wie der Header
+   - keine seitlich versetzte / schmale Menübox mehr
+   ========================================================================== */
+@media(max-width:860px){
+  .menu-toggle{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:6px!important;
+    width:48px!important;
+    height:48px!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    background:transparent!important;
+    justify-self:end!important;
+    grid-column:auto!important;
+    z-index:1102!important;
+  }
+
+  .menu-toggle span:not(.sr-only){
+    display:block!important;
+    flex:0 0 auto!important;
+    width:28px!important;
+    height:1.5px!important;
+    margin:0!important;
+    padding:0!important;
+    background:#493c31!important;
+    border:0!important;
+    transform:none!important;
+  }
+
+  .main-nav{
+    position:fixed!important;
+    inset:auto 0 auto 0!important;
+    top:var(--header-open-height)!important;
+    width:100vw!important;
+    max-width:none!important;
+    min-width:0!important;
+    margin:0!important;
+    padding:14px 28px 22px!important;
+    grid-column:auto!important;
+    justify-self:stretch!important;
+    background:#f8f3eb!important;
+    color:#493c31!important;
+    border-top:1px solid rgba(92,69,49,.08)!important;
+    border-bottom:1px solid rgba(92,69,49,.14)!important;
+    box-shadow:0 14px 32px rgba(58,43,30,.10)!important;
+    transform:translateY(-10px)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    overflow:hidden!important;
+  }
+
+  .site-header.is-scrolled .main-nav{
+    top:var(--header-compact-height)!important;
+  }
+
+  .main-nav.is-open{
+    transform:translateY(0)!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+
+  .main-nav a{
+    display:block!important;
+    width:100%!important;
+    margin:0!important;
+    padding:14px 0!important;
+    color:#493c31!important;
+    font-size:15px!important;
+    line-height:1.25!important;
+    letter-spacing:.13em!important;
+    text-align:left!important;
+    border-bottom:1px solid rgba(92,69,49,.10)!important;
+  }
+  .main-nav a:last-child{border-bottom:0!important}
+}
+
+@media(max-width:560px){
+  .main-nav{padding:12px 20px 18px!important}
+  .main-nav a{font-size:14px!important;padding:13px 0!important}
+  .menu-toggle span:not(.sr-only){width:26px!important}
+}
+
+
+/* ========================================================================== 
+   MOBILE NAVIGATION – Safari/iPhone final fix v28
+   --------------------------------------------------------------------------
+   WICHTIG:
+   Das Dropdown ist absichtlich ABSOLUTE statt FIXED positioniert. iOS Safari
+   kann fixed-Elemente innerhalb eines Headers mit backdrop-filter als eigene
+   Containing-Box behandeln; dadurch wurde das Menü schmal/rechts versetzt.
+   ========================================================================== */
+@media(max-width:860px){
+  .site-header,
+  .site-header.is-scrolled{
+    overflow:visible!important;
+    background:#f8f3eb!important;
+  }
+
+  .menu-toggle{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:6px!important;
+    width:48px!important;
+    height:48px!important;
+    padding:0!important;
+    margin:0!important;
+    border:0!important;
+    background:transparent!important;
+    justify-self:end!important;
+    z-index:1102!important;
+  }
+  .menu-toggle span:not(.sr-only){
+    display:block!important;
+    width:30px!important;
+    height:2px!important;
+    flex:none!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:2px!important;
+    background:#493c31!important;
+  }
+
+  .main-nav{
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    top:100%!important;
+    width:auto!important;
+    max-width:none!important;
+    min-width:100%!important;
+    margin:0!important;
+    padding:14px max(20px,calc((100vw - var(--shell))/2)) 20px!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:0!important;
+    background:#f8f3eb!important;
+    color:#493c31!important;
+    border-top:1px solid rgba(92,69,49,.08)!important;
+    border-bottom:1px solid rgba(92,69,49,.14)!important;
+    box-shadow:0 14px 32px rgba(58,43,30,.10)!important;
+    transform:translateY(-10px)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+    overflow:hidden!important;
+  }
+  .site-header.is-scrolled .main-nav{top:100%!important}
+  .main-nav.is-open{
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+  .main-nav a{
+    display:block!important;
+    width:100%!important;
+    margin:0!important;
+    padding:14px 0!important;
+    color:#493c31!important;
+    font-size:15px!important;
+    line-height:1.25!important;
+    letter-spacing:.13em!important;
+    text-align:left!important;
+    border-bottom:1px solid rgba(92,69,49,.10)!important;
+  }
+  .main-nav a:last-child{border-bottom:0!important}
+}
+
+@media(max-width:560px){
+  .main-nav{padding:10px 20px 16px!important}
+  .main-nav a{font-size:14px!important;padding:13px 0!important}
+  .menu-toggle span:not(.sr-only){width:28px!important}
+}
