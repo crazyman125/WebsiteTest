@@ -2883,3 +2883,112 @@ body{
   .request-form input,.request-form select,.request-form textarea{font-size:15px!important}
   .request-form input::placeholder,.request-form textarea::placeholder{font-size:14px!important}
 }
+
+
+/* ========================================================================== 
+   MOBILE MENU + PRODUKTGRID FIXES – 24.09.2026
+   --------------------------------------------------------------------------
+   Behebt das verrutschte mobile Menü sowie überlappende Texte auf der
+   Produktseite in kleinen Viewports.
+   ========================================================================== */
+body.nav-open{overflow:hidden!important}
+
+@media(max-width:860px){
+  .site-header,
+  .site-header.is-scrolled{overflow:visible!important}
+
+  .site-header .header-inner,
+  .site-header.is-scrolled .header-inner{
+    grid-template-columns:minmax(0,1fr) auto!important;
+    column-gap:16px!important;
+    align-items:center!important;
+  }
+
+  .wordmark{max-width:var(--header-open-brand-slot)!important}
+  .site-header.is-scrolled .wordmark{max-width:var(--header-compact-brand-slot)!important}
+
+  .menu-toggle{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:48px!important;
+    height:48px!important;
+    padding:0!important;
+    border:0!important;
+    background:transparent!important;
+    justify-self:end!important;
+    z-index:1002!important;
+  }
+
+  .main-nav{
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    top:var(--header-open-height)!important;
+    padding:18px 28px 24px!important;
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:0!important;
+    background:#f7f2ea!important;
+    color:#47392e!important;
+    border-bottom:1px solid rgba(92,69,49,.12)!important;
+    box-shadow:0 18px 36px rgba(58,43,30,.12)!important;
+    transform:translateY(-12px)!important;
+    opacity:0!important;
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+  .site-header.is-scrolled .main-nav{top:var(--header-compact-height)!important}
+  .main-nav.is-open{
+    transform:none!important;
+    opacity:1!important;
+    visibility:visible!important;
+    pointer-events:auto!important;
+  }
+  .main-nav a{
+    display:block!important;
+    width:100%!important;
+    padding:15px 0!important;
+    font-size:15px!important;
+    line-height:1.3!important;
+    text-align:left!important;
+    border-bottom:1px solid rgba(92,69,49,.10)!important;
+  }
+  .main-nav a:last-child{border-bottom:0!important}
+  .main-nav .nav-cta{margin-top:10px!important}
+
+  .page-hero-grid,
+  .assortment .section-head,
+  .contact-cta-inner,
+  .showroom-source-cta .contact-cta-inner,
+  .aligned-copy-grid{
+    grid-template-columns:1fr!important;
+    gap:24px!important;
+  }
+
+  .assortment .section-head > p,
+  .showroom-source-cta .source-cta-copy,
+  .section-head > .aligned-copy-right,
+  .contact-cta-inner > .aligned-copy-right,
+  .about-page-grid > .aligned-copy-right{
+    padding-top:0!important;
+    margin:0!important;
+    max-width:none!important;
+  }
+
+  .page-hero-products .page-hero-image{height:320px!important}
+}
+
+@media(max-width:560px){
+  .page-hero{padding:40px 0 34px!important}
+  .page-hero h1{font-size:clamp(42px,11vw,60px)!important;line-height:.96!important;margin-bottom:16px!important}
+  .page-lead,
+  .assortment .section-head > p,
+  .showroom-source-cta .source-cta-copy p{font-size:15px!important;line-height:1.65!important}
+  .assortment .section-head h2{max-width:10ch!important}
+  .filter-topline{gap:16px!important}
+  .filter-group{gap:10px!important}
+  .catalog-panel{padding:18px 16px!important}
+  .main-nav{padding:16px 20px 22px!important}
+}

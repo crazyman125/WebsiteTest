@@ -110,6 +110,12 @@
   const menuToggle = qs('[data-menu-toggle]');
   const nav = qs('[data-nav]');
 
+  const closeMobileNav = () => {
+    nav?.classList.remove('is-open');
+    menuToggle?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  };
+
   menuToggle?.addEventListener('click', () => {
     const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
 
@@ -118,13 +124,15 @@
 
     // CSS-Klasse schaltet das mobile Menü sichtbar/unsichtbar.
     nav?.classList.toggle('is-open', !isOpen);
+    document.body.classList.toggle('nav-open', !isOpen);
   });
 
   qsa('a', nav).forEach(link => {
-    link.addEventListener('click', () => {
-      nav?.classList.remove('is-open');
-      menuToggle?.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 860) closeMobileNav();
   });
 
 

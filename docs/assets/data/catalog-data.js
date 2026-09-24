@@ -1,27 +1,6 @@
 // AUTOMATISCH GENERIERT durch tools/build_catalog.py – nicht von Hand ändern.
 window.MERVELLE_CATALOG = [
   {
-    "id": "straenge--mehrfarbig--facettierte-straenge-gruen-schwarz",
-    "title": "Facettierte Stränge – Grün bis Schwarz",
-    "description": "Facettierte Schmucksteinstränge in Grün-, Klar- und Schwarztönen.",
-    "category": "straenge",
-    "categoryLabel": "Edelstein- & Schmucksteinstränge",
-    "color": "mehrfarbig",
-    "colorLabel": "Mehrfarbig",
-    "tags": [
-      "straenge",
-      "mehrfarbig",
-      "facettiert",
-      "gruen",
-      "schwarz",
-      "klar"
-    ],
-    "image": "assets/catalog/straenge/mehrfarbig/facettierte-straenge-gruen-schwarz.webp",
-    "alt": "Facettierte Stränge – Grün bis Schwarz",
-    "order": 10,
-    "featured": false
-  },
-  {
     "id": "straenge--gruen--hellgruene-facettierte-straenge",
     "title": "Hellgrüne facettierte Stränge",
     "description": "Facettierte Schmucksteinstränge in hellen Grüntönen.",
@@ -156,25 +135,6 @@ window.MERVELLE_CATALOG = [
     "featured": false
   },
   {
-    "id": "straenge--mehrfarbig--farbsteinmix-rosa-gruen",
-    "title": "Farbsteinmix – Rosa & Grün",
-    "description": "Verschiedene Schmucksteinstränge und Rohakzente in Rosa- und Grüntönen.",
-    "category": "straenge",
-    "categoryLabel": "Edelstein- & Schmucksteinstränge",
-    "color": "mehrfarbig",
-    "colorLabel": "Mehrfarbig",
-    "tags": [
-      "straenge",
-      "mehrfarbig",
-      "rosa",
-      "gruen"
-    ],
-    "image": "assets/catalog/straenge/mehrfarbig/farbsteinmix-rosa-gruen.webp",
-    "alt": "Farbsteinmix – Rosa & Grün",
-    "order": 90,
-    "featured": false
-  },
-  {
     "id": "rohsteine--mehrfarbig--rohe-farbsteine-rosa-gruen",
     "title": "Rohe Farbsteine – Rosa & Grün",
     "description": "Auswahl roher bzw. naturbelassener Farbsteine in Rosa- und Grüntönen.",
@@ -287,25 +247,6 @@ window.MERVELLE_CATALOG = [
     "featured": false
   },
   {
-    "id": "perlen--hell--helle-barock-und-rundperlen",
-    "title": "Helle Perlen – Barock & Rund",
-    "description": "Helle Perlen in unterschiedlichen Formen und Größen.",
-    "category": "perlen",
-    "categoryLabel": "Perlen & Perlenstränge",
-    "color": "hell",
-    "colorLabel": "Hell / Creme",
-    "tags": [
-      "perlen",
-      "hell",
-      "barock",
-      "rund"
-    ],
-    "image": "assets/catalog/perlen/hell/helle-barock-und-rundperlen.webp",
-    "alt": "Helle Perlen – Barock & Rund",
-    "order": 160,
-    "featured": false
-  },
-  {
     "id": "beads--mehrfarbig--pastellfarbene-kugelbeads",
     "title": "Pastellfarbene Kugel-Beads",
     "description": "Polierte Kugel-Beads in sanften Pastellfarben.",
@@ -384,25 +325,6 @@ window.MERVELLE_CATALOG = [
     "featured": false
   },
   {
-    "id": "straenge--mehrfarbig--feine-farbstein-straenge-mix",
-    "title": "Feine Farbsteinstränge – Mix",
-    "description": "Feine Schmucksteinstränge in einer breiten Farbpalette.",
-    "category": "straenge",
-    "categoryLabel": "Edelstein- & Schmucksteinstränge",
-    "color": "mehrfarbig",
-    "colorLabel": "Mehrfarbig",
-    "tags": [
-      "straenge",
-      "mehrfarbig",
-      "fein",
-      "strang"
-    ],
-    "image": "assets/catalog/straenge/mehrfarbig/feine-farbstein-straenge-mix.webp",
-    "alt": "Feine Farbsteinstränge – Mix",
-    "order": 210,
-    "featured": false
-  },
-  {
     "id": "straenge--blau--blaue-rundstraenge",
     "title": "Blaue Rundstränge",
     "description": "Blaue Schmucksteinstränge mit polierten Rundsteinen.",
@@ -419,64 +341,6 @@ window.MERVELLE_CATALOG = [
     "image": "assets/catalog/straenge/blau/blaue-rundstraenge.webp",
     "alt": "Blaue Rundstränge",
     "order": 220,
-    "featured": false
-  },
-  {
-    "id": "straenge--mehrfarbig--pastellfarbene-rundstraenge",
-    "title": "Pastellfarbene Rundstränge",
-    "description": "Schmucksteinstränge in Türkis-, Grün-, Rosa- und Hellblau-Tönen.",
-    "category": "straenge",
-    "categoryLabel": "Edelstein- & Schmucksteinstränge",
-    "color": "mehrfarbig",
-    "colorLabel": "Mehrfarbig",
-    "tags": [
-      "straenge",
-      "mehrfarbig",
-      "pastell",
-      "rund"
-    ],
-    "image": "assets/catalog/straenge/mehrfarbig/pastellfarbene-rundstraenge.webp",
-    "alt": "Pastellfarbene Rundstränge",
-    "order": 230,
-    "featured": false
-  },
-  {
-    "id": "perlen--mehrfarbig--perlenstraenge-hell-dunkel",
-    "title": "Perlenstränge – Hell & Dunkel",
-    "description": "Kombination aus hellen und dunklen Perlensträngen.",
-    "category": "perlen",
-    "categoryLabel": "Perlen & Perlenstränge",
-    "color": "mehrfarbig",
-    "colorLabel": "Mehrfarbig",
-    "tags": [
-      "perlen",
-      "mehrfarbig",
-      "hell",
-      "dunkel",
-      "strang"
-    ],
-    "image": "assets/catalog/perlen/mehrfarbig/perlenstraenge-hell-dunkel.webp",
-    "alt": "Perlenstränge – Hell & Dunkel",
-    "order": 240,
-    "featured": false
-  },
-  {
-    "id": "perlen--rosa--perlenstraenge-weiss-peach",
-    "title": "Perlenstränge – Weiß & Peach",
-    "description": "Perlenstränge in Weiß-, Rosé- und Peach-Nuancen mit unterschiedlichen Formen.",
-    "category": "perlen",
-    "categoryLabel": "Perlen & Perlenstränge",
-    "color": "rosa",
-    "colorLabel": "Rosa / Peach",
-    "tags": [
-      "perlen",
-      "rosa",
-      "weiss",
-      "peach"
-    ],
-    "image": "assets/catalog/perlen/rosa/perlenstraenge-weiss-peach.webp",
-    "alt": "Perlenstränge – Weiß & Peach",
-    "order": 250,
     "featured": false
   },
   {
@@ -559,26 +423,6 @@ window.MERVELLE_CATALOG = [
     "featured": false
   },
   {
-    "id": "perlen--mehrfarbig--perlenstraenge-formenmix",
-    "title": "Perlenstränge – Formenmix",
-    "description": "Perlenstränge in unterschiedlichen Formen, Größen und Naturtönen.",
-    "category": "perlen",
-    "categoryLabel": "Perlen & Perlenstränge",
-    "color": "mehrfarbig",
-    "colorLabel": "Mehrfarbig",
-    "tags": [
-      "perlen",
-      "mehrfarbig",
-      "barock",
-      "rund",
-      "natur"
-    ],
-    "image": "assets/catalog/perlen/mehrfarbig/perlenstraenge-formenmix.webp",
-    "alt": "Perlenstränge – Formenmix",
-    "order": 300,
-    "featured": false
-  },
-  {
     "id": "perlen--dunkel--dunkles-perlenarmband",
     "title": "Dunkles Perlenarmband",
     "description": "Dunkle Perlen als geschlossenes Schmuckstück auf hellem Satin.",
@@ -651,6 +495,229 @@ window.MERVELLE_CATALOG = [
     "image": "assets/catalog/perlen/hell/barockperlen-goldakzent.webp",
     "alt": "Barockperlen mit Goldakzenten",
     "order": 340,
+    "featured": true
+  },
+  {
+    "id": "perlen--hell--perlenlagen-natur-creme",
+    "title": "Perlenlagen – Natur & Creme",
+    "description": "Mehrlagige Perlenstränge in zarten Natur-, Creme- und Champagnertönen.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "hell",
+    "colorLabel": "Hell / Creme",
+    "tags": [
+      "perlen",
+      "hell",
+      "natur",
+      "creme",
+      "champagner",
+      "strang"
+    ],
+    "image": "assets/catalog/perlen/hell/perlenlagen-natur-creme.webp",
+    "alt": "Perlenlagen in Natur- und Cremetönen",
+    "order": 350,
+    "featured": true
+  },
+  {
+    "id": "perlen--mehrfarbig--perlenauswahl-muschelschalen",
+    "title": "Perlenauswahl in Muschelschalen",
+    "description": "Auswahl heller und dunkler Perlen, arrangiert in Muschelschalen.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "mehrfarbig",
+    "colorLabel": "Mehrfarbig",
+    "tags": [
+      "perlen",
+      "mehrfarbig",
+      "muschel",
+      "dunkel",
+      "hell",
+      "auswahl"
+    ],
+    "image": "assets/catalog/perlen/mehrfarbig/perlenauswahl-muschelschalen.webp",
+    "alt": "Perlenauswahl in Muschelschalen",
+    "order": 360,
+    "featured": false
+  },
+  {
+    "id": "perlen--dunkel--dunkle-zuchtperlen-muschel",
+    "title": "Dunkle Zuchtperlen in Muschel",
+    "description": "Dunkle Perlen mit schimmernden Nuancen in einer Muschelschale präsentiert.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "dunkel",
+    "colorLabel": "Dunkel / Anthrazit",
+    "tags": [
+      "perlen",
+      "dunkel",
+      "zuchtperlen",
+      "muschel",
+      "anthrazit"
+    ],
+    "image": "assets/catalog/perlen/dunkel/dunkle-zuchtperlen-muschel.webp",
+    "alt": "Dunkle Zuchtperlen in Muschel",
+    "order": 370,
+    "featured": false
+  },
+  {
+    "id": "perlen--dunkel--grosse-dunkle-perlenkette",
+    "title": "Große dunkle Perlenkette",
+    "description": "Markante dunkle Perlenkette auf hellem Satin.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "dunkel",
+    "colorLabel": "Dunkel / Anthrazit",
+    "tags": [
+      "perlen",
+      "dunkel",
+      "kette",
+      "gross",
+      "satin"
+    ],
+    "image": "assets/catalog/perlen/dunkel/grosse-dunkle-perlenkette.webp",
+    "alt": "Große dunkle Perlenkette auf hellem Satin",
+    "order": 380,
+    "featured": true
+  },
+  {
+    "id": "perlen--hell--perlenkette-mit-quasten",
+    "title": "Perlenkette mit Quasten",
+    "description": "Elegante helle Perlenkette mit goldfarbenen Akzenten und Quasten.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "hell",
+    "colorLabel": "Hell / Creme",
+    "tags": [
+      "perlen",
+      "hell",
+      "kette",
+      "quasten",
+      "gold"
+    ],
+    "image": "assets/catalog/perlen/hell/perlenkette-mit-quasten.webp",
+    "alt": "Helle Perlenkette mit Quasten",
+    "order": 390,
+    "featured": false
+  },
+  {
+    "id": "perlen--mehrfarbig--lose-perlen-rose-silber",
+    "title": "Lose Perlen – Rosé & Silber",
+    "description": "Lose Perlen in Rosé-, Silber-, Creme- und dunklen Metallic-Nuancen.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "mehrfarbig",
+    "colorLabel": "Mehrfarbig",
+    "tags": [
+      "perlen",
+      "mehrfarbig",
+      "lose",
+      "rose",
+      "silber",
+      "metallic"
+    ],
+    "image": "assets/catalog/perlen/mehrfarbig/lose-perlen-rose-silber.webp",
+    "alt": "Lose Perlen in Rosé- und Silbertönen",
+    "order": 400,
+    "featured": false
+  },
+  {
+    "id": "perlen--dunkel--rundes-perlenarmband",
+    "title": "Rundes Perlenarmband",
+    "description": "Klassisches Armband aus dunklen, schimmernden Perlen.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "dunkel",
+    "colorLabel": "Dunkel / Anthrazit",
+    "tags": [
+      "perlen",
+      "dunkel",
+      "armband",
+      "rund"
+    ],
+    "image": "assets/catalog/perlen/dunkel/rundes-perlenarmband.webp",
+    "alt": "Rundes Armband aus dunklen Perlen",
+    "order": 410,
+    "featured": false
+  },
+  {
+    "id": "perlen--mehrfarbig--perlenchargen-sortiert",
+    "title": "Perlenchargen – lose & sortiert",
+    "description": "Lose dunkle und helle Perlen in sortierten Chargen und Karten.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "mehrfarbig",
+    "colorLabel": "Mehrfarbig",
+    "tags": [
+      "perlen",
+      "mehrfarbig",
+      "chargen",
+      "sortiert",
+      "lose"
+    ],
+    "image": "assets/catalog/perlen/mehrfarbig/perlenchargen-sortiert.webp",
+    "alt": "Sortierte Perlenchargen in verschiedenen Verpackungen",
+    "order": 420,
+    "featured": false
+  },
+  {
+    "id": "perlen--mehrfarbig--perlenwand-sortiment",
+    "title": "Perlenwand – Sortiment",
+    "description": "Breites Sortiment an Perlensträngen in vielen Farben und Größen.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "mehrfarbig",
+    "colorLabel": "Mehrfarbig",
+    "tags": [
+      "perlen",
+      "mehrfarbig",
+      "sortiment",
+      "wand",
+      "strang"
+    ],
+    "image": "assets/catalog/perlen/mehrfarbig/perlenwand-sortiment.webp",
+    "alt": "Perlenwand mit großem Sortiment an Strängen",
+    "order": 430,
+    "featured": false
+  },
+  {
+    "id": "perlen--rosa--perlenstraenge-rose-creme-mix",
+    "title": "Perlenstränge – Rosé & Creme",
+    "description": "Perlenstränge in sanften Rosé-, Peach- und Cremetönen.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "rosa",
+    "colorLabel": "Rosa / Peach",
+    "tags": [
+      "perlen",
+      "rosa",
+      "creme",
+      "peach",
+      "strang"
+    ],
+    "image": "assets/catalog/perlen/rosa/perlenstraenge-rose-creme-mix.webp",
+    "alt": "Perlenstränge in Rosé- und Cremetönen",
+    "order": 440,
+    "featured": false
+  },
+  {
+    "id": "perlen--mehrfarbig--perlenmix-schwarz-weiss-natur",
+    "title": "Perlenmix – Schwarz, Weiß & Natur",
+    "description": "Perlenmix aus weißen, dunklen und naturfarbenen Strängen.",
+    "category": "perlen",
+    "categoryLabel": "Perlen & Perlenstränge",
+    "color": "mehrfarbig",
+    "colorLabel": "Mehrfarbig",
+    "tags": [
+      "perlen",
+      "mehrfarbig",
+      "schwarz",
+      "weiss",
+      "natur",
+      "mix"
+    ],
+    "image": "assets/catalog/perlen/mehrfarbig/perlenmix-schwarz-weiss-natur.webp",
+    "alt": "Perlenmix in Schwarz, Weiß und Naturtönen",
+    "order": 450,
     "featured": true
   }
 ];
