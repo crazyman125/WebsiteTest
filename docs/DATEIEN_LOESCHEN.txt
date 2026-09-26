@@ -1,0 +1,6 @@
+Bitte diese beiden alten Dateien aus dem Website-Projekt löschen:
+
+bildhinweise.html
+en/image-notes.html
+
+Die Links darauf wurden aus allen deutschen und englischen Footern entfernt.
