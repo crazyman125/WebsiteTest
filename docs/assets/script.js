@@ -49,7 +49,8 @@
      nur ohne bereits eingetragenen Empfänger.
      ------------------------------------------------------------------------ */
 
-  const CONTACT_EMAIL = '';
+  const CONTACT_EMAIL = 'Info@mervellegemstones.com';
+  const IS_EN = document.documentElement.lang.toLowerCase().startsWith('en');
 
   const buildMailto = (subject, body) => {
     // EDIT: encodeURIComponent verwendet %20 für Leerzeichen. URLSearchParams
@@ -298,7 +299,9 @@
       loadMoreWrap.hidden = items.length === 0;
       loadMoreButton.hidden = !hasMore;
       if (shownStatus) {
-        shownStatus.textContent = `${visibleItems.length} von ${items.length} Produkten`;
+        shownStatus.textContent = IS_EN
+          ? `${visibleItems.length} of ${items.length} products`
+          : `${visibleItems.length} von ${items.length} Produkten`;
       }
     }
   }
@@ -419,16 +422,28 @@
     if (!currentProduct) return;
 
     // EDIT: Empfänger wird zentral über CONTACT_EMAIL weiter oben gesteuert.
-    const subject = `MERVELLE GEMSTONES – Produktanfrage: ${currentProduct.title}`;
-    const body = [
-      'Guten Tag,',
-      '',
-      `ich interessiere mich für: ${currentProduct.title}`,
-      '',
-      'Bitte senden Sie mir weitere Informationen zu Verfügbarkeit, Qualität, Größe und Menge.',
-      '',
-      'Viele Grüße'
-    ].join('\n');
+    const subject = IS_EN
+      ? `MERVELLE GEMSTONES – Product inquiry: ${currentProduct.title}`
+      : `MERVELLE GEMSTONES – Produktanfrage: ${currentProduct.title}`;
+    const body = IS_EN
+      ? [
+          'Hello,',
+          '',
+          `I am interested in: ${currentProduct.title}`,
+          '',
+          'Please send me further information on availability, quality, size and quantity.',
+          '',
+          'Kind regards'
+        ].join('\n')
+      : [
+          'Guten Tag,',
+          '',
+          `ich interessiere mich für: ${currentProduct.title}`,
+          '',
+          'Bitte senden Sie mir weitere Informationen zu Verfügbarkeit, Qualität, Größe und Menge.',
+          '',
+          'Viele Grüße'
+        ].join('\n');
 
     closeModal();
     window.location.href = buildMailto(subject, body);
@@ -535,7 +550,7 @@
 
     if (!form.checkValidity()) {
       form.reportValidity();
-      if (formStatus) formStatus.textContent = 'Bitte füllen Sie die Pflichtfelder aus.';
+      if (formStatus) formStatus.textContent = IS_EN ? 'Please complete the required fields.' : 'Bitte füllen Sie die Pflichtfelder aus.';
       return;
     }
 

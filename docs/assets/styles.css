@@ -3369,3 +3369,14 @@ body.nav-open{overflow:hidden!important}
   .main-nav a{font-size:14px!important;padding:13px 0!important}
   .menu-toggle span:not(.sr-only){width:28px!important}
 }
+
+
+/* ==========================================================================
+   LANGUAGE SWITCH – DE / EN (v31)
+   ========================================================================== */
+.language-switch{display:inline-flex;align-items:center;gap:7px;margin-left:4px;padding-left:15px;border-left:1px solid rgba(92,69,49,.18);font-size:12px;line-height:1;letter-spacing:.12em;font-weight:700}
+.language-switch span,.main-nav .language-switch a{display:inline-block!important;width:auto!important;padding:8px 3px!important;border:0!important;color:#7a6a5d!important;font-size:12px!important;line-height:1!important;letter-spacing:.12em!important}
+.language-switch .is-active{color:var(--bronze)!important}
+.main-nav .language-switch a:hover{color:var(--bronze)!important}
+@media(max-width:860px){.language-switch{margin:8px 0 0!important;padding:16px 0 2px!important;border-left:0!important;border-top:1px solid rgba(92,69,49,.12)!important;gap:12px!important}.language-switch span,.main-nav .language-switch a{font-size:14px!important;padding:4px 0!important}}
+.contact-dl dd a{color:inherit;text-decoration:none}.contact-dl dd a:hover{text-decoration:underline}
