@@ -16,7 +16,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Green"
     ],
-    "image": "assets/catalog/straenge/gruen/hellgruene-facettierte-straenge.webp",
+    "image": "../assets/catalog/straenge/gruen/hellgruene-facettierte-straenge.webp",
     "alt": "Light Green Faceted Strands",
     "order": 20,
     "featured": false
@@ -37,7 +37,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Light / Cream"
     ],
-    "image": "assets/catalog/perlen/hell/perlen-naturtoene.webp",
+    "image": "../assets/catalog/perlen/hell/perlen-naturtoene.webp",
     "alt": "Pearls in Natural Tones",
     "order": 30,
     "featured": false
@@ -59,7 +59,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/farbstein-straenge-violett-gruen.webp",
+    "image": "../assets/catalog/straenge/mehrfarbig/farbstein-straenge-violett-gruen.webp",
     "alt": "Gemstone Strands – Violet & Green",
     "order": 40,
     "featured": false
@@ -81,7 +81,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/perlen-schwarz-weiss-muscheln.webp",
+    "image": "../assets/catalog/perlen/mehrfarbig/perlen-schwarz-weiss-muscheln.webp",
     "alt": "Pearl Selection – Black & White",
     "order": 50,
     "featured": true
@@ -102,7 +102,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Green"
     ],
-    "image": "assets/catalog/straenge/gruen/gruene-gemusterte-kugelstraenge.webp",
+    "image": "../assets/catalog/straenge/gruen/gruene-gemusterte-kugelstraenge.webp",
     "alt": "Green Patterned Round Strands",
     "order": 60,
     "featured": false
@@ -122,7 +122,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Dark / Anthracite"
     ],
-    "image": "assets/catalog/perlen/dunkel/dunkle-perlen-auswahl.webp",
+    "image": "../assets/catalog/perlen/dunkel/dunkle-perlen-auswahl.webp",
     "alt": "Dark Pearls – Selection",
     "order": 70,
     "featured": false
@@ -143,7 +143,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Blue"
     ],
-    "image": "assets/catalog/straenge/blau/blaue-kugelstraenge.webp",
+    "image": "../assets/catalog/straenge/blau/blaue-kugelstraenge.webp",
     "alt": "Blue Round Strands",
     "order": 80,
     "featured": false
@@ -165,7 +165,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/rohe-farbsteine-rosa-gruen.webp",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/rohe-farbsteine-rosa-gruen.webp",
     "alt": "Rough Coloured Stones – Pink & Green",
     "order": 100,
     "featured": false
@@ -185,7 +185,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/mineralien-und-rohsteine-auswahl.webp",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/mineralien-und-rohsteine-auswahl.webp",
     "alt": "Minerals & Rough Stones – Selection",
     "order": 110,
     "featured": true
@@ -205,7 +205,7 @@ window.MERVELLE_CATALOG = [
       "Cut Gemstones",
       "Multicoloured"
     ],
-    "image": "assets/catalog/geschliffen/mehrfarbig/geschliffene-farbsteine-auswahl.webp",
+    "image": "../assets/catalog/geschliffen/mehrfarbig/geschliffene-farbsteine-auswahl.webp",
     "alt": "Cut Coloured Stones – Selection",
     "order": 120,
     "featured": true
@@ -225,7 +225,7 @@ window.MERVELLE_CATALOG = [
       "Loose Stones & Beads",
       "Clear / White"
     ],
-    "image": "assets/catalog/beads/klar/klare-schmuckstein-beads.webp",
+    "image": "../assets/catalog/beads/klar/klare-schmuckstein-beads.webp",
     "alt": "Clear Gemstone Beads",
     "order": 130,
     "featured": false
@@ -246,7 +246,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Green"
     ],
-    "image": "assets/catalog/straenge/gruen/gruene-schmuckstein-straenge.webp",
+    "image": "../assets/catalog/straenge/gruen/gruene-schmuckstein-straenge.webp",
     "alt": "Green Gemstone Strands",
     "order": 140,
     "featured": false
@@ -267,7 +267,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Orange / Gold"
     ],
-    "image": "assets/catalog/straenge/orange/goldorange-facettierte-straenge.webp",
+    "image": "../assets/catalog/straenge/orange/goldorange-facettierte-straenge.webp",
     "alt": "Golden Orange Faceted Strands",
     "order": 150,
     "featured": false
@@ -288,7 +288,7 @@ window.MERVELLE_CATALOG = [
       "Loose Stones & Beads",
       "Multicoloured"
     ],
-    "image": "assets/catalog/beads/mehrfarbig/pastellfarbene-kugelbeads.webp",
+    "image": "../assets/catalog/beads/mehrfarbig/pastellfarbene-kugelbeads.webp",
     "alt": "Pastel Round Beads",
     "order": 170,
     "featured": false
@@ -309,7 +309,7 @@ window.MERVELLE_CATALOG = [
       "Loose Stones & Beads",
       "Orange / Gold"
     ],
-    "image": "assets/catalog/beads/orange/orange-kugelbeads.webp",
+    "image": "../assets/catalog/beads/orange/orange-kugelbeads.webp",
     "alt": "Orange Round Beads",
     "order": 180,
     "featured": false
@@ -330,7 +330,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/perlen-farbpalette.webp",
+    "image": "../assets/catalog/perlen/mehrfarbig/perlen-farbpalette.webp",
     "alt": "Pearls – Colour Palette",
     "order": 190,
     "featured": false
@@ -353,7 +353,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/perlen-reihen-farbpalette.webp",
+    "image": "../assets/catalog/perlen/mehrfarbig/perlen-reihen-farbpalette.webp",
     "alt": "Pearl Rows – Colour Palette",
     "order": 200,
     "featured": false
@@ -374,7 +374,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Blue"
     ],
-    "image": "assets/catalog/straenge/blau/blaue-rundstraenge.webp",
+    "image": "../assets/catalog/straenge/blau/blaue-rundstraenge.webp",
     "alt": "Blue Round Strands",
     "order": 220,
     "featured": false
@@ -397,7 +397,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/feine-strangware-gold-schwarz.webp",
+    "image": "../assets/catalog/straenge/mehrfarbig/feine-strangware-gold-schwarz.webp",
     "alt": "Fine Strands – Gold & Black",
     "order": 260,
     "featured": false
@@ -418,7 +418,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Black"
     ],
-    "image": "assets/catalog/straenge/schwarz/schwarze-strangware.webp",
+    "image": "../assets/catalog/straenge/schwarz/schwarze-strangware.webp",
     "alt": "Black Strands",
     "order": 270,
     "featured": false
@@ -441,7 +441,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/farbstein-straenge-blau-orange-violett.webp",
+    "image": "../assets/catalog/straenge/mehrfarbig/farbstein-straenge-blau-orange-violett.webp",
     "alt": "Gemstone Strands – Blue, Orange & Violet",
     "order": 280,
     "featured": false
@@ -461,7 +461,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/lose-perlen-farbpalette.webp",
+    "image": "../assets/catalog/perlen/mehrfarbig/lose-perlen-farbpalette.webp",
     "alt": "Loose Pearls – Colour Palette",
     "order": 290,
     "featured": false
@@ -481,7 +481,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Dark / Anthracite"
     ],
-    "image": "assets/catalog/perlen/dunkel/dunkles-perlenarmband.webp",
+    "image": "../assets/catalog/perlen/dunkel/dunkles-perlenarmband.webp",
     "alt": "Dark Pearl Bracelet",
     "order": 310,
     "featured": false
@@ -501,7 +501,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Dark / Anthracite"
     ],
-    "image": "assets/catalog/perlen/dunkel/dunkle-perlenkette.webp",
+    "image": "../assets/catalog/perlen/dunkel/dunkle-perlenkette.webp",
     "alt": "Dark Pearl Necklace",
     "order": 320,
     "featured": false
@@ -522,7 +522,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Light / Cream"
     ],
-    "image": "assets/catalog/perlen/hell/helle-perlenkette.webp",
+    "image": "../assets/catalog/perlen/hell/helle-perlenkette.webp",
     "alt": "Light Pearl Necklace",
     "order": 330,
     "featured": false
@@ -544,7 +544,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Light / Cream"
     ],
-    "image": "assets/catalog/perlen/hell/barockperlen-goldakzent.webp",
+    "image": "../assets/catalog/perlen/hell/barockperlen-goldakzent.webp",
     "alt": "Baroque Pearls with Gold Accents",
     "order": 340,
     "featured": true
@@ -566,7 +566,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Light / Cream"
     ],
-    "image": "assets/catalog/perlen/hell/perlenlagen-natur-creme.webp",
+    "image": "../assets/catalog/perlen/hell/perlenlagen-natur-creme.webp",
     "alt": "Layered Pearls – Natural & Cream",
     "order": 350,
     "featured": true
@@ -589,7 +589,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/perlenauswahl-muschelschalen.webp",
+    "image": "../assets/catalog/perlen/mehrfarbig/perlenauswahl-muschelschalen.webp",
     "alt": "Pearl Selection in Shells",
     "order": 360,
     "featured": false
@@ -609,7 +609,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Dark / Anthracite"
     ],
-    "image": "assets/catalog/perlen/dunkel/dunkle-perlen-muschel.webp",
+    "image": "../assets/catalog/perlen/dunkel/dunkle-perlen-muschel.webp",
     "alt": "Dark Pearls – Selection",
     "order": 370,
     "featured": false
@@ -630,7 +630,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Dark / Anthracite"
     ],
-    "image": "assets/catalog/perlen/dunkel/grosse-dunkle-perlenkette.webp",
+    "image": "../assets/catalog/perlen/dunkel/grosse-dunkle-perlenkette.webp",
     "alt": "Dark Pearl Necklace – Selection",
     "order": 380,
     "featured": true
@@ -651,7 +651,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Light / Cream"
     ],
-    "image": "assets/catalog/perlen/hell/perlenkette-mit-quasten.webp",
+    "image": "../assets/catalog/perlen/hell/perlenkette-mit-quasten.webp",
     "alt": "Light Pearl Necklace – Selection",
     "order": 390,
     "featured": false
@@ -673,7 +673,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/lose-perlen-rose-silber.webp",
+    "image": "../assets/catalog/perlen/mehrfarbig/lose-perlen-rose-silber.webp",
     "alt": "Loose Pearls – Colour Palette",
     "order": 400,
     "featured": false
@@ -693,7 +693,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Dark / Anthracite"
     ],
-    "image": "assets/catalog/perlen/dunkel/rundes-perlenarmband.webp",
+    "image": "../assets/catalog/perlen/dunkel/rundes-perlenarmband.webp",
     "alt": "Dark Pearl Bracelet",
     "order": 410,
     "featured": false
@@ -715,7 +715,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/perlenchargen-sortiert.webp",
+    "image": "../assets/catalog/perlen/mehrfarbig/perlenchargen-sortiert.webp",
     "alt": "Pearl Lots – Selection",
     "order": 420,
     "featured": false
@@ -736,7 +736,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/perlenwand-sortiment.webp",
+    "image": "../assets/catalog/perlen/mehrfarbig/perlenwand-sortiment.webp",
     "alt": "Pearl Strands – Assortment",
     "order": 430,
     "featured": false
@@ -758,7 +758,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Pink / Peach"
     ],
-    "image": "assets/catalog/perlen/rosa/perlenstraenge-rose-creme-mix.webp",
+    "image": "../assets/catalog/perlen/rosa/perlenstraenge-rose-creme-mix.webp",
     "alt": "Pearl Strands – Rosé & Cream",
     "order": 440,
     "featured": false
@@ -781,7 +781,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/perlenmix-schwarz-weiss-natur.webp",
+    "image": "../assets/catalog/perlen/mehrfarbig/perlenmix-schwarz-weiss-natur.webp",
     "alt": "Pearl Mix – Black, White & Natural",
     "order": 450,
     "featured": true
@@ -801,7 +801,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-m12.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-m12.png",
     "alt": "Gemstone Strands – Selection 01",
     "order": 1000,
     "featured": false
@@ -821,7 +821,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-m17.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-m17.png",
     "alt": "Gemstone Strands – Selection 02",
     "order": 1001,
     "featured": false
@@ -841,7 +841,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu12.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu12.png",
     "alt": "Gemstone Strands – Selection 03",
     "order": 1002,
     "featured": false
@@ -861,7 +861,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu14.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu14.png",
     "alt": "Gemstone Strands – Selection 04",
     "order": 1003,
     "featured": false
@@ -881,7 +881,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu18.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu18.png",
     "alt": "Gemstone Strands – Selection 05",
     "order": 1004,
     "featured": false
@@ -901,7 +901,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu19.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu19.png",
     "alt": "Gemstone Strands – Selection 06",
     "order": 1005,
     "featured": false
@@ -921,7 +921,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu20.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu20.png",
     "alt": "Gemstone Strands – Selection 07",
     "order": 1006,
     "featured": false
@@ -941,7 +941,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu21.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu21.png",
     "alt": "Gemstone Strands – Selection 08",
     "order": 1007,
     "featured": false
@@ -961,7 +961,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu23.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu23.png",
     "alt": "Gemstone Strands – Selection 09",
     "order": 1008,
     "featured": false
@@ -981,7 +981,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu24.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu24.png",
     "alt": "Gemstone Strands – Selection 10",
     "order": 1009,
     "featured": false
@@ -1001,7 +1001,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu26.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu26.png",
     "alt": "Gemstone Strands – Selection 11",
     "order": 1010,
     "featured": false
@@ -1021,7 +1021,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu27.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu27.png",
     "alt": "Gemstone Strands – Selection 12",
     "order": 1011,
     "featured": false
@@ -1041,7 +1041,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu41.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu41.png",
     "alt": "Gemstone Strands – Selection 13",
     "order": 1012,
     "featured": false
@@ -1061,7 +1061,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu5.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu5.png",
     "alt": "Gemstone Strands – Selection 14",
     "order": 1013,
     "featured": false
@@ -1081,7 +1081,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu.png",
     "alt": "Gemstone Strands – Selection 15",
     "order": 1014,
     "featured": false
@@ -1101,7 +1101,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu17.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu17.png",
     "alt": "Gemstone Strands – Selection 16",
     "order": 1015,
     "featured": false
@@ -1121,7 +1121,7 @@ window.MERVELLE_CATALOG = [
       "Gemstone & Jewellery Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/straenge/mehrfarbig/zusatz-neu3.png",
+    "image": "../assets/catalog/straenge/mehrfarbig/zusatz-neu3.png",
     "alt": "Gemstone Strands – Selection 17",
     "order": 1016,
     "featured": false
@@ -1141,7 +1141,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-k15.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-k15.png",
     "alt": "Pearls – Selection 18",
     "order": 1017,
     "featured": false
@@ -1161,7 +1161,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-k19.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-k19.png",
     "alt": "Pearls – Selection 19",
     "order": 1018,
     "featured": false
@@ -1181,7 +1181,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-k8.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-k8.png",
     "alt": "Pearls – Selection 20",
     "order": 1019,
     "featured": false
@@ -1201,7 +1201,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-k9.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-k9.png",
     "alt": "Pearls – Selection 21",
     "order": 1020,
     "featured": false
@@ -1221,7 +1221,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-m21.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-m21.png",
     "alt": "Pearls – Selection 22",
     "order": 1021,
     "featured": false
@@ -1241,7 +1241,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-m24.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-m24.png",
     "alt": "Pearls – Selection 23",
     "order": 1022,
     "featured": false
@@ -1261,7 +1261,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-m3.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-m3.png",
     "alt": "Pearls – Selection 24",
     "order": 1023,
     "featured": false
@@ -1281,7 +1281,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-m4.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-m4.png",
     "alt": "Pearls – Selection 25",
     "order": 1024,
     "featured": false
@@ -1301,7 +1301,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-m5.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-m5.png",
     "alt": "Pearls – Selection 26",
     "order": 1025,
     "featured": false
@@ -1321,7 +1321,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-neu16.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-neu16.png",
     "alt": "Pearls – Selection 27",
     "order": 1026,
     "featured": false
@@ -1341,7 +1341,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-neu4.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-neu4.png",
     "alt": "Pearls – Selection 28",
     "order": 1027,
     "featured": false
@@ -1361,7 +1361,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-neu5.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-neu5.png",
     "alt": "Pearls – Selection 29",
     "order": 1028,
     "featured": false
@@ -1381,7 +1381,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-neu13.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-neu13.png",
     "alt": "Pearls – Selection 30",
     "order": 1029,
     "featured": false
@@ -1401,7 +1401,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-neu15.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-neu15.png",
     "alt": "Pearls – Selection 31",
     "order": 1030,
     "featured": false
@@ -1421,7 +1421,7 @@ window.MERVELLE_CATALOG = [
       "Pearls & Pearl Strands",
       "Multicoloured"
     ],
-    "image": "assets/catalog/perlen/mehrfarbig/zusatz-neu2.png",
+    "image": "../assets/catalog/perlen/mehrfarbig/zusatz-neu2.png",
     "alt": "Pearls – Selection 32",
     "order": 1031,
     "featured": false
@@ -1441,7 +1441,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-k22.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-k22.png",
     "alt": "Rough Stones & Minerals – Selection 33",
     "order": 1032,
     "featured": false
@@ -1461,7 +1461,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-k23.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-k23.png",
     "alt": "Rough Stones & Minerals – Selection 34",
     "order": 1033,
     "featured": false
@@ -1481,7 +1481,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-n11.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-n11.png",
     "alt": "Rough Stones & Minerals – Selection 35",
     "order": 1034,
     "featured": false
@@ -1501,7 +1501,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-u1.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-u1.png",
     "alt": "Rough Stones & Minerals – Selection 36",
     "order": 1035,
     "featured": false
@@ -1521,7 +1521,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-neu6.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-neu6.png",
     "alt": "Rough Stones & Minerals – Selection 37",
     "order": 1036,
     "featured": false
@@ -1541,7 +1541,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-neu7.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-neu7.png",
     "alt": "Rough Stones & Minerals – Selection 38",
     "order": 1037,
     "featured": false
@@ -1561,7 +1561,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-neu-8.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-neu-8.png",
     "alt": "Rough Stones & Minerals – Selection 39",
     "order": 1038,
     "featured": false
@@ -1581,7 +1581,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-u2.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-u2.png",
     "alt": "Rough Stones & Minerals – Selection 40",
     "order": 1039,
     "featured": false
@@ -1601,7 +1601,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-u3.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-u3.png",
     "alt": "Rough Stones & Minerals – Selection 41",
     "order": 1040,
     "featured": false
@@ -1621,7 +1621,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-u4.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-u4.png",
     "alt": "Rough Stones & Minerals – Selection 42",
     "order": 1041,
     "featured": false
@@ -1641,7 +1641,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-u5.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-u5.png",
     "alt": "Rough Stones & Minerals – Selection 43",
     "order": 1042,
     "featured": false
@@ -1661,7 +1661,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-u6.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-u6.png",
     "alt": "Rough Stones & Minerals – Selection 44",
     "order": 1043,
     "featured": false
@@ -1681,7 +1681,7 @@ window.MERVELLE_CATALOG = [
       "Rough Stones & Minerals",
       "Multicoloured"
     ],
-    "image": "assets/catalog/rohsteine/mehrfarbig/zusatz-u7.png",
+    "image": "../assets/catalog/rohsteine/mehrfarbig/zusatz-u7.png",
     "alt": "Rough Stones & Minerals – Selection 45",
     "order": 1044,
     "featured": false
